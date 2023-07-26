@@ -1,0 +1,1 @@
+CALL pr_fill_table_from_csv('peers', 'data/import/peers.csv',',');

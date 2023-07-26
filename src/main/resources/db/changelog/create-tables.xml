@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="create_table_peers" author="cnathali">
+        <createTable tableName="peers">
+            <column name="nickname" type="varchar">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="birthday" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_table_tasks" author="cnathali">
+        <createTable tableName="tasks">
+            <column name="title" type="varchar" defaultValue="null">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="parentTask" type="varchar" defaultValue="null">
+                <constraints nullable="false"/>
+            </column>
+            <column name="maxXP" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="parentTask"
+                                 baseTableName="tasks"
+                                 constraintName="FK_Tasks_ParentTask"
+                                 referencedColumnNames="title"
+                                 referencedTableName="tasks"/>
+    </changeSet>
+
+    <changeSet id="create_table_checks" author="cnathali">
+        <createTable tableName="checks">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="peer" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="task" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="peer"
+                                 baseTableName="checks"
+                                 constraintName="fk_Checks_checkingPeer"
+                                 referencedColumnNames="nickname"
+                                 referencedTableName="peers"/>
+
+        <addForeignKeyConstraint baseColumnNames="task"
+                                 baseTableName="checks"
+                                 constraintName="fk_Checks_Peer_title"
+                                 referencedColumnNames="title"
+                                 referencedTableName="tasks"/>
+    </changeSet>
+
+    <changeSet id="create_table_p2p" author="cnathali">
+        <createTable tableName="p2p">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="check" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="checkingPeer" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="time">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="check"
+                                 baseTableName="p2p"
+                                 constraintName="fk_P2P_check"
+                                 referencedColumnNames="id"
+                                 referencedTableName="checks"/>
+
+        <addForeignKeyConstraint baseColumnNames="checkingPeer"
+                                 baseTableName="p2p"
+                                 constraintName="fk_P2P_checkingPeer"
+                                 referencedColumnNames="nickname"
+                                 referencedTableName="peers"/>
+    </changeSet>
+
+    <changeSet id="create_table_verter" author="cnathali">
+        <createTable tableName="verter">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="check" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="time">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="check"
+                                 baseTableName="verter"
+                                 constraintName="fk_Verter_check"
+                                 referencedColumnNames="id"
+                                 referencedTableName="checks"/>
+    </changeSet>
+
+    <changeSet id="create_table_transferred_points" author="cnathali">
+        <createTable tableName="transferredPoints">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="checkingPeer" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="checkedPeer" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pointsAmount" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="checkingPeer"
+                                 baseTableName="transferredPoints"
+                                 constraintName="fk_TransferredPoints_checkingPeer"
+                                 referencedColumnNames="nickname"
+                                 referencedTableName="peers"/>
+
+        <addForeignKeyConstraint baseColumnNames="checkedPeer"
+                                 baseTableName="transferredPoints"
+                                 constraintName="fk_TransferredPoints_checkedPeer"
+                                 referencedColumnNames="nickname"
+                                 referencedTableName="peers"/>
+    </changeSet>
+
+    <changeSet id="create_table_friends" author="cnathali">
+        <createTable tableName="friends">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="peer1" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="peer2" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="peer2"
+                                 baseTableName="friends"
+                                 constraintName="fk_Friends_Peer1"
+                                 referencedColumnNames="nickname"
+                                 referencedTableName="peers"/>
+
+        <addForeignKeyConstraint baseColumnNames="peer2"
+                                 baseTableName="friends"
+                                 constraintName="fk_Friends_Peer2"
+                                 referencedColumnNames="nickname"
+                                 referencedTableName="peers"/>
+    </changeSet>
+
+    <changeSet id="create_table_recommendations" author="cnathali">
+        <createTable tableName="recommendations">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="peer" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="recommendedPeer" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="peer"
+                                 baseTableName="recommendations"
+                                 constraintName="fk_Recommendations_Peer"
+                                 referencedColumnNames="nickname"
+                                 referencedTableName="peers"/>
+
+        <addForeignKeyConstraint baseColumnNames="recommendedPeer"
+                                 baseTableName="recommendations"
+                                 constraintName="fk_Recommendations_RecommendedPeer"
+                                 referencedColumnNames="nickname"
+                                 referencedTableName="peers"/>
+    </changeSet>
+
+    <changeSet id="create_table_xp" author="cnathali">
+        <createTable tableName="xp">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="check" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="xpAmount" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="check"
+                                 baseTableName="xp"
+                                 constraintName="fk_XP_check"
+                                 referencedColumnNames="id"
+                                 referencedTableName="checks"/>
+    </changeSet>
+
+    <changeSet id="create_table_timeTracking" author="cnathali">
+        <createTable tableName="timeTracking">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="peer" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="time">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="varchar(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseColumnNames="peer"
+                                 baseTableName="timeTracking"
+                                 constraintName="fk_TimeTracking_Peer"
+                                 referencedColumnNames="nickname"
+                                 referencedTableName="peers"/>
+    </changeSet>
+
+</databaseChangeLog>
