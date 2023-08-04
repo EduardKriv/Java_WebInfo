@@ -9,12 +9,13 @@ import lombok.Data;
 public class Xp {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "check", referencedColumnName = "id")
+    @JoinColumn(name = "check_id", referencedColumnName = "id")
     private Check check;
 
-    @Column(name = "xpAmount")
-    private int xpAmount;
+    @Column(name = "xp_amount")
+    private Integer xpAmount;
 }

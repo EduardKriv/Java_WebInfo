@@ -8,10 +8,11 @@ import java.time.LocalTime;
 
 @Entity
 @Data
-@Table(name = "timeTracking")
+@Table(name = "time_tracking")
 public class TimeTracking {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
@@ -25,5 +26,5 @@ public class TimeTracking {
     private LocalTime time;
 
     @Column(name = "state")
-    private char state;
+    private Integer state;
 }

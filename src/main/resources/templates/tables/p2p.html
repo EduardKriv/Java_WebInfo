@@ -1,0 +1,41 @@
+<table th:fragment="p2p">
+    <caption th:text="P2P"></caption>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Check</th>
+        <th>Checking Peer</th>
+        <th>State</th>
+        <th>Time</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="p2p : ${allP2P}">
+        <td th:text="${p2p.id}"></td>
+        <td th:text="${p2p.check}"></td>
+        <td th:text="${p2p.checkingPeer}"></td>
+        <td th:text="${p2p.state}"></td>
+        <td th:text="${p2p.time}"></td>
+        <td>
+            <form action="/p2p/update" th:object="${updatedP2P}" method="post">
+                <input type="hidden" name="id" th:value="${p2p.id}">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+        <td>
+            <form action="/p2p/delete" th:object="${deletedP2P}" method="post">
+                <input type="hidden" name="id" th:value="${p2p.id}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="/p2p/add" th:object="${addedP2P}" method="post">
+                <button type="submit">Add P2P</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>

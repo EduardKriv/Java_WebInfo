@@ -12,9 +12,9 @@ public class Task {
     private String title;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "parentTask", referencedColumnName = "title")
+    @JoinColumn(name = "parent_task", referencedColumnName = "title")
     private Task parentTask;
 
-    @Column(name = "maxXP")
-    private Integer maxXP;
+    @Column(name = "max_xp")
+    private Integer maxXp;
 }

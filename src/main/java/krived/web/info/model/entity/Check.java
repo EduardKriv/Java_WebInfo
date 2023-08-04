@@ -15,11 +15,13 @@ public class Check implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "peer", nullable = false)
-    private String name;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "peer", referencedColumnName = "nickname")
+    private Peer peer;
 
-    @Column(name = "task", nullable = false)
-    private String task;
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "task", referencedColumnName = "title")
+    private Task task;
 
     @Column(name = "date", nullable = false)
     private LocalDate date;

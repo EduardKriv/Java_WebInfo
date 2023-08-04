@@ -1,0 +1,37 @@
+<table th:fragment="recommendations">
+    <caption th:text="Recommendation"></caption>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Peer</th>
+        <th>Recommended Peer</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="recommendation : ${allRecommendations}">
+        <td th:text="${recommendation.id}"></td>
+        <td th:text="${recommendation.peer}"></td>
+        <td th:text="${recommendation.recommendedPeer}"></td>
+        <td>
+            <form action="/recommendation/update" th:object="${updatedRecommendation}" method="post">
+                <input type="hidden" name="id" th:value="${recommendation.id}">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+        <td>
+            <form action="/recommendation/delete" th:object="${deletedRecommendation}" method="post">
+                <input type="hidden" name="id" th:value="${recommendation.id}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="/recommendation/add" th:object="${addedRecommendation}" method="post">
+                <button type="submit">Add Recommendation</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>

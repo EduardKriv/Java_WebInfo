@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Info</title>
+    <link rel="stylesheet" href="/static/style.css" th:href="@{/style.css}">
+
+    <div th:insert="~{header :: header}" style="height: 100px"></div>
+
+</head>
+<body>
+
+    <div th:replace="~{'/tables/' + ${tableName} :: ${tableName}} ?: _"></div>
+
+</body>
+</html>

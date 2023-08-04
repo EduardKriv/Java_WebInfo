@@ -1,0 +1,37 @@
+<table th:fragment="tasks">
+    <caption th:text="Task"></caption>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Parent Task</th>
+        <th>Max XP</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="task : ${allTasks}">
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.parentTask}"></td>
+        <td th:text="${task.maxXp}"></td>
+        <td>
+            <form action="/task/update" th:object="${updatedTask}" method="post">
+                <input type="hidden" name="title" th:value="${task.title}">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+        <td>
+            <form action="/task/delete" th:object="${deletedTask}" method="post">
+                <input type="hidden" name="title" th:value="${task.title}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="/task/add" th:object="${addedTask}" method="post">
+                <button type="submit">Add Task</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>

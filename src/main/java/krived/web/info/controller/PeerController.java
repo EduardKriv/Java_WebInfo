@@ -1,32 +1,56 @@
 package krived.web.info.controller;
 
+import krived.web.info.mapper.PeerMapper;
+import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.entity.Peer;
-import krived.web.info.repository.PeerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import krived.web.info.service.PeerService;
+import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
+@RequiredArgsConstructor
 @RequestMapping("/peer")
 public class PeerController {
-    private final PeerRepository peerRepository;
-
-    @Autowired
-    public PeerController(PeerRepository peerRepository) {
-        this.peerRepository = peerRepository;
-    }
+    private final PeerService peerService;
+    private final PeerMapper peerMapper;
 
     @GetMapping("/all")
-    public List<Peer> allPeers() {
-        return peerRepository.findAll();
+    public String allPeers(Model model) {
+        List<Peer> peers = peerService.getAll();
+        List<PeerDto> peersDtos = peerMapper.toDtos(peers);
+        model.addAttribute("tableName", "peers");
+        model.addAttribute("allPeers", peersDtos);
+        return "home";
     }
 
-    @GetMapping("/{id}")
-    public Peer findById(@PathVariable String id) {
-        return peerRepository.findById(id).orElse(null);
+    @PostMapping("/add")
+    public String create(@ModelAttribute("addedPeer") @NotNull PeerDto dto) {
+        dto.setNickname("fedosiy");
+        dto.setBirthday("2015-12-12");
+
+        Peer peerEntity = peerMapper.toEntity(dto);
+        peerService.create(peerEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute("updatedPeer") @NotNull PeerDto dto) {
+        System.out.println(dto);
+        Peer peerEntity = peerService.getByNickname(dto.getNickname());
+        peerMapper.updatePeerFromDto(dto, peerEntity);
+        peerService.update(peerEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/delete")
+    public String remove(@ModelAttribute("deletedPeer") @NotNull PeerDto dto) {
+        Peer peerEntity = peerService.getByNickname(dto.getNickname());
+        peerService.delete(peerEntity);
+        return "redirect:all";
     }
 }

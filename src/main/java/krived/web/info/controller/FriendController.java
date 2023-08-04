@@ -1,34 +1,57 @@
 package krived.web.info.controller;
 
+import krived.web.info.mapper.FriendMapper;
+import krived.web.info.model.dto.FriendDto;
 import krived.web.info.model.entity.Friend;
-import krived.web.info.model.entity.Peer;
-import krived.web.info.repository.FriendRepository;
-import krived.web.info.repository.PeerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import krived.web.info.service.FriendService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
+@RequiredArgsConstructor
 @RequestMapping("/friend")
 public class FriendController {
-    private final FriendRepository friendRepository;
-
-    @Autowired
-    public FriendController(FriendRepository friendRepository) {
-        this.friendRepository = friendRepository;
-    }
+    private final FriendService friendService;
+    private final FriendMapper friendMapper;
 
     @GetMapping("/all")
-    public List<Friend> allPeers() {
-        return friendRepository.findAll();
+    public String allFriends(Model model) {
+        List<Friend> friends = friendService.getAll();
+        List<FriendDto> friendDtos = friendMapper.toDtos(friends);
+        model.addAttribute("tableName", "friends");
+        model.addAttribute("allFriends", friendDtos);
+        return "home";
     }
 
-    @GetMapping("/{id}")
-    public Friend findById(@PathVariable Long id) {
-        return friendRepository.findById(id).orElse(null);
+    @PostMapping("/add")
+    public String create(@ModelAttribute(value="addedFriend") FriendDto dto) {
+        System.out.println(dto);
+        dto.setPeer1("fedosiy");
+        dto.setPeer2("fedosiy");
+
+        Friend friendEntity = friendMapper.toEntity(dto);
+        friendService.create(friendEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute(value="updatedFriend") FriendDto dto) {
+        dto.setPeer2("duck");
+
+        Friend friendEntity = friendService.getById(dto.getId());
+        friendMapper.updateFriendFromDto(dto, friendEntity);
+        friendService.update(friendEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/delete")
+    public String delete(@ModelAttribute(value="updatedFriend") FriendDto dto) {
+        Friend friend = friendService.getById(dto.getId());
+        friendService.delete(friend);
+        return "redirect:all";
     }
 }

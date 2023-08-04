@@ -3,7 +3,7 @@ package krived.web.info.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -11,19 +11,20 @@ import java.time.LocalDateTime;
 public class P2P {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "check", referencedColumnName = "id")
+    @JoinColumn(name = "check_id", referencedColumnName = "id")
     private Check check;
 
     @OneToOne
-    @JoinColumn(name = "checkingPeer", referencedColumnName = "nickname")
+    @JoinColumn(name = "checking_peer", referencedColumnName = "nickname")
     private Peer checkingPeer;
 
     @Column(name = "state")
     private String state;
 
     @Column(name = "time")
-    private LocalDateTime time;
+    private LocalTime time;
 }

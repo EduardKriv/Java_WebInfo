@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="2023-07-28-initial-schema-1" author="cnathali">
+        <createTable tableName="peers">
+            <column name="nickname" type="varchar">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="birthday" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2023-07-28-initial-schema-2" author="cnathali">
+        <createTable tableName="tasks">
+            <column name="title" type="varchar" defaultValue="NULL">
+                <constraints primaryKey="true" unique="true"/>
+            </column>
+            <column name="parent_task" type="varchar" defaultValue="NULL">
+                <constraints foreignKeyName="FK_Tasks_ParentTask" references="tasks(title)" nullable="true"/>
+            </column>
+            <column name="max_xp" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2023-07-28-initial-schema-3" author="cnathali">
+        <createTable tableName="checks">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="peer" type="varchar">
+                <constraints nullable="false" foreignKeyName="fk_Checks_checkingPeer" references="peers(nickname)"/>
+            </column>
+            <column name="task" type="varchar">
+                <constraints nullable="false" foreignKeyName="fk_Checks_Peer_title" references="tasks(title)"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2023-07-28-initial-schema-4" author="cnathali">
+        <createTable tableName="p2p">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="check_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_P2P_check" references="checks(id)"/>
+            </column>
+            <column name="checking_peer" type="varchar">
+                <constraints nullable="false" foreignKeyName="fk_P2P_checkingPeer" references="peers(nickname)"/>
+            </column>
+            <column name="state" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="time">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2023-07-28-initial-schema-5" author="cnathali">
+        <createTable tableName="verter">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="check_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_Verter_check" references="checks(id)"/>
+            </column>
+            <column name="state" type="varchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="time">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2023-07-28-initial-schema-6" author="cnathali">
+        <createTable tableName="transferred_points">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="checking_peer" type="varchar">
+                <constraints nullable="false" foreignKeyName="fk_TransferredPoints_checkingPeer" references="peers(nickname)"/>
+            </column>
+            <column name="checked_peer" type="varchar">
+                <constraints nullable="false" foreignKeyName="fk_TransferredPoints_checkedPeer" references="peers(nickname)"/>
+            </column>
+            <column name="points_amount" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2023-07-28-initial-schema-7" author="cnathali">
+        <createTable tableName="friends">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="peer1" type="varchar">
+                <constraints nullable="false" foreignKeyName="fk_Friends_Peer1" references="peers(nickname)"/>
+            </column>
+            <column name="peer2" type="varchar">
+                <constraints nullable="false" foreignKeyName="fk_Friends_Peer2" references="peers(nickname)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2023-07-28-initial-schema-8" author="cnathali">
+        <createTable tableName="recommendations">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="peer" type="varchar">
+                <constraints nullable="false" foreignKeyName="fk_Recommendations_Peer" references="peers(nickname)"/>
+            </column>
+            <column name="recommended_peer" type="varchar">
+                <constraints nullable="false" foreignKeyName="fk_Recommendations_RecommendedPeer" references="peers(nickname)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2023-07-28-initial-schema-9" author="cnathali">
+        <createTable tableName="xp">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="check_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_XP_check" references="checks(id)"/>
+            </column>
+            <column name="xp_amount" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2023-07-28-initial-schema-10" author="cnathali">
+        <createTable tableName="time_tracking">
+            <column name="id" type="serial">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="peer" type="varchar">
+                <constraints nullable="false" foreignKeyName="fk_TimeTracking_Peer" references="peers(nickname)"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time" type="time">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="char">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

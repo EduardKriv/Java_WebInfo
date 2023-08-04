@@ -1,0 +1,41 @@
+<table th:fragment="time_tracking">
+    <caption th:text="TimeTracking"></caption>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Peer</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>State</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="timeTracking : ${allTimeTracking}">
+        <td th:text="${timeTracking.id}"></td>
+        <td th:text="${timeTracking.peer}"></td>
+        <td th:text="${timeTracking.date}"></td>
+        <td th:text="${timeTracking.time}"></td>
+        <td th:text="${timeTracking.state}"></td>
+        <td>
+            <form action="/time_tracking/update" th:object="${updatedTimeTracking}" method="post">
+                <input type="hidden" name="id" th:value="${timeTracking.id}">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+        <td>
+            <form action="/time_tracking/delete" th:object="${deletedTimeTracking}" method="post">
+                <input type="hidden" name="id" th:value="${timeTracking.id}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="/time_tracking/add" th:object="${addedTimeTracking}" method="post">
+                <button type="submit">Add TimeTracking</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>

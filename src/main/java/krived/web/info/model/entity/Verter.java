@@ -3,7 +3,7 @@ package krived.web.info.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Data
@@ -11,15 +11,16 @@ import java.time.LocalDateTime;
 public class Verter {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "check", referencedColumnName = "id")
+    @JoinColumn(name = "check_id", referencedColumnName = "id")
     private Check check;
 
     @Column(name = "state")
     private String state;
 
     @Column(name = "time")
-    private LocalDateTime time;
+    private LocalTime time;
 }

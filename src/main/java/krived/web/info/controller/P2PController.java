@@ -1,32 +1,57 @@
 package krived.web.info.controller;
 
+import krived.web.info.mapper.P2PMapper;
+import krived.web.info.model.dto.P2PDto;
 import krived.web.info.model.entity.P2P;
-import krived.web.info.repository.P2PRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import krived.web.info.service.P2PService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
+@RequiredArgsConstructor
 @RequestMapping("/p2p")
 public class P2PController {
-    private final P2PRepository p2pRepository;
-
-    @Autowired
-    public P2PController(P2PRepository p2pRepository) {
-        this.p2pRepository = p2pRepository;
-    }
+    private final P2PService p2pService;
+    private final P2PMapper p2pMapper;
 
     @GetMapping("/all")
-    public List<P2P> allPeers() {
-        return p2pRepository.findAll();
+    public String allP2Ps(Model model) {
+        List<P2P> p2p = p2pService.getAll();
+        List<P2PDto> p2pDtos = p2pMapper.toDtos(p2p);
+        model.addAttribute("tableName", "p2p");
+        model.addAttribute("allP2P", p2pDtos);
+        return "home";
     }
 
-    @GetMapping("/{id}")
-    public P2P findById(@PathVariable Long id) {
-        return p2pRepository.findById(id).orElse(null);
+    @PostMapping("/add")
+    public String create(@ModelAttribute(value="addedP2P") P2PDto dto) {
+        System.out.println(dto);
+//        dto.setPeer1("fedosiy");
+//        dto.setPeer2("fedosiy");
+
+        P2P p2pEntity = p2pMapper.toEntity(dto);
+        p2pService.create(p2pEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute(value="updatedP2P") P2PDto dto) {
+//        dto.setPeer2("duck");
+
+        P2P p2pEntity = p2pService.getById(dto.getId());
+        p2pMapper.updateP2PFromDto(dto, p2pEntity);
+        p2pService.update(p2pEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/delete")
+    public String delete(@ModelAttribute(value="updatedP2P") P2PDto dto) {
+        P2P p2p = p2pService.getById(dto.getId());
+        p2pService.delete(p2p);
+        return "redirect:all";
     }
 }

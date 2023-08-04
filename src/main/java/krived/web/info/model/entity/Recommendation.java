@@ -10,6 +10,7 @@ import lombok.Data;
 public class Recommendation {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)
@@ -17,6 +18,6 @@ public class Recommendation {
     private Peer peer;
 
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "recommendedPeer", referencedColumnName = "nickname")
+    @JoinColumn(name = "recommended_peer", referencedColumnName = "nickname")
     private Peer recommendedPeer;
 }
