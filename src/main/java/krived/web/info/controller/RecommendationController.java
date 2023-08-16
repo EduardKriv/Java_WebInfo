@@ -25,7 +25,7 @@ public class RecommendationController {
         List<RecommendationDto> recommendationsDtos = recommendationMapper.toDtos(recommendations);
         model.addAttribute("tableName", "recommendations");
         model.addAttribute("allRecommendations", recommendationsDtos);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/add")

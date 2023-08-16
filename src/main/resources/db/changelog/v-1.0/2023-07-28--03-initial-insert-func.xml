@@ -9,53 +9,52 @@
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-            CREATE OR REPLACE PROCEDURE pr_p2p_insert(IN peer_checked_ text, IN peer_checking_ text, IN task_ varchar, IN status_ varchar, IN time_ time)
-            LANGUAGE plpgsql as $$
-            DECLARE
-            check_id integer := 0;
-            BEGIN
-                IF status_ = 'Start' THEN -- Если задан статус "начало", добавить запись в таблицу Checks (в качестве даты использовать сегодняшнюю)
-                IF NOT EXISTS(
-                        SELECT checks.id, p1.state
-                        FROM checks
-                                 JOIN p2p p1 ON checks.id = p1.check_id AND p1.state = 'Start'
-                        WHERE NOT EXISTS ( SELECT p2.check
-                                           FROM p2p p2
-                                           WHERE p2.check = checks.id
-                                             AND NOT p2.state = 'Start' )
-                          AND task = task_
-                          AND peer = peer_checked_
-                          AND p1."checkingPeer" = peer_checking_
-                          AND "date" = now()::date
-                        )
-                THEN -- нет незавершенной P2P проверки, относящейся к конкретному заданию, пиру и проверяющему
-                    INSERT INTO checks(peer, task, "date") VALUES (peer_checked_, task_, now()::date) RETURNING id INTO check_id;
-                    INSERT INTO p2p(check_id, "checking_peer", state, "time") VALUES (check_id, peer_checking_, status_, time_::time);
+                CREATE OR REPLACE PROCEDURE pr_p2p_insert(IN peer_checked_ text, IN peer_checking_ text, IN task_ varchar, IN status_ varchar, IN time_ time)
+                LANGUAGE plpgsql as $$
+                DECLARE
+                check_id integer := 0;
+                BEGIN
+                    IF status_ = 'Start' THEN -- Если задан статус "начало", добавить запись в таблицу Checks (в качестве даты использовать сегодняшнюю)
+                    IF NOT EXISTS(
+                            SELECT checks.id, p1.state
+                            FROM checks
+                                     JOIN p2p p1 ON checks.id = p1.check_id AND p1.state = 'Start'
+                            WHERE NOT EXISTS ( SELECT p2.check
+                                               FROM p2p p2
+                                               WHERE p2.check = checks.id
+                                                 AND NOT p2.state = 'Start' )
+                              AND task = task_
+                              AND peer = peer_checked_
+                              AND p1."checkingPeer" = peer_checking_
+                              AND "date" = now()::date
+                            )
+                    THEN -- нет незавершенной P2P проверки, относящейся к конкретному заданию, пиру и проверяющему
+                        INSERT INTO checks(peer, task, "date") VALUES (peer_checked_, task_, now()::date) RETURNING id INTO check_id;
+                        INSERT INTO p2p(check_id, "checking_peer", state, "time") VALUES (check_id, peer_checking_, status_, time_::time);
+                        ELSE
+                        RAISE NOTICE 'p2p_insert error, has more one start state in table, with parameters: % % % %', check_id, peer_checking_, status_, time_::time;
+                        end if;
+                        ELSE -- Иначе указать проверку с самым поздним (по времени) незавершенным P2P этапом
+                -- Находим check_id, последней начавшейся проверки
+                    check_id := (SELECT checks.id
+                                 FROM checks
+                                          JOIN p2p on check_id = checks.id
+                                 WHERE task = task_
+                                   AND state = 'Start'
+                                   AND peer = peer_checked_
+                                   AND p2p."checking_peer" = peer_checking_
+                                   AND "date" = now()::date
+                                   AND time &lt;= time_
+                                 ORDER BY "time" DESC
+                                 LIMIT 1);
+                    IF check_id != 0 THEN -- Если нашли, то добавляем запись в таблицу p2p с данным check_id
+                        INSERT INTO p2p(check_id, "checking_peer", state, "time")
+                        VALUES (check_id, peer_checking_, status_, time_::time);
                     ELSE
-                    RAISE NOTICE 'p2p_insert error, has more one start state in table, with parameters: % % % %', check_id, peer_checking_, status_, time_::time;
-                    end if;
-                    ELSE -- Иначе указать проверку с самым поздним (по времени) незавершенным P2P этапом
-            -- Находим check_id, последней начавшейся проверки
-                check_id := (SELECT checks.id
-                             FROM checks
-                                      JOIN p2p on check_id = checks.id
-                             WHERE task = task_
-                               AND state = 'Start'
-                               AND peer = peer_checked_
-                               AND p2p."checking_peer" = peer_checking_
-                               AND "date" = now()::date
-                               AND time &lt;= time_
-                             ORDER BY "time" DESC
-                             LIMIT 1);
-                IF check_id != 0 THEN -- Если нашли, то добавляем запись в таблицу p2p с данным check_id
-                    INSERT INTO p2p(check_id, "checking_peer", state, "time")
-                    VALUES (check_id, peer_checking_, status_, time_::time);
-                ELSE
-                    RAISE NOTICE 'p2p_insert error, could not find check with start status, with parameters: % % % %', check_id, peer_checking_, status_, time_::time;
+                        RAISE NOTICE 'p2p_insert error, could not find check with start status, with parameters: % % % %', check_id, peer_checking_, status_, time_::time;
+                    END IF;
                 END IF;
-            END IF;
-        END;$$;
-
+            END;$$;
         </sql>
     </changeSet>
 

@@ -24,7 +24,7 @@ public class FriendController {
         List<FriendDto> friendDtos = friendMapper.toDtos(friends);
         model.addAttribute("tableName", "friends");
         model.addAttribute("allFriends", friendDtos);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/add")

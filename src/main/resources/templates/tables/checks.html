@@ -1,15 +1,14 @@
 <table th:fragment="checks">
     <caption th:text="Check"></caption>
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Check</th>
-        <th>Task</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-
-    <tbody>
+<thead>
+<tr>
+    <th>ID</th>
+    <th>Check</th>
+    <th>Task</th>
+    <th>Date</th>
+</tr>
+</thead>
+<tbody>
     <tr th:each="check : ${allChecks}">
         <td th:text="${check.id}"></td>
         <td th:text="${check.peer}"></td>
@@ -28,6 +27,7 @@
             </form>
         </td>
     </tr>
+
     <tr>
         <td>
             <form action="/check/add" th:object="${addedCheck}" method="post">
@@ -35,5 +35,5 @@
             </form>
         </td>
     </tr>
-    </tbody>
+</tbody>
 </table>

@@ -28,7 +28,7 @@ public class CheckController {
         List<CheckDto> checksDtos = checkMapper.toDtos(checks);
         model.addAttribute("tableName", "checks");
         model.addAttribute("allChecks", checksDtos);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/add")

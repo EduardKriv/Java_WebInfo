@@ -25,7 +25,7 @@ public class TaskController {
         List<TaskDto> tasksDtos = taskMapper.toDtos(tasks);
         model.addAttribute("tableName", "tasks");
         model.addAttribute("allTasks", tasksDtos);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/add")

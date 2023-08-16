@@ -2,7 +2,6 @@ package krived.web.info.controller;
 
 import krived.web.info.mapper.VerterMapper;
 import krived.web.info.model.dto.VerterDto;
-import krived.web.info.model.entity.Check;
 import krived.web.info.model.entity.Verter;
 import krived.web.info.service.VerterService;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +26,7 @@ public class VerterController {
         List<VerterDto> vertersDtos = verterMapper.toDtos(verters);
         model.addAttribute("tableName", "verter");
         model.addAttribute("allVerters", vertersDtos);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/add")

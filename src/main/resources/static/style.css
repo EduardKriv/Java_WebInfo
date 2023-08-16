@@ -2,10 +2,14 @@ table {
     display: block;
     max-height: 600px;
     overflow: scroll;
+    background: bisque;
 }
 
-td {
+td, th {
     min-width: 100px;
     text-align: center;
 }
 
+a:hover {
+    background: lightblue;
+}

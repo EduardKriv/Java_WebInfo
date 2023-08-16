@@ -26,7 +26,7 @@ public class TransferredPointController {
         System.out.println(transferredPointsDtos);
         model.addAttribute("tableName", "transferred_points");
         model.addAttribute("allTransferredPoints", transferredPointsDtos);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/add")

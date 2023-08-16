@@ -25,7 +25,7 @@ public class TimeTrackingController {
         List<TimeTrackingDto> timeTrackingsDtos = timeTrackingMapper.toDtos(timeTrackings);
         model.addAttribute("tableName", "time_tracking");
         model.addAttribute("allTimeTracking", timeTrackingsDtos);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/add")

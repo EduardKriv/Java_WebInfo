@@ -24,7 +24,7 @@ public class P2PController {
         List<P2PDto> p2pDtos = p2pMapper.toDtos(p2p);
         model.addAttribute("tableName", "p2p");
         model.addAttribute("allP2P", p2pDtos);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/add")

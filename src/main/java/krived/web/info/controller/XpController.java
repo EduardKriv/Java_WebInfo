@@ -2,7 +2,6 @@ package krived.web.info.controller;
 
 import krived.web.info.mapper.XpMapper;
 import krived.web.info.model.dto.XpDto;
-import krived.web.info.model.entity.Check;
 import krived.web.info.model.entity.Xp;
 import krived.web.info.service.XpService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +25,7 @@ public class XpController {
         List<XpDto> xpDtos = xpMapper.toDtos(xps);
         model.addAttribute("tableName", "xp");
         model.addAttribute("allXp", xpDtos);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/add")

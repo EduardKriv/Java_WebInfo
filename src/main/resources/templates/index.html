@@ -11,7 +11,15 @@
 </head>
 <body>
 
+    <div th:insert="~{procedures_block :: procedures_block}" style="height: 100px"></div>
+
     <div th:replace="~{'/tables/' + ${tableName} :: ${tableName}} ?: _"></div>
+
+    <form action="/custom/query">
+        <textarea rows="1" placeholder="Your request..." name="query"
+                  style="width: 600px; height: 250px"></textarea>
+        <input type="submit" value="Send">
+    </form>
 
 </body>
 </html>

@@ -25,7 +25,7 @@ public class PeerController {
         List<PeerDto> peersDtos = peerMapper.toDtos(peers);
         model.addAttribute("tableName", "peers");
         model.addAttribute("allPeers", peersDtos);
-        return "home";
+        return "index";
     }
 
     @PostMapping("/add")

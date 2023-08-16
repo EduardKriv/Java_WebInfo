@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="2023-08-15-fill-procedures-table" author="cnathali">
+        <sql endDelimiter="\nGO"
+             splitStatements="true"
+             stripComments="true">
+                INSERT INTO procedures
+                VALUES  (1, 'select * from fnc_task1()'),
+                        (2, 'select * from fnc_task2()'),
+                        (3, 'select * from fnc_task3(?)'),
+                        (4, '{call pr_task4(?::refcursor)}'),
+                        (5, '{call pr_task5(?::refcursor)}'),
+                        (6, '{call pr_task6(?::refcursor)}'),
+                        (7, '{call pr_task7(?::refcursor)}'),
+                        (8, '{call pr_task8(?::refcursor)}'),
+                        (9, '{call pr_task9(?::refcursor, ?::varchar)}'),
+                        (10, '{call pr_task10(?::refcursor)}'),
+                        (11, '{call pr_task11(?::refcursor, ?::varchar, ?::varchar)}'),
+                        (12, '{call pr_task12(?::refcursor, ?::int)}'),
+                        (13, '{call pr_task13(?::refcursor)}'),
+                        (14, '{call pr_task14(?::refcursor)}'),
+                        (15, '{call pr_task15(?::refcursor, ?::varchar, ?::varchar, ?::varchar)}'),
+                        (16, '{call pr_task16(?::refcursor)}'),
+                        (17, '{call pr_task17(?::refcursor, ?::int)}'),
+                        (18, '{call pr_task18(?::refcursor)}'),
+                        (19, '{call pr_task19(?::refcursor)}'),
+                        (20, '{call pr_task20(?::refcursor)}'),
+                        (21, '{call pr_task21(?::refcursor, ?::time, ?::int)}'),
+                        (22, '{call pr_task22(?::refcursor, ?::int, ?::int)}'),
+                        (23, '{call pr_task23(?::refcursor)}'),
+                        (24, '{call pr_task24(?::refcursor, ?::int)}'),
+                        (25, '{call pr_task25(?::refcursor)}');
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
