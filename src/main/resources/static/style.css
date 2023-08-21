@@ -13,3 +13,7 @@ td, th {
 a:hover {
     background: lightblue;
 }
+
+button {
+    min-width: 50px;
+}

@@ -18,7 +18,6 @@ public class CustomRequestDAO {
     public SQLResponseBody executeQuery(String query) throws SQLException {
         try (Connection con = Objects.requireNonNull(jdbcTemplate.getDataSource()).getConnection();
              Statement statement = con.createStatement()) {
-
             return parseResultSet(statement.executeQuery(query));
         }
     }
@@ -26,11 +25,7 @@ public class CustomRequestDAO {
     public SQLResponseBody executeFunction(String query, Object... args) throws SQLException {
         try (Connection con = Objects.requireNonNull(jdbcTemplate.getDataSource()).getConnection();
              PreparedStatement statement = con.prepareStatement(query)) {
-
-            for (int i = 0; i < args.length; ++i) {
-                statement.setObject(i + 1, args[i]);
-            }
-
+            setParams(statement,1, args);
             return parseResultSet(statement.executeQuery());
         }
     }
@@ -39,15 +34,19 @@ public class CustomRequestDAO {
         try (Connection con = Objects.requireNonNull(jdbcTemplate.getDataSource()).getConnection();
              CallableStatement statement = con.prepareCall(query)) {
             con.setAutoCommit(false);
-
-            for (int i = 0; i < args.length; ++i) {
-                statement.setObject(i + 1, args[i]);
-            }
-
             statement.registerOutParameter(1, Types.REF_CURSOR);
+            setParams(statement, 2, args);
             statement.execute();
-
             return parseResultSet((ResultSet) statement.getObject(1));
+        }
+    }
+
+    private void setParams(PreparedStatement statement, int position, Object... params) throws SQLException {
+        if (params != null) {
+            for (Object param : params) {
+                statement.setObject(position, param);
+                position++;
+            }
         }
     }
 

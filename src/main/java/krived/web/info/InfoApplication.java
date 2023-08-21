@@ -1,6 +1,5 @@
 package krived.web.info;
 
-import krived.web.info.model.entity.Check;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
