@@ -23,6 +23,7 @@ public class PeerController {
     public String allPeers(Model model) {
         List<Peer> peers = peerService.getAll();
         List<PeerDto> peersDtos = peerMapper.toDtos(peers);
+        System.out.println(peersDtos);
         model.addAttribute("tableName", "peers");
         model.addAttribute("allPeers", peersDtos);
         return "index";

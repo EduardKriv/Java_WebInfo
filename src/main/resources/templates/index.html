@@ -13,12 +13,20 @@
 
     <div th:insert="~{procedures_block :: procedures_block}" style="height: 100px"></div>
 
-    <div th:replace="~{'/tables/' + ${tableName} :: ${tableName}} ?: _"></div>
+    <div th:replace="~{'tables/' + ${tableName} :: ${tableName}} ?: _"></div>
 
     <form action="/custom_request/query">
         <textarea rows="1" placeholder="Your request..." name="query"
                   style="width: 600px; height: 250px"></textarea>
         <input type="submit" value="Send">
+    </form>
+
+    <form method="POST" th:action="@{/custom_request/upload}" enctype="multipart/form-data">
+        <div>
+            <label for="file">Select a CSV file</label>
+            <input type="file" name="file" id="file" accept=".csv">
+        </div>
+        <button type="submit">Import Users</button>
     </form>
 
 </body>
