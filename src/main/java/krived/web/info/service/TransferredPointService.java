@@ -1,5 +1,6 @@
 package krived.web.info.service;
 
+import krived.web.info.model.entity.Peer;
 import krived.web.info.model.entity.TransferredPoint;
 import krived.web.info.repository.TransferredPointRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,11 @@ public class TransferredPointService {
     public TransferredPoint create(TransferredPoint transferredPoint) {
         return transferredPointRepository.saveAndFlush(transferredPoint);
     }
-
     public void delete(TransferredPoint transferredPoint) {
         transferredPointRepository.delete(transferredPoint);
+    }
+
+    public void saveAll(List<TransferredPoint> transferredPoints) {
+        transferredPointRepository.saveAllAndFlush(transferredPoints);
     }
 }

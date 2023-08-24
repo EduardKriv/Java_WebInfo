@@ -1,5 +1,6 @@
 package krived.web.info.service;
 
+import krived.web.info.model.entity.Peer;
 import krived.web.info.model.entity.Task;
 import krived.web.info.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;

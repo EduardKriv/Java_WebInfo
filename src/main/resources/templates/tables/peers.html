@@ -12,24 +12,22 @@
             <td th:text="${peer.nickname}"></td>
             <td th:text="${peer.birthday}"></td>
             <td>
-                <form action="/peer/update" th:object="${updatedPeer}" method="post">
+                <form action="update" th:object="${updatedPeer}" method="post">
                     <input type="hidden" name="nickname" th:value="${peer.nickname}">
                     <button type="submit">Update</button>
                 </form>
             </td>
             <td>
-                <form action="/peer/delete" th:object="${deletedPeer}" method="post">
+                <form action="delete" th:object="${deletedPeer}" method="post">
                     <input type="hidden" name="nickname" th:value="${peer.nickname}">
                     <button type="submit">Delete</button>
                 </form>
             </td>
         </tr>
-        <tr>
-            <td>
-                <form action="/peer/add" th:object="${addedPeer}" method="post">
-                    <button type="submit">Add Peer</button>
-                </form>
-            </td>
-        </tr>
+
+        <form action="add" th:object="${addedPeer}" method="post">
+            <button type="submit">Add Peer</button>
+        </form>
+
     </tbody>
 </table>

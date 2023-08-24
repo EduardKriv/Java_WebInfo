@@ -21,9 +21,11 @@ public abstract class TaskMapper {
 
     @BeanMapping(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
             nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    public abstract void updateTaskFromDto(TaskDto dto, @MappingTarget Task check);
+    public abstract void updateTaskFromDto(TaskDto dto, @MappingTarget Task targetEntity);
 
     public Task map(String task) {
+        if (task == null || task.equals("NULL"))
+            return null;
         return taskService.getById(task);
     }
 

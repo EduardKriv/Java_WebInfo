@@ -2,12 +2,15 @@ package krived.web.info.controller;
 
 import krived.web.info.mapper.P2PMapper;
 import krived.web.info.model.dto.P2PDto;
+import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.entity.P2P;
+import krived.web.info.service.ConvertCsvService;
 import krived.web.info.service.P2PService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -52,6 +55,14 @@ public class P2PController {
     public String delete(@ModelAttribute(value="updatedP2P") P2PDto dto) {
         P2P p2p = p2pService.getById(dto.getId());
         p2pService.delete(p2p);
+        return "redirect:all";
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        @SuppressWarnings("unchecked")
+        List<P2PDto> peers = (List<P2PDto>) ConvertCsvService.upload(file, P2PDto.class);
+        p2pService.saveAll(p2pMapper.toEntities(peers));
         return "redirect:all";
     }
 }

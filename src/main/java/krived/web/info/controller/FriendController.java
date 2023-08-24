@@ -2,12 +2,15 @@ package krived.web.info.controller;
 
 import krived.web.info.mapper.FriendMapper;
 import krived.web.info.model.dto.FriendDto;
+import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.entity.Friend;
+import krived.web.info.service.ConvertCsvService;
 import krived.web.info.service.FriendService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -52,6 +55,14 @@ public class FriendController {
     public String delete(@ModelAttribute(value="updatedFriend") FriendDto dto) {
         Friend friend = friendService.getById(dto.getId());
         friendService.delete(friend);
+        return "redirect:all";
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        @SuppressWarnings("unchecked")
+        List<FriendDto> friends = (List<FriendDto>) ConvertCsvService.upload(file, FriendDto.class);
+        friendService.saveAll(friendMapper.toEntities(friends));
         return "redirect:all";
     }
 }

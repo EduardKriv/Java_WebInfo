@@ -1,5 +1,6 @@
 package krived.web.info.service;
 
+import krived.web.info.model.entity.Peer;
 import krived.web.info.model.entity.Recommendation;
 import krived.web.info.repository.RecommendationRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,5 +31,9 @@ public class RecommendationService {
 
     public void delete(Recommendation recommendation) {
         recommendationRepository.delete(recommendation);
+    }
+
+    public void saveAll(List<Recommendation> recommendation) {
+        recommendationRepository.saveAllAndFlush(recommendation);
     }
 }

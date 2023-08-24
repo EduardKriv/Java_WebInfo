@@ -1,6 +1,7 @@
 package krived.web.info.service;
 
 import krived.web.info.model.entity.P2P;
+import krived.web.info.model.entity.Peer;
 import krived.web.info.repository.P2PRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,9 @@ public class P2PService {
 
     public void delete(P2P p2p) {
         p2pRepository.delete(p2p);
+    }
+
+    public void saveAll(List<P2P> p2p) {
+        p2pRepository.saveAllAndFlush(p2p);
     }
 }

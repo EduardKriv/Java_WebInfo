@@ -116,6 +116,13 @@
 			<version>5.8</version>
 		</dependency>
 
+		<dependency>
+			<groupId>net.kemitix</groupId>
+			<artifactId>file-reader-writer</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>

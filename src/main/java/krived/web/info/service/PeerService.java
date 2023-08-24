@@ -31,4 +31,8 @@ public class PeerService {
     public void delete(Peer peer) {
         peerRepository.delete(peer);
     }
+
+    public void saveAll(List<Peer> peers) {
+        peerRepository.saveAllAndFlush(peers);
+    }
 }

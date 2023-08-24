@@ -17,13 +17,5 @@ public abstract class TimeTrackingMapper {
     @BeanMapping(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
             nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     public abstract void updateTimeTrackingFromDto(TimeTrackingDto dto, @MappingTarget TimeTracking timeTracking);
-
-    TimeTrackingDto.State map(Integer value) {
-        return value == 1 ? TimeTrackingDto.State.IN : TimeTrackingDto.State.OUT;
-    }
-
-    Integer map(TimeTrackingDto.@NotNull State value) {
-        return value.ordinal() + 1;
-    }
 }
 

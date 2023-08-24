@@ -1,14 +1,17 @@
 package krived.web.info.controller;
 
 import krived.web.info.mapper.RecommendationMapper;
+import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.dto.RecommendationDto;
 import krived.web.info.model.entity.Recommendation;
+import krived.web.info.service.ConvertCsvService;
 import krived.web.info.service.RecommendationService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -48,6 +51,14 @@ public class RecommendationController {
     public String remove(@ModelAttribute("deletedRecommendation") @NotNull RecommendationDto dto) {
         Recommendation recommendationEntity = recommendationService.getById(dto.getId());
         recommendationService.delete(recommendationEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        @SuppressWarnings("unchecked")
+        List<RecommendationDto> recDto = (List<RecommendationDto>) ConvertCsvService.upload(file, RecommendationDto.class);
+        recommendationService.saveAll(recommendationMapper.toEntities(recDto));
         return "redirect:all";
     }
 }

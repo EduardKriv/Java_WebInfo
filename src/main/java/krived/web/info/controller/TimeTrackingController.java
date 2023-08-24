@@ -1,14 +1,17 @@
 package krived.web.info.controller;
 
 import krived.web.info.mapper.TimeTrackingMapper;
+import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.dto.TimeTrackingDto;
 import krived.web.info.model.entity.TimeTracking;
+import krived.web.info.service.ConvertCsvService;
 import krived.web.info.service.TimeTrackingService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -47,6 +50,14 @@ public class TimeTrackingController {
     public String remove(@ModelAttribute("deletedTimeTracking") @NotNull TimeTrackingDto dto) {
         TimeTracking timeTrackingEntity = timeTrackingService.getById(dto.getId());
         timeTrackingService.delete(timeTrackingEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        @SuppressWarnings("unchecked")
+        List<TimeTrackingDto> timeTrackingDtos = (List<TimeTrackingDto>) ConvertCsvService.upload(file, TimeTrackingDto.class);
+        timeTrackingService.saveAll(timeTrackingMapper.toEntities(timeTrackingDtos));
         return "redirect:all";
     }
 }

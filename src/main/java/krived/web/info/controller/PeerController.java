@@ -1,15 +1,21 @@
 package krived.web.info.controller;
 
 import krived.web.info.mapper.PeerMapper;
+import krived.web.info.model.CsvBean;
+import krived.web.info.model.dto.P2PDto;
 import krived.web.info.model.dto.PeerDto;
+import krived.web.info.model.entity.P2P;
 import krived.web.info.model.entity.Peer;
+import krived.web.info.service.ConvertCsvService;
 import krived.web.info.service.PeerService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -23,7 +29,6 @@ public class PeerController {
     public String allPeers(Model model) {
         List<Peer> peers = peerService.getAll();
         List<PeerDto> peersDtos = peerMapper.toDtos(peers);
-        System.out.println(peersDtos);
         model.addAttribute("tableName", "peers");
         model.addAttribute("allPeers", peersDtos);
         return "index";
@@ -52,6 +57,14 @@ public class PeerController {
     public String remove(@ModelAttribute("deletedPeer") @NotNull PeerDto dto) {
         Peer peerEntity = peerService.getByNickname(dto.getNickname());
         peerService.delete(peerEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        @SuppressWarnings("unchecked")
+        List<PeerDto> peers = (List<PeerDto>)ConvertCsvService.upload(file, PeerDto.class);
+        peerService.saveAll(peerMapper.toEntities(peers));
         return "redirect:all";
     }
 }

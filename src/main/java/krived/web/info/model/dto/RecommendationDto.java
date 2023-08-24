@@ -1,12 +1,16 @@
 package krived.web.info.model.dto;
 
+import com.opencsv.bean.CsvBindByName;
+import krived.web.info.model.CsvBean;
 import lombok.Data;
-
-import java.time.LocalDate;
+import lombok.EqualsAndHashCode;
 
 @Data
-public class RecommendationDto {
+@EqualsAndHashCode(callSuper = true)
+public class RecommendationDto extends CsvBean {
     private Long id;
+    @CsvBindByName(required = true)
     private String peer;
+    @CsvBindByName(column = "recommended_peer", required = true)
     private String recommendedPeer;
 }

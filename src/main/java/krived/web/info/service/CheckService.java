@@ -31,4 +31,8 @@ public class CheckService {
     public void delete(Check check) {
         checkRepository.delete(check);
     }
+
+    public void saveAll(List<Check> check) {
+        checkRepository.saveAllAndFlush(check);
+    }
 }

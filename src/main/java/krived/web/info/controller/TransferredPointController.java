@@ -1,14 +1,17 @@
 package krived.web.info.controller;
 
 import krived.web.info.mapper.TransferredPointMapper;
+import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.dto.TransferredPointDto;
 import krived.web.info.model.entity.TransferredPoint;
+import krived.web.info.service.ConvertCsvService;
 import krived.web.info.service.TransferredPointService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -48,6 +51,14 @@ public class TransferredPointController {
     public String remove(@ModelAttribute("deletedTransferredPoint") @NotNull TransferredPointDto dto) {
         TransferredPoint transferredPointEntity = transferredPointService.getById(dto.getId());
         transferredPointService.delete(transferredPointEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        @SuppressWarnings("unchecked")
+        List<TransferredPointDto> peers = (List<TransferredPointDto>) ConvertCsvService.upload(file, TransferredPointDto.class);
+        transferredPointService.saveAll(transferredPointMapper.toEntities(peers));
         return "redirect:all";
     }
 }

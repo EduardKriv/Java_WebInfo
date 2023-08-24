@@ -1,4 +1,4 @@
-title,parenttask,maxxp
+title,parent_task,max_xp
 C1_CoreProgram,NULL,3000
 C2_SimpleBashUtils,C1_CoreProgram,350
 C3_Stringplus,C2_SimpleBashUtils,690

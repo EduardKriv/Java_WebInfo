@@ -1,4 +1,4 @@
-check_id,checkingpeer,state,time
+check_id,checking_peer,state,time
 1,duck,Start,00:01:12
 1,duck,Success,00:02:16
 2,duck,Start,00:03:16

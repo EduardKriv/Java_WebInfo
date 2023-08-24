@@ -5,84 +5,84 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="import_table_tasks" author="cnathali">
-        <sql endDelimiter="\nGO"
-             splitStatements="true"
-             stripComments="true">
-                CALL pr_fill_table_from_csv('tasks', '/Users/cnathali/info/src/main/resources/db/data/import/tasks.csv',',');
-        </sql>
-    </changeSet>
+<!--    <changeSet id="import_table_tasks" author="cnathali">-->
+<!--        <sql endDelimiter="\nGO"-->
+<!--             splitStatements="true"-->
+<!--             stripComments="true">-->
+<!--                CALL pr_fill_table_from_csv('tasks', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/tasks.csv',',');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
-    <changeSet id="import_table_peers" author="cnathali">
-        <sql endDelimiter="\nGO"
-             splitStatements="true"
-             stripComments="true">
-                CALL pr_fill_table_from_csv('peers', '/Users/cnathali/info/src/main/resources/db/data/import/peers.csv',',');
-        </sql>
-    </changeSet>
+<!--    <changeSet id="import_table_peers" author="cnathali">-->
+<!--        <sql endDelimiter="\nGO"-->
+<!--             splitStatements="true"-->
+<!--             stripComments="true">-->
+<!--                CALL pr_fill_table_from_csv('peers', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/peers.csv',',');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
-    <changeSet id="import_table_checks" author="cnathali">
-        <sql endDelimiter="\nGO"
-             splitStatements="true"
-             stripComments="true">
-                CALL pr_fill_table_from_csv('checks', '/Users/cnathali/info/src/main/resources/db/data/import/checks.csv',',');
-        </sql>
-    </changeSet>
+<!--    <changeSet id="import_table_checks" author="cnathali">-->
+<!--        <sql endDelimiter="\nGO"-->
+<!--             splitStatements="true"-->
+<!--             stripComments="true">-->
+<!--                CALL pr_fill_table_from_csv('checks', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/checks.csv',',');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
-    <changeSet id="import_table_p2p" author="cnathali">
-        <sql endDelimiter="\nGO"
-             splitStatements="true"
-             stripComments="true">
-                CALL pr_fill_table_from_csv('p2p', '/Users/cnathali/info/src/main/resources/db/data/import/p2p.csv',',');
-        </sql>
-    </changeSet>
+<!--    <changeSet id="import_table_p2p" author="cnathali">-->
+<!--        <sql endDelimiter="\nGO"-->
+<!--             splitStatements="true"-->
+<!--             stripComments="true">-->
+<!--                CALL pr_fill_table_from_csv('p2p', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/p2p.csv',',');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
-    <changeSet id="import_table_verter" author="cnathali">
-        <sql endDelimiter="\nGO"
-             splitStatements="true"
-             stripComments="true">
-                CALL pr_fill_table_from_csv('verter', '/Users/cnathali/info/src/main/resources/db/data/import/verter.csv',',');
-        </sql>
-    </changeSet>
+<!--    <changeSet id="import_table_verter" author="cnathali">-->
+<!--        <sql endDelimiter="\nGO"-->
+<!--             splitStatements="true"-->
+<!--             stripComments="true">-->
+<!--                CALL pr_fill_table_from_csv('verter', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/verter.csv',',');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
-    <changeSet id="import_table_xp" author="cnathali">
-        <sql endDelimiter="\nGO"
-             splitStatements="true"
-             stripComments="true">
-                CALL pr_fill_table_from_csv('xp', '/Users/cnathali/info/src/main/resources/db/data/import/xp.csv',',');
-        </sql>
-    </changeSet>
+<!--    <changeSet id="import_table_xp" author="cnathali">-->
+<!--        <sql endDelimiter="\nGO"-->
+<!--             splitStatements="true"-->
+<!--             stripComments="true">-->
+<!--                CALL pr_fill_table_from_csv('xp', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/xp.csv',',');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
-    <changeSet id="import_table_friends" author="cnathali">
-        <sql endDelimiter="\nGO"
-             splitStatements="true"
-             stripComments="true">
-                CALL pr_fill_table_from_csv('friends', '/Users/cnathali/info/src/main/resources/db/data/import/friends.csv',',');
-        </sql>
-    </changeSet>
+<!--    <changeSet id="import_table_friends" author="cnathali">-->
+<!--        <sql endDelimiter="\nGO"-->
+<!--             splitStatements="true"-->
+<!--             stripComments="true">-->
+<!--                CALL pr_fill_table_from_csv('friends', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/friends.csv',',');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
-    <changeSet id="import_table_recommendations" author="cnathali">
-        <sql endDelimiter="\nGO"
-             splitStatements="true"
-             stripComments="true">
-                CALL pr_fill_table_from_csv('recommendations', '/Users/cnathali/info/src/main/resources/db/data/import/recommendations.csv',',');
-        </sql>
-    </changeSet>
+<!--    <changeSet id="import_table_recommendations" author="cnathali">-->
+<!--        <sql endDelimiter="\nGO"-->
+<!--             splitStatements="true"-->
+<!--             stripComments="true">-->
+<!--                CALL pr_fill_table_from_csv('recommendations', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/recommendations.csv',',');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
-    <changeSet id="import_table_timetracking" author="cnathali">
-        <sql endDelimiter="\nGO"
-             splitStatements="true"
-             stripComments="true">
-                CALL pr_fill_table_from_csv('time_tracking', '/Users/cnathali/info/src/main/resources/db/data/import/timetracking.csv',',');
-        </sql>
-    </changeSet>
+<!--    <changeSet id="import_table_timetracking" author="cnathali">-->
+<!--        <sql endDelimiter="\nGO"-->
+<!--             splitStatements="true"-->
+<!--             stripComments="true">-->
+<!--                CALL pr_fill_table_from_csv('time_tracking', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/timetracking.csv',',');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
-    <changeSet id="import_table_transferredPoints" author="cnathali">
-        <sql endDelimiter="\nGO"
-             splitStatements="true"
-             stripComments="true">
-                CALL pr_fill_table_from_csv('transferred_points', '/Users/cnathali/info/src/main/resources/db/data/import/transferredpoints.csv',',');
-        </sql>
-    </changeSet>
+<!--    <changeSet id="import_table_transferredPoints" author="cnathali">-->
+<!--        <sql endDelimiter="\nGO"-->
+<!--             splitStatements="true"-->
+<!--             stripComments="true">-->
+<!--                CALL pr_fill_table_from_csv('transferred_points', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/transferredpoints.csv',',');-->
+<!--        </sql>-->
+<!--    </changeSet>-->
 
 </databaseChangeLog>

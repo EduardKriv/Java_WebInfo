@@ -31,4 +31,8 @@ public class TimeTrackingService {
     public void delete(TimeTracking timeTracking) {
         timeTrackingRepository.delete(timeTracking);
     }
+
+    public void saveAll(List<TimeTracking> timeTrackings) {
+        timeTrackingRepository.saveAllAndFlush(timeTrackings);
+    }
 }

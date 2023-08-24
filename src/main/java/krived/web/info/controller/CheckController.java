@@ -2,16 +2,16 @@ package krived.web.info.controller;
 
 import krived.web.info.mapper.CheckMapper;
 import krived.web.info.model.dto.CheckDto;
+import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.entity.Check;
 import krived.web.info.service.CheckService;
+import krived.web.info.service.ConvertCsvService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -50,6 +50,14 @@ public class CheckController {
     public String remove(@ModelAttribute("deletedCheck") @NotNull CheckDto dto) {
         Check checkEntity = checkService.getById(dto.getId());
         checkService.delete(checkEntity);
+        return "redirect:all";
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        @SuppressWarnings("unchecked")
+        List<CheckDto> checks = (List<CheckDto>) ConvertCsvService.upload(file, CheckDto.class);
+        checkService.saveAll(checkMapper.toEntities(checks));
         return "redirect:all";
     }
 }
