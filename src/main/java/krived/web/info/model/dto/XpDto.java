@@ -1,12 +1,21 @@
 package krived.web.info.model.dto;
 
+import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
 import lombok.Data;
-
-import java.time.LocalDateTime;
+import lombok.EqualsAndHashCode;
 
 @Data
-public class XpDto {
+@EqualsAndHashCode(callSuper = true)
+public class XpDto extends CsvBean {
+    @CsvBindByName(column = "id", required = true)
     private Long id;
+
+    @CsvBindByName(column = "check_id", required = true)
+    @CsvBindByPosition(position = 0)
     private Long check;
+
+    @CsvBindByName(column = "xp_amount", required = true)
+    @CsvBindByPosition(position = 1)
     private Integer xpAmount;
 }

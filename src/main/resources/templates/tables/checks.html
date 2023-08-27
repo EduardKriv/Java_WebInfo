@@ -2,26 +2,27 @@
     <caption th:text="Check"></caption>
 <thead>
 <tr>
-    <th>ID</th>
-    <th>Check</th>
-    <th>Task</th>
-    <th>Date</th>
+<tr>
+    <th>№</th>
+    <th th:each="name : ${columnNames}" th:text="${name}"></th>
+</tr>
 </tr>
 </thead>
 <tbody>
-    <tr th:each="check : ${allChecks}">
+    <tr th:each="check, it : ${allChecks}">
+        <td th:text="${it.count}"></td>
         <td th:text="${check.id}"></td>
         <td th:text="${check.peer}"></td>
         <td th:text="${check.task}"></td>
         <td th:text="${check.date}"></td>
         <td>
-            <form action="/check/update" th:object="${updatedCheck}" method="post">
+            <form action="update" th:object="${updatedCheck}" method="post">
                 <input type="hidden" name="id" th:value="${check.id}">
                 <button type="submit">Update</button>
             </form>
         </td>
         <td>
-            <form action="/check/delete" th:object="${deletedCheck}" method="post">
+            <form action="delete" th:object="${deletedCheck}" method="post">
                 <input type="hidden" name="id" th:value="${check.id}">
                 <button type="submit">Delete</button>
             </form>
@@ -30,7 +31,7 @@
 
     <tr>
         <td>
-            <form action="/check/add" th:object="${addedCheck}" method="post">
+            <form action="add" th:object="${addedCheck}" method="post">
                 <button type="submit">Add Check</button>
             </form>
         </td>

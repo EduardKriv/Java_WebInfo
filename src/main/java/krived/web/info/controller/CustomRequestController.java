@@ -1,12 +1,16 @@
 package krived.web.info.controller;
 
-import krived.web.info.model.SQLResponseBody;
+import jakarta.servlet.http.HttpServletResponse;
+import krived.web.info.model.ModelCustomTable;
+import krived.web.info.utility.CsvConverter;
 import krived.web.info.service.CustomRequestService;
 import lombok.RequiredArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -15,12 +19,12 @@ import java.time.LocalDate;
 @RequestMapping("/custom_request")
 public class CustomRequestController {
     private final CustomRequestService customRequestService;
-    private SQLResponseBody table = null;
+    private ModelCustomTable customTable;
 
     @GetMapping("/query")
     public String execute(@RequestParam(name = "query") String query, Model model) {
         try {
-            table = customRequestService.executeQuery(query);
+            customTable = customRequestService.executeQuery(query);
             return setAttributes(model);
 
         } catch (SQLException e) {
@@ -33,7 +37,7 @@ public class CustomRequestController {
                               @RequestParam(name = "date", required = false) LocalDate date,
                               @RequestParam(name = "args", required = false) Object... args) {
         try {
-            table = customRequestService.executeOrCall(id, date != null ? new Object[]{date} : args);
+            customTable = customRequestService.executeOrCall(id, date != null ? new Object[]{date} : args);
             return setAttributes(model);
 
         } catch (SQLException e) {
@@ -41,10 +45,17 @@ public class CustomRequestController {
         }
     }
 
-    private String setAttributes(Model model) {
+    @GetMapping("/unload")
+    public void unload(@NotNull HttpServletResponse servletResponse) throws IOException, SQLException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition", "attachment; filename=\"custom_table.csv\"");
+        CsvConverter.unload(servletResponse.getWriter(), customTable);
+    }
+
+    private String setAttributes(Model model) throws SQLException {
         model.addAttribute("tableName", "requests");
-        model.addAttribute("columnNames", table.getColumnNames());
-        model.addAttribute("resultSet", table.getTableBody());
+        model.addAttribute("columnNames", customTable.getColumnNames());
+        model.addAttribute("resultSet", customTable.getTableBody());
         return "index";
     }
 }

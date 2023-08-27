@@ -1,15 +1,20 @@
 package krived.web.info.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import krived.web.info.mapper.XpMapper;
 import krived.web.info.model.dto.XpDto;
 import krived.web.info.model.entity.Xp;
+import krived.web.info.utility.CsvConverter;
 import krived.web.info.service.XpService;
+import krived.web.info.utility.DtoMetaData;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -21,8 +26,9 @@ public class XpController {
 
     @GetMapping("/all")
     public String allXps(Model model) {
-        List<Xp> xps = xpService.getAll();
-        List<XpDto> xpDtos = xpMapper.toDtos(xps);
+        List<XpDto> xpDtos = xpMapper.toDtos(xpService.getAll());
+
+        model.addAttribute("columnNames", DtoMetaData.getColumnNames(XpDto.class));
         model.addAttribute("tableName", "xp");
         model.addAttribute("allXp", xpDtos);
         return "index";
@@ -48,5 +54,20 @@ public class XpController {
         Xp xpEntity = xpService.getById(dto.getId());
         xpService.delete(xpEntity);
         return "redirect:all";
+    }
+
+    @PostMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        List<XpDto> xpDtos = CsvConverter.upload(file, XpDto.class);
+        xpService.saveAll(xpMapper.toEntities(xpDtos));
+        return "redirect:all";
+    }
+
+    @GetMapping("/unload")
+    public void unload(@NotNull HttpServletResponse servletResponse) throws IOException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition", "attachment; filename=\"xp.csv\"");
+        List<XpDto> beans = xpMapper.toDtos(xpService.getAll());
+        CsvConverter.unload(servletResponse.getWriter(), beans, XpDto.class);
     }
 }

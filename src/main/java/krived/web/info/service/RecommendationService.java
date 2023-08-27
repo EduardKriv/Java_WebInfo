@@ -1,6 +1,5 @@
 package krived.web.info.service;
 
-import krived.web.info.model.entity.Peer;
 import krived.web.info.model.entity.Recommendation;
 import krived.web.info.repository.RecommendationRepository;
 import lombok.RequiredArgsConstructor;

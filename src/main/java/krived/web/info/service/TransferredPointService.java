@@ -1,6 +1,5 @@
 package krived.web.info.service;
 
-import krived.web.info.model.entity.Peer;
 import krived.web.info.model.entity.TransferredPoint;
 import krived.web.info.repository.TransferredPointRepository;
 import lombok.RequiredArgsConstructor;

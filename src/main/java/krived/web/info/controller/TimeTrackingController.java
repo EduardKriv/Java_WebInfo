@@ -1,11 +1,12 @@
 package krived.web.info.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import krived.web.info.mapper.TimeTrackingMapper;
-import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.dto.TimeTrackingDto;
 import krived.web.info.model.entity.TimeTracking;
-import krived.web.info.service.ConvertCsvService;
+import krived.web.info.utility.CsvConverter;
 import krived.web.info.service.TimeTrackingService;
+import krived.web.info.utility.DtoMetaData;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -23,9 +25,10 @@ public class TimeTrackingController {
     private final TimeTrackingMapper timeTrackingMapper;
 
     @GetMapping("/all")
-    public String allTimeTrackings(Model model) {
-        List<TimeTracking> timeTrackings = timeTrackingService.getAll();
-        List<TimeTrackingDto> timeTrackingsDtos = timeTrackingMapper.toDtos(timeTrackings);
+    public String allTimeTracking(Model model) {
+        List<TimeTrackingDto> timeTrackingsDtos = timeTrackingMapper.toDtos(timeTrackingService.getAll());
+
+        model.addAttribute("columnNames", DtoMetaData.getColumnNames(TimeTrackingDto.class));
         model.addAttribute("tableName", "time_tracking");
         model.addAttribute("allTimeTracking", timeTrackingsDtos);
         return "index";
@@ -55,9 +58,16 @@ public class TimeTrackingController {
 
     @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file) {
-        @SuppressWarnings("unchecked")
-        List<TimeTrackingDto> timeTrackingDtos = (List<TimeTrackingDto>) ConvertCsvService.upload(file, TimeTrackingDto.class);
+        List<TimeTrackingDto> timeTrackingDtos = CsvConverter.upload(file, TimeTrackingDto.class);
         timeTrackingService.saveAll(timeTrackingMapper.toEntities(timeTrackingDtos));
         return "redirect:all";
+    }
+
+    @GetMapping("/unload")
+    public void unload(@NotNull HttpServletResponse servletResponse) throws IOException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition", "attachment; filename=\"time_tracking.csv\"");
+        List<TimeTrackingDto> beans = timeTrackingMapper.toDtos(timeTrackingService.getAll());
+        CsvConverter.unload(servletResponse.getWriter(), beans, TimeTrackingDto.class);
     }
 }

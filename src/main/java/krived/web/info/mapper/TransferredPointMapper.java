@@ -1,8 +1,6 @@
 package krived.web.info.mapper;
 
-import krived.web.info.model.dto.CheckDto;
 import krived.web.info.model.dto.TransferredPointDto;
-import krived.web.info.model.entity.Check;
 import krived.web.info.model.entity.TransferredPoint;
 import org.mapstruct.*;
 

@@ -1,37 +1,37 @@
 <table th:fragment="xp">
-  <caption th:text="Xp"></caption>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Check</th>
-    <th>XpAmount</th>
-  </tr>
-  </thead>
+    <caption th:text="Xp"></caption>
+    <thead>
+        <tr>
+            <th>№</th>
+            <th th:each="name : ${columnNames}" th:text="${name}"></th>
+        </tr>
+    </thead>
 
-  <tbody>
-  <tr th:each="xp : ${allXp}">
-    <td th:text="${xp.id}"></td>
-    <td th:text="${xp.check}"></td>
-    <td th:text="${xp.xpAmount}"></td>
-    <td>
-      <form action="/xp/update" th:object="${updatedXp}" method="post">
-        <input type="hidden" name="id" th:value="${xp.id}">
-        <button type="submit">Update</button>
-      </form>
-    </td>
-    <td>
-      <form action="/xp/delete" th:object="${deletedXp}" method="post">
-        <input type="hidden" name="id" th:value="${xp.id}">
-        <button type="submit">Delete</button>
-      </form>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <form action="/xp/add" th:object="${addedXp}" method="post">
-        <button type="submit">Add Xp</button>
-      </form>
-    </td>
-  </tr>
-  </tbody>
+    <tbody>
+    <tr th:each="xp, it : ${allXp}">
+        <td th:text="${it.count}"></td>
+        <td th:text="${xp.id}"></td>
+        <td th:text="${xp.check}"></td>
+        <td th:text="${xp.xpAmount}"></td>
+        <td>
+            <form action="update" th:object="${updatedXp}" method="post">
+                <input type="hidden" name="id" th:value="${xp.id}">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+        <td>
+            <form action="delete" th:object="${deletedXp}" method="post">
+                <input type="hidden" name="id" th:value="${xp.id}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="add" th:object="${addedXp}" method="post">
+                <button type="submit">Add Xp</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
 </table>

@@ -1,7 +1,6 @@
 package krived.web.info.service;
 
 import krived.web.info.model.entity.Friend;
-import krived.web.info.model.entity.Peer;
 import krived.web.info.repository.FriendRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

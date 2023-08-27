@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class SQLResponseBody {
-    private List<String> columnNames;
-    private List<List<Object>> tableBody;
+public class ModelCustomTable {
+    private String[] columnNames;
+    private List<String[]> tableBody;
 }

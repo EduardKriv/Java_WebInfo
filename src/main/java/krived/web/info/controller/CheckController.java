@@ -1,11 +1,12 @@
 package krived.web.info.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import krived.web.info.mapper.CheckMapper;
 import krived.web.info.model.dto.CheckDto;
-import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.entity.Check;
 import krived.web.info.service.CheckService;
-import krived.web.info.service.ConvertCsvService;
+import krived.web.info.utility.CsvConverter;
+import krived.web.info.utility.DtoMetaData;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -24,8 +26,9 @@ public class CheckController {
 
     @GetMapping("/all")
     public String allChecks(Model model) {
-        List<Check> checks = checkService.getAll();
-        List<CheckDto> checksDtos = checkMapper.toDtos(checks);
+        List<CheckDto> checksDtos = checkMapper.toDtos(checkService.getAll());
+
+        model.addAttribute("columnNames", DtoMetaData.getColumnNames(CheckDto.class));
         model.addAttribute("tableName", "checks");
         model.addAttribute("allChecks", checksDtos);
         return "index";
@@ -55,9 +58,16 @@ public class CheckController {
 
     @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file) {
-        @SuppressWarnings("unchecked")
-        List<CheckDto> checks = (List<CheckDto>) ConvertCsvService.upload(file, CheckDto.class);
+        List<CheckDto> checks = CsvConverter.upload(file, CheckDto.class);
         checkService.saveAll(checkMapper.toEntities(checks));
         return "redirect:all";
+    }
+
+    @GetMapping("/unload")
+    public void unload(HttpServletResponse servletResponse) throws IOException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition", "attachment; filename=\"checks.csv\"");
+        List<CheckDto> beans = checkMapper.toDtos(checkService.getAll());
+        CsvConverter.unload(servletResponse.getWriter(), beans, CheckDto.class);
     }
 }

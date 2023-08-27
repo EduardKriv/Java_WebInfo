@@ -1,11 +1,12 @@
 package krived.web.info.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import krived.web.info.mapper.TaskMapper;
-import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.dto.TaskDto;
 import krived.web.info.model.entity.Task;
-import krived.web.info.service.ConvertCsvService;
+import krived.web.info.utility.CsvConverter;
 import krived.web.info.service.TaskService;
+import krived.web.info.utility.DtoMetaData;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -24,8 +26,9 @@ public class TaskController {
 
     @GetMapping("/all")
     public String allTasks(Model model) {
-        List<Task> tasks = taskService.getAll();
-        List<TaskDto> tasksDtos = taskMapper.toDtos(tasks);
+        List<TaskDto> tasksDtos = taskMapper.toDtos(taskService.getAll());
+
+        model.addAttribute("columnNames", DtoMetaData.getColumnNames(TaskDto.class));
         model.addAttribute("tableName", "tasks");
         model.addAttribute("allTasks", tasksDtos);
         return "index";
@@ -41,6 +44,7 @@ public class TaskController {
     @PostMapping("/update")
     public String update(@ModelAttribute("updatedTask") @NotNull TaskDto dto) {
         Task taskEntity = taskService.getById(dto.getTitle());
+        dto.setParentTask("C8_3DViewer_v1");
         taskMapper.updateTaskFromDto(dto, taskEntity);
         taskService.update(taskEntity);
         return "redirect:all";
@@ -55,9 +59,16 @@ public class TaskController {
 
     @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file) {
-        @SuppressWarnings("unchecked")
-        List<TaskDto> tasksDto = (List<TaskDto>) ConvertCsvService.upload(file, TaskDto.class);
+        List<TaskDto> tasksDto = CsvConverter.upload(file, TaskDto.class);
         tasksDto.forEach(task -> taskService.create(taskMapper.toEntity(task)));
         return "redirect:all";
+    }
+
+    @GetMapping("/unload")
+    public void unload(HttpServletResponse servletResponse) throws IOException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition", "attachment; filename=\"tasks.csv\"");
+        List<TaskDto> beans = taskMapper.toDtos(taskService.getAll());
+        CsvConverter.unload(servletResponse.getWriter(), beans, TaskDto.class);
     }
 }

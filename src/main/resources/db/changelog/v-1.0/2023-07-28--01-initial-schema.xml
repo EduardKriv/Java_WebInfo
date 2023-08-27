@@ -22,12 +22,14 @@
                 <constraints primaryKey="true" unique="true"/>
             </column>
             <column name="parent_task" type="varchar" defaultValue="NULL">
-                <constraints foreignKeyName="FK_Tasks_ParentTask" references="tasks(title)" nullable="true"/>
+                <constraints foreignKeyName="fk_tasks_parentTask" references="tasks(title)"
+                             nullable="true" deleteCascade="true"/>
             </column>
             <column name="max_xp" type="integer">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
     </changeSet>
 
     <changeSet id="2023-07-28-initial-schema-3" author="cnathali">
@@ -36,10 +38,12 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="peer" type="varchar">
-                <constraints nullable="false" foreignKeyName="fk_Checks_checkingPeer" references="peers(nickname)"/>
+                <constraints foreignKeyName="fk_checks_peers" references="peers(nickname)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="task" type="varchar">
-                <constraints nullable="false" foreignKeyName="fk_Checks_Peer_title" references="tasks(title)"/>
+                <constraints foreignKeyName="fk_checks_tasks" references="tasks(title)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="date" type="date">
                 <constraints nullable="false"/>
@@ -53,10 +57,12 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="check_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_P2P_check" references="checks(id)"/>
+                <constraints foreignKeyName="fk_p2p_checks" references="checks(id)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="checking_peer" type="varchar">
-                <constraints nullable="false" foreignKeyName="fk_P2P_checkingPeer" references="peers(nickname)"/>
+                <constraints foreignKeyName="fk_p2p_peers" references="peers(nickname)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="state" type="varchar(10)">
                 <constraints nullable="false"/>
@@ -73,7 +79,8 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="check_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_Verter_check" references="checks(id)"/>
+                <constraints foreignKeyName="fk_verter_checks" references="checks(id)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="state" type="varchar">
                 <constraints nullable="false"/>
@@ -90,10 +97,12 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="checking_peer" type="varchar">
-                <constraints nullable="false" foreignKeyName="fk_TransferredPoints_checkingPeer" references="peers(nickname)"/>
+                <constraints foreignKeyName="fk_transferredPoints_checkingPeers" references="peers(nickname)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="checked_peer" type="varchar">
-                <constraints nullable="false" foreignKeyName="fk_TransferredPoints_checkedPeer" references="peers(nickname)"/>
+                <constraints foreignKeyName="fk_transferredPoints_checkedPeers" references="peers(nickname)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="points_amount" type="integer">
                 <constraints nullable="false"/>
@@ -107,10 +116,12 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="peer1" type="varchar">
-                <constraints nullable="false" foreignKeyName="fk_Friends_Peer1" references="peers(nickname)"/>
+                <constraints foreignKeyName="fk_friends_peer1" references="peers(nickname)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="peer2" type="varchar">
-                <constraints nullable="false" foreignKeyName="fk_Friends_Peer2" references="peers(nickname)"/>
+                <constraints foreignKeyName="fk_friends_peer2" references="peers(nickname)"
+                             nullable="false" deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>
@@ -121,10 +132,12 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="peer" type="varchar">
-                <constraints nullable="false" foreignKeyName="fk_Recommendations_Peer" references="peers(nickname)"/>
+                <constraints foreignKeyName="fk_recommendations_peer" references="peers(nickname)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="recommended_peer" type="varchar">
-                <constraints nullable="false" foreignKeyName="fk_Recommendations_RecommendedPeer" references="peers(nickname)"/>
+                <constraints foreignKeyName="fk_recommendations_recommended_peer" references="peers(nickname)"
+                             nullable="false" deleteCascade="true"/>
             </column>
         </createTable>
     </changeSet>
@@ -135,7 +148,8 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="check_id" type="bigint">
-                <constraints nullable="false" foreignKeyName="fk_XP_check" references="checks(id)"/>
+                <constraints foreignKeyName="fk_xp_checks" references="checks(id)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="xp_amount" type="integer">
                 <constraints nullable="false"/>
@@ -149,7 +163,8 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="peer" type="varchar">
-                <constraints nullable="false" foreignKeyName="fk_TimeTracking_Peer" references="peers(nickname)"/>
+                <constraints foreignKeyName="fk_timeTracking_peers" references="peers(nickname)"
+                             nullable="false" deleteCascade="true"/>
             </column>
             <column name="date" type="date">
                 <constraints nullable="false"/>

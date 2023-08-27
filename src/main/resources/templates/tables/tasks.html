@@ -1,26 +1,26 @@
 <table th:fragment="tasks">
     <caption th:text="Task"></caption>
     <thead>
-    <tr>
-        <th>Title</th>
-        <th>Parent Task</th>
-        <th>Max XP</th>
-    </tr>
+        <tr>
+            <th>№</th>
+            <th th:each="name : ${columnNames}" th:text="${name}"></th>
+        </tr>
     </thead>
 
     <tbody>
-    <tr th:each="task : ${allTasks}">
+    <tr th:each="task, it : ${allTasks}">
+        <td th:text="${it.count}"></td>
         <td th:text="${task.title}"></td>
         <td th:text="${task.parentTask}"></td>
         <td th:text="${task.maxXp}"></td>
         <td>
-            <form action="/task/update" th:object="${updatedTask}" method="post">
+            <form action="update" th:object="${updatedTask}" method="post">
                 <input type="hidden" name="title" th:value="${task.title}">
                 <button type="submit">Update</button>
             </form>
         </td>
         <td>
-            <form action="/task/delete" th:object="${deletedTask}" method="post">
+            <form action="delete" th:object="${deletedTask}" method="post">
                 <input type="hidden" name="title" th:value="${task.title}">
                 <button type="submit">Delete</button>
             </form>
@@ -28,7 +28,7 @@
     </tr>
     <tr>
         <td>
-            <form action="/task/add" th:object="${addedTask}" method="post">
+            <form action="add" th:object="${addedTask}" method="post">
                 <button type="submit">Add Task</button>
             </form>
         </td>

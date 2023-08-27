@@ -1,39 +1,38 @@
 <table th:fragment="verter">
     <caption th:text="Verter"></caption>
     <thead>
-    <tr>
-        <th>ID</th>
-        <th>Check</th>
-        <th>State</th>
-        <th>Time</th>
-    </tr>
+        <tr>
+            <th>№</th>
+            <th th:each="name : ${columnNames}" th:text="${name}"></th>
+        </tr>
     </thead>
 
     <tbody>
-    <tr th:each="verter : ${allVerters}">
-        <td th:text="${verter.id}"></td>
-        <td th:text="${verter.check}"></td>
-        <td th:text="${verter.state}"></td>
-        <td th:text="${verter.time}"></td>
-        <td>
-            <form action="/verter/update" th:object="${updatedVerter}" method="post">
-                <input type="hidden" name="id" th:value="${verter.id}">
-                <button type="submit">Update</button>
-            </form>
-        </td>
-        <td>
-            <form action="/verter/delete" th:object="${deletedVerter}" method="post">
-                <input type="hidden" name="id" th:value="${verter.id}">
-                <button type="submit">Delete</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <form action="/verter/add" th:object="${addedVerter}" method="post">
-                <button type="submit">Add Verter</button>
-            </form>
-        </td>
-    </tr>
+        <tr th:each="verter, it : ${allVerters}">
+            <td th:text="${it.count}"></td>
+            <td th:text="${verter.id}"></td>
+            <td th:text="${verter.check}"></td>
+            <td th:text="${verter.state}"></td>
+            <td th:text="${verter.time}"></td>
+            <td>
+                <form action="update" th:object="${updatedVerter}" method="post">
+                    <input type="hidden" name="id" th:value="${verter.id}">
+                    <button type="submit">Update</button>
+                </form>
+            </td>
+            <td>
+                <form action="delete" th:object="${deletedVerter}" method="post">
+                    <input type="hidden" name="id" th:value="${verter.id}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form action="add" th:object="${addedVerter}" method="post">
+                    <button type="submit">Add Verter</button>
+                </form>
+            </td>
+        </tr>
     </tbody>
 </table>

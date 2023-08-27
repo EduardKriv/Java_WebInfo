@@ -5,7 +5,6 @@ import krived.web.info.model.entity.Check;
 import krived.web.info.service.CheckService;
 import org.mapstruct.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 

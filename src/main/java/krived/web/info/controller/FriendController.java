@@ -1,17 +1,19 @@
 package krived.web.info.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import krived.web.info.mapper.FriendMapper;
 import krived.web.info.model.dto.FriendDto;
-import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.entity.Friend;
-import krived.web.info.service.ConvertCsvService;
+import krived.web.info.utility.CsvConverter;
 import krived.web.info.service.FriendService;
+import krived.web.info.utility.DtoMetaData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -23,15 +25,16 @@ public class FriendController {
 
     @GetMapping("/all")
     public String allFriends(Model model) {
-        List<Friend> friends = friendService.getAll();
-        List<FriendDto> friendDtos = friendMapper.toDtos(friends);
+        List<FriendDto> friendDtos = friendMapper.toDtos(friendService.getAll());
+
+        model.addAttribute("columnNames", DtoMetaData.getColumnNames(FriendDto.class));
         model.addAttribute("tableName", "friends");
         model.addAttribute("allFriends", friendDtos);
         return "index";
     }
 
     @PostMapping("/add")
-    public String create(@ModelAttribute(value="addedFriend") FriendDto dto) {
+    public String create(@ModelAttribute("addedFriend") FriendDto dto) {
         System.out.println(dto);
         dto.setPeer1("fedosiy");
         dto.setPeer2("fedosiy");
@@ -42,7 +45,7 @@ public class FriendController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute(value="updatedFriend") FriendDto dto) {
+    public String update(@ModelAttribute("updatedFriend") FriendDto dto) {
         dto.setPeer2("duck");
 
         Friend friendEntity = friendService.getById(dto.getId());
@@ -52,7 +55,7 @@ public class FriendController {
     }
 
     @PostMapping("/delete")
-    public String delete(@ModelAttribute(value="updatedFriend") FriendDto dto) {
+    public String delete(@ModelAttribute("updatedFriend") FriendDto dto) {
         Friend friend = friendService.getById(dto.getId());
         friendService.delete(friend);
         return "redirect:all";
@@ -60,9 +63,16 @@ public class FriendController {
 
     @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file) {
-        @SuppressWarnings("unchecked")
-        List<FriendDto> friends = (List<FriendDto>) ConvertCsvService.upload(file, FriendDto.class);
+        List<FriendDto> friends = CsvConverter.upload(file, FriendDto.class);
         friendService.saveAll(friendMapper.toEntities(friends));
         return "redirect:all";
+    }
+
+    @GetMapping("/unload")
+    public void unload(HttpServletResponse servletResponse) throws IOException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition", "attachment; filename=\"friends.csv\"");
+        List<FriendDto> beans = friendMapper.toDtos(friendService.getAll());
+        CsvConverter.unload(servletResponse.getWriter(), beans, FriendDto.class);
     }
 }

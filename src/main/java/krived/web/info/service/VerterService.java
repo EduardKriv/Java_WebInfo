@@ -31,4 +31,8 @@ public class VerterService {
     public void delete(Verter verter) {
         verterRepository.delete(verter);
     }
+
+    public void saveAll(List<Verter> verter) {
+        verterRepository.saveAllAndFlush(verter);
+    }
 }

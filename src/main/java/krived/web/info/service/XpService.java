@@ -31,4 +31,8 @@ public class XpService {
     public void delete(Xp xp) {
         xpRepository.delete(xp);
     }
+
+    public void saveAll(List<Xp> xps) {
+        xpRepository.saveAllAndFlush(xps);
+    }
 }

@@ -1,13 +1,12 @@
 package krived.web.info.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import krived.web.info.mapper.PeerMapper;
-import krived.web.info.model.CsvBean;
-import krived.web.info.model.dto.P2PDto;
 import krived.web.info.model.dto.PeerDto;
-import krived.web.info.model.entity.P2P;
 import krived.web.info.model.entity.Peer;
-import krived.web.info.service.ConvertCsvService;
+import krived.web.info.utility.CsvConverter;
 import krived.web.info.service.PeerService;
+import krived.web.info.utility.DtoMetaData;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
@@ -26,9 +25,10 @@ public class PeerController {
     private final PeerMapper peerMapper;
 
     @GetMapping("/all")
-    public String allPeers(Model model) {
-        List<Peer> peers = peerService.getAll();
-        List<PeerDto> peersDtos = peerMapper.toDtos(peers);
+    public String allPeers(@NotNull Model model) {
+        List<PeerDto> peersDtos = peerMapper.toDtos(peerService.getAll());
+
+        model.addAttribute("columnNames", DtoMetaData.getColumnNames(PeerDto.class));
         model.addAttribute("tableName", "peers");
         model.addAttribute("allPeers", peersDtos);
         return "index";
@@ -46,7 +46,6 @@ public class PeerController {
 
     @PostMapping("/update")
     public String update(@ModelAttribute("updatedPeer") @NotNull PeerDto dto) {
-        System.out.println(dto);
         Peer peerEntity = peerService.getByNickname(dto.getNickname());
         peerMapper.updatePeerFromDto(dto, peerEntity);
         peerService.update(peerEntity);
@@ -62,9 +61,16 @@ public class PeerController {
 
     @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file) {
-        @SuppressWarnings("unchecked")
-        List<PeerDto> peers = (List<PeerDto>)ConvertCsvService.upload(file, PeerDto.class);
+        List<PeerDto> peers = CsvConverter.upload(file, PeerDto.class);
         peerService.saveAll(peerMapper.toEntities(peers));
         return "redirect:all";
+    }
+
+    @GetMapping("/unload")
+    public void unload(@NotNull HttpServletResponse servletResponse) throws IOException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition", "attachment; filename=\"peers.csv\"");
+        List<PeerDto> beans = peerMapper.toDtos(peerService.getAll());
+        CsvConverter.unload(servletResponse.getWriter(), beans, PeerDto.class);
     }
 }

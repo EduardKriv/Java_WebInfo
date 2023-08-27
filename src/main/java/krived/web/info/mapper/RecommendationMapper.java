@@ -5,6 +5,7 @@ import krived.web.info.model.entity.Recommendation;
 import org.mapstruct.*;
 
 import java.util.List;
+
 @Mapper(uses = PeerMapper.class)
 public abstract class RecommendationMapper {
     public abstract RecommendationDto toDto(Recommendation recommendation);

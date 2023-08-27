@@ -1,17 +1,19 @@
 package krived.web.info.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import krived.web.info.mapper.P2PMapper;
 import krived.web.info.model.dto.P2PDto;
-import krived.web.info.model.dto.PeerDto;
 import krived.web.info.model.entity.P2P;
-import krived.web.info.service.ConvertCsvService;
+import krived.web.info.utility.CsvConverter;
 import krived.web.info.service.P2PService;
+import krived.web.info.utility.DtoMetaData;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -23,8 +25,9 @@ public class P2PController {
 
     @GetMapping("/all")
     public String allP2Ps(Model model) {
-        List<P2P> p2p = p2pService.getAll();
-        List<P2PDto> p2pDtos = p2pMapper.toDtos(p2p);
+        List<P2PDto> p2pDtos = p2pMapper.toDtos(p2pService.getAll());
+
+        model.addAttribute("columnNames", DtoMetaData.getColumnNames(P2PDto.class));
         model.addAttribute("tableName", "p2p");
         model.addAttribute("allP2P", p2pDtos);
         return "index";
@@ -43,8 +46,6 @@ public class P2PController {
 
     @PostMapping("/update")
     public String update(@ModelAttribute(value="updatedP2P") P2PDto dto) {
-//        dto.setPeer2("duck");
-
         P2P p2pEntity = p2pService.getById(dto.getId());
         p2pMapper.updateP2PFromDto(dto, p2pEntity);
         p2pService.update(p2pEntity);
@@ -60,9 +61,16 @@ public class P2PController {
 
     @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file) {
-        @SuppressWarnings("unchecked")
-        List<P2PDto> peers = (List<P2PDto>) ConvertCsvService.upload(file, P2PDto.class);
-        p2pService.saveAll(p2pMapper.toEntities(peers));
+        List<P2PDto> p2p = CsvConverter.upload(file, P2PDto.class);
+        p2pService.saveAll(p2pMapper.toEntities(p2p));
         return "redirect:all";
+    }
+
+    @GetMapping("/unload")
+    public void unload(HttpServletResponse servletResponse) throws IOException {
+        servletResponse.setContentType("text/csv");
+        servletResponse.addHeader("Content-Disposition", "attachment; filename=\"p2p.csv\"");
+        List<P2PDto> beans = p2pMapper.toDtos(p2pService.getAll());
+        CsvConverter.unload(servletResponse.getWriter(), beans, P2PDto.class);
     }
 }

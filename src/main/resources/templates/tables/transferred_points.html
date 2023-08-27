@@ -1,39 +1,38 @@
 <table th:fragment="transferred_points">
-  <caption th:text="TransferredPoint"></caption>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Checking Peer</th>
-    <th>Checked Peer</th>
-    <th>Points Amount</th>
-  </tr>
-  </thead>
+    <caption th:text="TransferredPoint"></caption>
+    <thead>
+    <tr>
+        <th>№</th>
+        <th th:each="name : ${columnNames}" th:text="${name}"></th>
+    </tr>
+    </thead>
 
-  <tbody>
-  <tr th:each="transferred_point : ${allTransferredPoints}">
-    <td th:text="${transferred_point.id}"></td>
-    <td th:text="${transferred_point.checkingPeer}"></td>
-    <td th:text="${transferred_point.checkedPeer}"></td>
-    <td th:text="${transferred_point.pointsAmount}"></td>
-    <td>
-      <form action="/transferred_point/update" th:object="${updatedTransferredPoint}" method="post">
-        <input type="hidden" name="id" th:value="${transferred_point.id}">
-        <button type="submit">Update</button>
-      </form>
-    </td>
-    <td>
-      <form action="/transferred_point/delete" th:object="${deletedTransferredPoint}" method="post">
-        <input type="hidden" name="id" th:value="${transferred_point.id}">
-        <button type="submit">Delete</button>
-      </form>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <form action="/transferred_point/add" th:object="${addedTransferredPoint}" method="post">
-        <button type="submit">Add TransferredPoint</button>
-      </form>
-    </td>
-  </tr>
-  </tbody>
+    <tbody>
+    <tr th:each="transferred_point, it : ${allTransferredPoints}">
+        <td th:text="${it.count}"></td>
+        <td th:text="${transferred_point.id}"></td>
+        <td th:text="${transferred_point.checkingPeer}"></td>
+        <td th:text="${transferred_point.checkedPeer}"></td>
+        <td th:text="${transferred_point.pointsAmount}"></td>
+        <td>
+            <form action="update" th:object="${updatedTransferredPoint}" method="post">
+                <input type="hidden" name="id" th:value="${transferred_point.id}">
+                <button type="submit">Update</button>
+            </form>
+        </td>
+        <td>
+            <form action="delete" th:object="${deletedTransferredPoint}" method="post">
+                <input type="hidden" name="id" th:value="${transferred_point.id}">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <form action="add" th:object="${addedTransferredPoint}" method="post">
+                <button type="submit">Add TransferredPoint</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
 </table>

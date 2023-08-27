@@ -1,8 +1,8 @@
 package krived.web.info.model.dto;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvDate;
-import krived.web.info.model.CsvBean;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -12,15 +12,24 @@ import java.time.LocalTime;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class TimeTrackingDto extends CsvBean {
+    @CsvBindByName(column = "id", required = true)
     private Long id;
-    @CsvBindByName(required = true)
+
+    @CsvBindByName(column = "peer", required = true)
+    @CsvBindByPosition(position = 0)
     private String peer;
-    @CsvBindByName(required = true)
+
+    @CsvBindByName(column = "date", required = true)
+    @CsvBindByPosition(position = 1)
     @CsvDate(value = "yyyy-MM-dd")
     private LocalDate date;
-    @CsvBindByName(required = true)
+
+    @CsvBindByName(column = "time", required = true)
+    @CsvBindByPosition(position = 2)
     @CsvDate(value = "HH:mm")
     private LocalTime time;
-    @CsvBindByName(required = true)
+
+    @CsvBindByName(column = "state", required = true)
+    @CsvBindByPosition(position = 3)
     private Integer state;
 }

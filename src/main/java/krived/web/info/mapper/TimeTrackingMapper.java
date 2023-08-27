@@ -2,7 +2,6 @@ package krived.web.info.mapper;
 
 import krived.web.info.model.dto.TimeTrackingDto;
 import krived.web.info.model.entity.TimeTracking;
-import org.jetbrains.annotations.NotNull;
 import org.mapstruct.*;
 
 import java.util.List;
