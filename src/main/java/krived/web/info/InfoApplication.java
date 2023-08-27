@@ -10,7 +10,6 @@ public class InfoApplication {
 		SpringApplication.run(InfoApplication.class, args);
 
 //	TODO:	проверить 13 процедуру, показывает 0 0
-//			удалить changeSet с импортом csv и ресетнуть базу
 //			логирование!
 //			обработать эксепшены
 //			поднять приложение в докере
