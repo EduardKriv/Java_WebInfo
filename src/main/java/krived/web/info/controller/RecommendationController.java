@@ -1,75 +1,23 @@
 package krived.web.info.controller;
 
-import jakarta.servlet.http.HttpServletResponse;
 import krived.web.info.mapper.RecommendationMapper;
 import krived.web.info.model.dto.RecommendationDto;
 import krived.web.info.model.entity.Recommendation;
-import krived.web.info.utility.CsvConverter;
 import krived.web.info.service.RecommendationService;
-import krived.web.info.utility.DtoMetaData;
-import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequiredArgsConstructor
 @RequestMapping("/recommendation")
-public class RecommendationController {
-    private final RecommendationService recommendationService;
-    private final RecommendationMapper recommendationMapper;
-
-    @GetMapping("/all")
-    public String allRecommendations(Model model) {
-        List<RecommendationDto> recommendationsDtos =
-                recommendationMapper.toDtos(recommendationService.getAll());
-
-        model.addAttribute("columnNames", DtoMetaData.getColumnNames(RecommendationDto.class));
-        model.addAttribute("tableName", "recommendations");
-        model.addAttribute("allRecommendations", recommendationsDtos);
-        return "index";
+public class RecommendationController extends GenericController<Recommendation, RecommendationDto, Long> {
+    @Autowired
+    public RecommendationController(RecommendationService recommendationService, RecommendationMapper recommendationMapper) {
+        super(recommendationService, recommendationMapper);
     }
 
-    @PostMapping("/add")
-    public String create(@ModelAttribute("addedRecommendation") @NotNull RecommendationDto dto) {
-        Recommendation recommendationEntity = recommendationMapper.toEntity(dto);
-        recommendationService.create(recommendationEntity);
-        return "redirect:all";
-    }
-
-    @PostMapping("/update")
-    public String update(@ModelAttribute("updatedRecommendation") @NotNull RecommendationDto dto) {
-        System.out.println(dto);
-        Recommendation recommendationEntity = recommendationService.getById(dto.getId());
-        recommendationMapper.updateRecommendationFromDto(dto, recommendationEntity);
-        recommendationService.update(recommendationEntity);
-        return "redirect:all";
-    }
-
-    @PostMapping("/delete")
-    public String remove(@ModelAttribute("deletedRecommendation") @NotNull RecommendationDto dto) {
-        Recommendation recommendationEntity = recommendationService.getById(dto.getId());
-        recommendationService.delete(recommendationEntity);
-        return "redirect:all";
-    }
-
-    @PostMapping("/upload")
-    public String upload(@RequestParam("file") MultipartFile file) {
-        List<RecommendationDto> recDto = CsvConverter.upload(file, RecommendationDto.class);
-        recommendationService.saveAll(recommendationMapper.toEntities(recDto));
-        return "redirect:all";
-    }
-
-    @GetMapping("/unload")
-    public void unload(@NotNull HttpServletResponse servletResponse) throws IOException {
-        servletResponse.setContentType("text/csv");
-        servletResponse.addHeader("Content-Disposition", "attachment; filename=\"recommendations.csv\"");
-        List<RecommendationDto> beans = recommendationMapper.toDtos(recommendationService.getAll());
-        CsvConverter.unload(servletResponse.getWriter(), beans, RecommendationDto.class);
+    @Override
+    protected Class<RecommendationDto> getClazz() {
+        return RecommendationDto.class;
     }
 }

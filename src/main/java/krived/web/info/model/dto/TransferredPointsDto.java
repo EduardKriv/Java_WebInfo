@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class TransferredPointDto extends CsvBean {
+public class TransferredPointsDto extends CsvBean {
     @CsvBindByName(column = "id", required = true)
     private Long id;
 

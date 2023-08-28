@@ -14,4 +14,9 @@ public class DtoMetaData {
                 .map(CsvBindByName::column)
                 .toList();
     }
+
+    public static <T extends CsvBean> String getClassName(@NotNull Class<T> clazz) {
+        System.out.println(clazz.getSimpleName().replaceAll("Dto", "").toLowerCase());
+        return clazz.getSimpleName().replaceAll("Dto", "").toLowerCase();
+    }
 }

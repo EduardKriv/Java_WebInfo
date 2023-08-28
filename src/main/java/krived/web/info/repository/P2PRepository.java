@@ -1,7 +1,8 @@
 package krived.web.info.repository;
 
 import krived.web.info.model.entity.P2P;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface P2PRepository extends JpaRepository<P2P, Long> {
+@Repository
+public interface P2PRepository extends GenericRepository<P2P, Long> {
 }

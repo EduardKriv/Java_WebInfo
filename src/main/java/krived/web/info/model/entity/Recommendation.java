@@ -3,11 +3,13 @@ package krived.web.info.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 @Table(name = "recommendations")
-public class Recommendation {
+@EqualsAndHashCode(callSuper = false)
+public class Recommendation extends BaseEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

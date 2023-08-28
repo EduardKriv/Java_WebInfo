@@ -2,11 +2,13 @@ package krived.web.info.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 @Table(name = "friends")
-public class Friend {
+@EqualsAndHashCode(callSuper=false)
+public class Friend extends BaseEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

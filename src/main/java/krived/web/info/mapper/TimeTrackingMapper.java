@@ -4,17 +4,7 @@ import krived.web.info.model.dto.TimeTrackingDto;
 import krived.web.info.model.entity.TimeTracking;
 import org.mapstruct.*;
 
-import java.util.List;
-
 @Mapper(uses = PeerMapper.class)
-public abstract class TimeTrackingMapper {
-    public abstract TimeTrackingDto toDto(TimeTracking timeTracking);
-    public abstract TimeTracking toEntity(TimeTrackingDto timeTracking);
-    public abstract List<TimeTrackingDto> toDtos(List<TimeTracking> timeTrackings);
-    public abstract List<TimeTracking> toEntities(List<TimeTrackingDto> timeTrackingDtos);
-
-    @BeanMapping(nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
-            nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    public abstract void updateTimeTrackingFromDto(TimeTrackingDto dto, @MappingTarget TimeTracking timeTracking);
+public abstract class TimeTrackingMapper extends GenericMapper<TimeTracking, TimeTrackingDto> {
 }
 

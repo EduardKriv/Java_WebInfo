@@ -1,7 +1,8 @@
 package krived.web.info.repository;
 
 import krived.web.info.model.entity.TimeTracking;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface TimeTrackingRepository extends JpaRepository<TimeTracking, Long> {
+@Repository
+public interface TimeTrackingRepository extends GenericRepository<TimeTracking, Long> {
 }

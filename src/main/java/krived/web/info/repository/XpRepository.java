@@ -1,7 +1,8 @@
 package krived.web.info.repository;
 
 import krived.web.info.model.entity.Xp;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface XpRepository extends JpaRepository<Xp, Long> {
+@Repository
+public interface XpRepository extends GenericRepository<Xp, Long> {
 }
