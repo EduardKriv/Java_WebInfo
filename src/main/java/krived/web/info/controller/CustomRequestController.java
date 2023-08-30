@@ -52,7 +52,7 @@ public class CustomRequestController {
         CsvConverter.unload(servletResponse.getWriter(), customTable);
     }
 
-    private String setAttributes(Model model) throws SQLException {
+    private @NotNull String setAttributes(@NotNull Model model) throws SQLException {
         model.addAttribute("tableName", "requests");
         model.addAttribute("columnNames", customTable.getColumnNames());
         model.addAttribute("resultSet", customTable.getTableBody());

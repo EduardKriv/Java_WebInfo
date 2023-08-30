@@ -13,11 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CheckController extends GenericController<Check, CheckDto, Long> {
     @Autowired
     public CheckController(CheckService checkService, CheckMapper checkMapper) {
-        super(checkService, checkMapper);
-    }
-
-    @Override
-    protected Class<CheckDto> getClazz() {
-        return CheckDto.class;
+        super(checkService, checkMapper, CheckDto.class);
     }
 }

@@ -8,7 +8,7 @@
     </thead>
 
     <tbody>
-    <tr th:each="p2p, it : ${allP2P}">
+    <tr th:each="p2p, it : ${modelList}">
         <td th:text="${it.count}"></td>
         <td th:text="${p2p.id}"></td>
         <td th:text="${p2p.check}"></td>
@@ -16,13 +16,13 @@
         <td th:text="${p2p.state}"></td>
         <td th:text="${p2p.time}"></td>
         <td>
-            <form action="update" th:object="${updatedP2P}" method="post">
+            <form action="update" th:object="${Model}" method="post">
                 <input type="hidden" name="id" th:value="${p2p.id}">
                 <button type="submit">Update</button>
             </form>
         </td>
         <td>
-            <form action="delete" th:object="${deletedP2P}" method="post">
+            <form action="delete" th:object="${Model}" method="post">
                 <input type="hidden" name="id" th:value="${p2p.id}">
                 <button type="submit">Delete</button>
             </form>
@@ -30,7 +30,7 @@
     </tr>
     <tr>
         <td>
-            <form action="add" th:object="${addedP2P}" method="post">
+            <form action="add" th:object="${Model}" method="post">
                 <button type="submit">Add P2P</button>
             </form>
         </td>

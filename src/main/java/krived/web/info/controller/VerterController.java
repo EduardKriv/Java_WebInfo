@@ -13,11 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class VerterController extends GenericController<Verter, VerterDto, Long>{
     @Autowired
     public VerterController(VerterService verterService, VerterMapper verterMapper) {
-        super(verterService, verterMapper);
-    }
-
-    @Override
-    protected Class<VerterDto> getClazz() {
-        return VerterDto.class;
+        super(verterService, verterMapper, VerterDto.class);
     }
 }

@@ -8,19 +8,19 @@
     </thead>
 
     <tbody>
-    <tr th:each="task, it : ${allTasks}">
+    <tr th:each="task, it : ${modelList}">
         <td th:text="${it.count}"></td>
         <td th:text="${task.title}"></td>
         <td th:text="${task.parentTask}"></td>
         <td th:text="${task.maxXp}"></td>
         <td>
-            <form action="update" th:object="${updatedTask}" method="post">
+            <form action="update" th:object="${Model}" method="post">
                 <input type="hidden" name="title" th:value="${task.title}">
                 <button type="submit">Update</button>
             </form>
         </td>
         <td>
-            <form action="delete" th:object="${deletedTask}" method="post">
+            <form action="delete" th:object="${Model}" method="post">
                 <input type="hidden" name="title" th:value="${task.title}">
                 <button type="submit">Delete</button>
             </form>
@@ -28,7 +28,7 @@
     </tr>
     <tr>
         <td>
-            <form action="add" th:object="${addedTask}" method="post">
+            <form action="add" th:object="${Model}" method="post">
                 <button type="submit">Add Task</button>
             </form>
         </td>

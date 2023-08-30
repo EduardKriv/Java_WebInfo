@@ -12,12 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/transferred_point")
 public class TransferredPointController extends GenericController<TransferredPoint, TransferredPointsDto, Long> {
     @Autowired
-    public TransferredPointController(TransferredPointService transferredPointService, TransferredPointMapper transferredPointMapper) {
-        super(transferredPointService, transferredPointMapper);
-    }
-
-    @Override
-    protected Class<TransferredPointsDto> getClazz() {
-        return TransferredPointsDto.class;
+    public TransferredPointController(TransferredPointService service, TransferredPointMapper mapper) {
+        super(service, mapper, TransferredPointsDto.class);
     }
 }

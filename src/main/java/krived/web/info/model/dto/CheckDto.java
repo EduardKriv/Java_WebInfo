@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class CheckDto extends CsvBean {
+public class CheckDto extends BaseDto {
     @CsvBindByName(column = "id", required = true)
     private Long id;
 

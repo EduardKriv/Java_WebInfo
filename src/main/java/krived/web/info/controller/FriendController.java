@@ -14,11 +14,6 @@ import org.springframework.web.bind.annotation.*;
 public class FriendController extends GenericController<Friend, FriendDto, Long> {
     @Autowired
     public FriendController(FriendService friendService, FriendMapper friendMapper) {
-        super(friendService, friendMapper);
-    }
-
-    @Override
-    protected Class<FriendDto> getClazz() {
-        return FriendDto.class;
+        super(friendService, friendMapper, FriendDto.class);
     }
 }

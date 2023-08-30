@@ -1,4 +1,4 @@
-<table th:fragment="transferredPoints">
+<table th:fragment="transferredpoints">
     <caption th:text="TransferredPoint"></caption>
     <thead>
     <tr>
@@ -8,20 +8,20 @@
     </thead>
 
     <tbody>
-    <tr th:each="transferred_point, it : ${allTransferredPoints}">
+    <tr th:each="transferred_point, it : ${modelList}">
         <td th:text="${it.count}"></td>
         <td th:text="${transferred_point.id}"></td>
         <td th:text="${transferred_point.checkingPeer}"></td>
         <td th:text="${transferred_point.checkedPeer}"></td>
         <td th:text="${transferred_point.pointsAmount}"></td>
         <td>
-            <form action="update" th:object="${updatedTransferredPoint}" method="post">
+            <form action="update" th:object="${Model}" method="post">
                 <input type="hidden" name="id" th:value="${transferred_point.id}">
                 <button type="submit">Update</button>
             </form>
         </td>
         <td>
-            <form action="delete" th:object="${deletedTransferredPoint}" method="post">
+            <form action="delete" th:object="${Model}" method="post">
                 <input type="hidden" name="id" th:value="${transferred_point.id}">
                 <button type="submit">Delete</button>
             </form>
@@ -29,7 +29,7 @@
     </tr>
     <tr>
         <td>
-            <form action="add" th:object="${addedTransferredPoint}" method="post">
+            <form action="add" th:object="${Model}" method="post">
                 <button type="submit">Add TransferredPoint</button>
             </form>
         </td>

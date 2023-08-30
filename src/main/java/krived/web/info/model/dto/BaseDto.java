@@ -1,4 +1,4 @@
 package krived.web.info.model.dto;
 
-public class CsvBean {
+public abstract class BaseDto<T> {
 }

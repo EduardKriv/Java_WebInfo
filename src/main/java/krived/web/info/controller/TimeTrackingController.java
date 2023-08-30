@@ -12,12 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/time_tracking")
 public class TimeTrackingController extends GenericController<TimeTracking, TimeTrackingDto, Long> {
     @Autowired
-    public TimeTrackingController(TimeTrackingService timeTrackingService, TimeTrackingMapper timeTrackingMapper) {
-        super(timeTrackingService, timeTrackingMapper);
-    }
-
-    @Override
-    protected Class<TimeTrackingDto> getClazz() {
-        return TimeTrackingDto.class;
+    public TimeTrackingController(TimeTrackingService service, TimeTrackingMapper mapper) {
+        super(service, mapper, TimeTrackingDto.class);
     }
 }

@@ -4,20 +4,29 @@ import krived.web.info.mapper.TaskMapper;
 import krived.web.info.model.dto.TaskDto;
 import krived.web.info.model.entity.Task;
 import krived.web.info.service.TaskService;
+import krived.web.info.utility.CsvConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/task")
 public class TaskController extends GenericController<Task, TaskDto, String>{
     @Autowired
     public TaskController(TaskService taskService, TaskMapper taskMapper) {
-        super(taskService, taskMapper);
+        super(taskService, taskMapper, TaskDto.class);
     }
 
     @Override
-    protected Class<TaskDto> getClazz() {
-        return TaskDto.class;
+    @PostMapping("upload")
+    public String upload(@RequestParam("file") MultipartFile file) {
+        List<TaskDto> tasksDto = CsvConverter.upload(file, TaskDto.class);
+        tasksDto.forEach(task -> genericService.create(genericMapper.toEntity(task)));
+        return "redirect:all";
     }
 }

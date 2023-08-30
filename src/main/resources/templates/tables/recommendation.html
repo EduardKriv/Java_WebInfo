@@ -8,19 +8,19 @@
     </thead>
 
     <tbody>
-    <tr th:each="recommendation, it : ${allRecommendations}">
+    <tr th:each="recommendation, it : ${modelList}">
         <td th:text="${it.count}"></td>
         <td th:text="${recommendation.id}"></td>
         <td th:text="${recommendation.peer}"></td>
         <td th:text="${recommendation.recommendedPeer}"></td>
         <td>
-            <form action="update" th:object="${updatedRecommendation}" method="post">
+            <form action="update" th:object="${Model}" method="post">
                 <input type="hidden" name="id" th:value="${recommendation.id}">
                 <button type="submit">Update</button>
             </form>
         </td>
         <td>
-            <form action="delete" th:object="${deletedRecommendation}" method="post">
+            <form action="delete" th:object="${Model}" method="post">
                 <input type="hidden" name="id" th:value="${recommendation.id}">
                 <button type="submit">Delete</button>
             </form>
@@ -28,7 +28,7 @@
     </tr>
     <tr>
         <td>
-            <form action="add" th:object="${addedRecommendation}" method="post">
+            <form action="add" th:object="${Model}" method="post">
                 <button type="submit">Add Recommendation</button>
             </form>
         </td>

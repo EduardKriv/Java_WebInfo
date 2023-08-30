@@ -1,4 +1,4 @@
-<table th:fragment="timeTracking">
+<table th:fragment="timetracking">
     <caption th:text="TimeTracking"></caption>
     <thead>
         <tr>
@@ -8,7 +8,7 @@
     </thead>
 
     <tbody>
-    <tr th:each="timeTracking, it : ${allTimeTracking}">
+    <tr th:each="timeTracking, it : ${modelList}">
         <td th:text="${it.count}"></td>
         <td th:text="${timeTracking.id}"></td>
         <td th:text="${timeTracking.peer}"></td>
@@ -16,13 +16,13 @@
         <td th:text="${timeTracking.time}"></td>
         <td th:text="${timeTracking.state}"></td>
         <td>
-            <form action="update" th:object="${updatedTimeTracking}" method="post">
+            <form action="update" th:object="${Model}" method="post">
                 <input type="hidden" name="id" th:value="${timeTracking.id}">
                 <button type="submit">Update</button>
             </form>
         </td>
         <td>
-            <form action="delete" th:object="${deletedTimeTracking}" method="post">
+            <form action="delete" th:object="${Model}" method="post">
                 <input type="hidden" name="id" th:value="${timeTracking.id}">
                 <button type="submit">Delete</button>
             </form>
@@ -30,7 +30,7 @@
     </tr>
     <tr>
         <td>
-            <form action="add" th:object="${addedTimeTracking}" method="post">
+            <form action="add" th:object="${Model}" method="post">
                 <button type="submit">Add TimeTracking</button>
             </form>
         </td>

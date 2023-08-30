@@ -8,25 +8,25 @@
     </thead>
 
     <tbody>
-        <tr th:each="peer, it : ${allPeers}">
+        <tr th:each="peer, it : ${modelList}">
             <td th:text="${it.count}"></td>
             <td th:text="${peer.nickname}"></td>
             <td th:text="${peer.birthday}"></td>
             <td>
-                <form action="update" th:object="${updatedPeer}" method="post">
+                <form action="update" th:object="${Model}" method="post">
                     <input type="hidden" name="nickname" th:value="${peer.nickname}">
                     <button type="submit">Update</button>
                 </form>
             </td>
             <td>
-                <form action="delete" th:object="${deletedPeer}" method="post">
+                <form action="delete" th:object="${Model}" method="post">
                     <input type="hidden" name="nickname" th:value="${peer.nickname}">
                     <button type="submit">Delete</button>
                 </form>
             </td>
         </tr>
 
-        <form action="add" th:object="${addedPeer}" method="post">
+        <form action="add" th:object="${Model}" method="post">
             <button type="submit">Add Peer</button>
         </form>
 

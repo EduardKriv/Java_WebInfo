@@ -8,19 +8,19 @@
     </thead>
 
     <tbody>
-    <tr th:each="xp, it : ${allXp}">
+    <tr th:each="xp, it : ${modelList}">
         <td th:text="${it.count}"></td>
         <td th:text="${xp.id}"></td>
         <td th:text="${xp.check}"></td>
         <td th:text="${xp.xpAmount}"></td>
         <td>
-            <form action="update" th:object="${updatedXp}" method="post">
+            <form action="update" th:object="${Model}" method="post">
                 <input type="hidden" name="id" th:value="${xp.id}">
                 <button type="submit">Update</button>
             </form>
         </td>
         <td>
-            <form action="delete" th:object="${deletedXp}" method="post">
+            <form action="delete" th:object="${Model}" method="post">
                 <input type="hidden" name="id" th:value="${xp.id}">
                 <button type="submit">Delete</button>
             </form>
@@ -28,7 +28,7 @@
     </tr>
     <tr>
         <td>
-            <form action="add" th:object="${addedXp}" method="post">
+            <form action="add" th:object="${Model}" method="post">
                 <button type="submit">Add Xp</button>
             </form>
         </td>

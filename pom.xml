@@ -123,6 +123,11 @@
 			<version>1.0.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.takari</groupId>
+			<artifactId>maven-wrapper</artifactId>
+			<version>0.5.6</version>
+		</dependency>
 
 	</dependencies>
 
@@ -131,14 +136,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-<!--				<configuration>-->
-<!--					<excludes>-->
-<!--						<exclude>-->
-<!--							<groupId>org.projectlombok</groupId>-->
-<!--							<artifactId>lombok</artifactId>-->
-<!--						</exclude>-->
-<!--					</excludes>-->
-<!--				</configuration>-->
 			</plugin>
 
 			<plugin>
@@ -176,38 +173,11 @@
 								<arg>
 									-Amapstruct.defaultComponentModel=spring
 								</arg>
-<!--								<compilerArg>-Amapstruct.defaultComponentModel=spring</compilerArg>-->
 							</compilerArgs>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-<!--///-->
-<!--			<plugin>-->
-<!--				<groupId>org.liquibase</groupId>-->
-<!--				<artifactId>liquibase-maven-plugin</artifactId>-->
-<!--				<version>3.8.1</version>-->
-<!--				<configuration>-->
-<!--					<propertyFile>${project.build.outputDirectory}/liquibase-maven-plugin.properties</propertyFile>-->
-<!--					<systemProperties>-->
-<!--						<user.name>your_liquibase_username</user.name>-->
-<!--					</systemProperties>-->
-<!--					<logging>info</logging>-->
-<!--				</configuration>-->
-<!--				<dependencies>-->
-<!--					<dependency>-->
-<!--						<groupId>org.liquibase.ext</groupId>-->
-<!--						<artifactId>liquibase-hibernate5</artifactId>-->
-<!--						<version>3.6</version>-->
-<!--					</dependency>-->
-<!--					<dependency>-->
-<!--						<groupId>org.springframework.boot</groupId>-->
-<!--						<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--						<version>2.2.0.RELEASE</version>-->
-<!--					</dependency>-->
-<!--				</dependencies>-->
-<!--			</plugin>-->
-
 		</plugins>
 	</build>
 
