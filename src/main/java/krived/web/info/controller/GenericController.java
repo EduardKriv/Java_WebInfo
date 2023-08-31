@@ -25,7 +25,7 @@ public abstract class GenericController<E extends BaseEntity, D extends BaseDto,
     private final Class<D> clazz;
 
     @GetMapping("all")
-    public String allPeers(@NotNull Model model) {
+    public String all(@NotNull Model model) {
         List<D> dtos = genericMapper.toDtos(genericService.getAll());
         model.addAttribute("columnNames", DtoMetaData.getColumnNames(clazz));
         model.addAttribute("tableName", DtoMetaData.getClassName(clazz));
@@ -40,12 +40,10 @@ public abstract class GenericController<E extends BaseEntity, D extends BaseDto,
     }
 
     @PostMapping("update")
-    public String update(@ModelAttribute("Model")@NotNull D dto, @RequestParam("id") T id) {
-//        genericService.update(genericMapper.toEntity(dto));
+    public String update(@ModelAttribute("Model") @NotNull D dto, @RequestParam T id) {
         E entity = genericService.getById(id);
         genericMapper.updateEntityFromDto(dto, entity);
         genericService.update(entity);
-
         return "redirect:all";
     }
 

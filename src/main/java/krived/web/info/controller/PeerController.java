@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
 @Controller
 @RequestMapping("/peer")
 public class PeerController extends GenericController<Peer, PeerDto, String> {
@@ -18,8 +17,9 @@ public class PeerController extends GenericController<Peer, PeerDto, String> {
         super(peerService, peerMapper, PeerDto.class);
     }
 
+    @Override
     @PostMapping("update")
-    public String update(@ModelAttribute("Model")@NotNull PeerDto dto, @RequestParam("nickname") String id) {
-        return super.update(dto, id);
+    public String update(@ModelAttribute("Model") @NotNull PeerDto dto, @RequestParam String nickname) {
+        return super.update(dto, nickname);
     }
 }

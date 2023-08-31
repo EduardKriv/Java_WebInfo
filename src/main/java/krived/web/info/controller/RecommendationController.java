@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/recommendation")
 public class RecommendationController extends GenericController<Recommendation, RecommendationDto, Long> {
     @Autowired
-    public RecommendationController(RecommendationService recService, RecommendationMapper recMapper) {
-        super(recService, recMapper, RecommendationDto.class);
+    public RecommendationController(RecommendationService service, RecommendationMapper mapper) {
+        super(service, mapper, RecommendationDto.class);
     }
 }
