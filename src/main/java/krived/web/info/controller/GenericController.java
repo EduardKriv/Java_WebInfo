@@ -30,7 +30,9 @@ public abstract class GenericController<E extends BaseEntity, D extends BaseDto,
         model.addAttribute("columnNames", DtoMetaData.getColumnNames(clazz));
         model.addAttribute("tableName", DtoMetaData.getClassName(clazz));
         model.addAttribute("modelList", dtos);
-        return "index";
+
+        System.out.println("AAAAaaaAAADRGDGDGGDRGRDGDRGRGRD");
+        return "Таблицы";
     }
 
     @PostMapping("add")

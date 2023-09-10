@@ -1,4 +1,4 @@
 package krived.web.info.model.dto;
 
-public abstract class BaseDto<T> {
+public abstract class BaseDto {
 }

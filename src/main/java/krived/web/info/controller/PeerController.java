@@ -20,6 +20,8 @@ public class PeerController extends GenericController<Peer, PeerDto, String> {
     @Override
     @PostMapping("update")
     public String update(@ModelAttribute("Model") @NotNull PeerDto dto, @RequestParam String nickname) {
+        System.out.println(nickname + "  __NIIIIIICKNAMEEEEEEEE");
+        System.out.println(dto);
         return super.update(dto, nickname);
     }
 }
