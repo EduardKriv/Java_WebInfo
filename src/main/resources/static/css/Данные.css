@@ -1034,3 +1034,7 @@
   transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
   opacity: 1 !important;
 }
+
+ a:hover {
+   color: black;
+ }

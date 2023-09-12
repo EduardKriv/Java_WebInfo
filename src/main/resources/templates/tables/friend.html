@@ -1,37 +1,47 @@
-<table th:fragment="friend">
-    <caption th:text="Friend"></caption>
-    <thead>
+<div th:fragment="friend" style="max-height: 800px; overflow-y: auto;">
+<table class="u-table-entity u-table-entity-1">
+<!--    <caption th:text="Friend"></caption>-->
+    <thead class="u-align-center u-black u-table-header u-table-header-1">
         <tr>
-            <th>№</th>
-            <th th:each="name : ${columnNames}" th:text="${name}"></th>
+            <th class="u-border-1 u-border-black u-table-cell">№</th>
+            <th class="u-border-1 u-border-black u-table-cell"
+                th:each="name : ${columnNames}" th:text="${name}"></th>
+
+            <th class="u-border-1 u-border-black u-table-cell">update</th>
+            <th class="u-border-1 u-border-black u-table-cell">delete</th>
         </tr>
     </thead>
 
-    <tbody>
+    <tbody class="u-align-center u-table-body u-white u-table-body-1">
     <tr th:each="friend, it : ${modelList}">
-        <td th:text="${it.count}"></td>
-        <td th:text="${friend.id}"></td>
-        <td th:text="${friend.peer1}"></td>
-        <td th:text="${friend.peer2}"></td>
-        <td>
-            <form action="update" method="post">
-                <input type="hidden" th:name="id" th:value="${friend.id}">
-                <button type="submit">Update</button>
-            </form>
-        </td>
-        <td>
-            <form action="delete" th:object="${Model}" method="post">
-                <input type="hidden" name="id" th:value="${friend.id}">
-                <button type="submit">Delete</button>
-            </form>
-        </td>
+        <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${friend.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${friend.peer1}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${friend.peer2}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-icon-1"><img href="#sec-0df4" src="/images/update-image.png" alt=""></span></td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/delete-image.png" alt=""></span></td>
+
+        <!--        <td>-->
+<!--            <form action="update" method="post">-->
+<!--                <input type="hidden" th:name="id" th:value="${friend.id}">-->
+<!--                <button type="submit">Update</button>-->
+<!--            </form>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--            <form action="delete" th:object="${Model}" method="post">-->
+<!--                <input type="hidden" name="id" th:value="${friend.id}">-->
+<!--                <button type="submit">Delete</button>-->
+<!--            </form>-->
+<!--        </td>-->
     </tr>
-    <tr>
-        <td>
-            <form action="add" th:object="${Model}" method="post">
-                <button type="submit">Add Friend</button>
-            </form>
-        </td>
-    </tr>
+<!--    <tr>-->
+<!--        <td>-->
+<!--            <form action="add" th:object="${Model}" method="post">-->
+<!--                <button type="submit">Add Friend</button>-->
+<!--            </form>-->
+<!--        </td>-->
+<!--    </tr>-->
     </tbody>
 </table>
+</div>

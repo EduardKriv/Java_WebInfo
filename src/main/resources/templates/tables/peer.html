@@ -1,14 +1,14 @@
-<div th:fragment="peer">
-<table id="table-peer" class="u-table-entity u-table-entity-1" >
+<div th:fragment="peer" style="max-height: 800px; overflow-y: auto;">
+<table id="table-peer" class="u-table-entity u-table-entity-1">
 <!--    <caption th:text="Peer"></caption>-->
-    <thead class="u-black u-table-header u-table-header-1">
+    <thead class="u-align-center u-black u-table-header u-table-header-1">
         <tr>
             <th class="u-border-1 u-border-black u-table-cell">№</th>
             <th class="u-border-1 u-border-black u-table-cell"
                 th:each="name : ${columnNames}" th:text="${name}"></th>
 
-            <th style="max-width: 155px;" class="u-border-1 u-border-black u-table-cell">Update</th>
-            <th class="u-border-1 u-border-black u-table-cell">Delete</th>
+            <th class="u-border-1 u-border-black u-table-cell">update</th>
+            <th class="u-border-1 u-border-black u-table-cell">delete</th>
         </tr>
     </thead>
 
@@ -17,26 +17,9 @@
             <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
             <td th:text="${peer.nickname}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
             <td th:text="${peer.birthday}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-<!--            <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-9">-->
-<!--&lt;!&ndash;                <form th:action="@{update}" th:object="${Model}" id="update-form" method="post">&ndash;&gt;-->
-<!--                    <input class="teeest" type="hidden" name="nickname" th:value="${peer.nickname}">-->
-<!--&lt;!&ndash;                    <button type="submit">Update</button>&ndash;&gt;-->
-<!--                    <a data-type="edit" class="u-active-none u-border-none u-btn u-button-link u-button-style u-dialog-link u-hover-none u-none u-text-palette-1-base" href="#sec-0df4">Description</a>-->
-<!--&lt;!&ndash;                </form>&ndash;&gt;-->
 
-<!--            </td>-->
-<!--            <td class="u-border-3 u-border-grey-30 u-table-cell u-table-cell-6">-->
-<!--&lt;!&ndash;                <form action="delete" th:object="${Model}" method="post">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input type="hidden" name="nickname" th:value="${peer.nickname}">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <button type="submit">Delete</button>&ndash;&gt;-->
-<!--&lt;!&ndash;                </form>&ndash;&gt;-->
-<!--            </td>-->
-
-                <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-icon-1"><img src="/images/860814.png" alt=""></span>
-                </td>
-                <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/3597073-85676e24.png" alt=""></span>
-                </td>
-
+            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-icon-1"><img href="#sec-0df4" src="/images/update-image.png" alt=""></span></td>
+            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/delete-image.png" alt=""></span></td>
         </tr>
 
 <!--        <form action="add" th:object="${Model}" method="post">-->
@@ -80,7 +63,8 @@
 </section>
     <script type="text/javascript" src="../static/js/peer_modal.js" defer="" th:src="@{/js/peer_modal.js}"></script>
 
-    <style>.u-dialog-section-8 .u-dialog-1 {
+<style>
+.u-dialog-section-8 .u-dialog-1 {
     width: 683px;
     min-height: 343px;
     height: auto;

@@ -1,39 +1,49 @@
-<table th:fragment="timetracking">
-    <caption th:text="TimeTracking"></caption>
-    <thead>
+<div th:fragment="timetracking" style="max-height: 800px; overflow-y: auto;">
+<table class="u-table-entity u-table-entity-1">
+<!--    <caption th:text="TimeTracking"></caption>-->
+    <thead class="u-align-center u-black u-table-header u-table-header-1">
         <tr>
-            <th>№</th>
-            <th th:each="name : ${columnNames}" th:text="${name}"></th>
+            <th class="u-border-1 u-border-black u-table-cell">№</th>
+            <th class="u-border-1 u-border-black u-table-cell"
+                th:each="name : ${columnNames}" th:text="${name}"></th>
+
+            <th class="u-border-1 u-border-black u-table-cell">update</th>
+            <th class="u-border-1 u-border-black u-table-cell">delete</th>
         </tr>
     </thead>
 
-    <tbody>
-    <tr th:each="timeTracking, it : ${modelList}">
-        <td th:text="${it.count}"></td>
-        <td th:text="${timeTracking.id}"></td>
-        <td th:text="${timeTracking.peer}"></td>
-        <td th:text="${timeTracking.date}"></td>
-        <td th:text="${timeTracking.time}"></td>
-        <td th:text="${timeTracking.state}"></td>
-        <td>
-            <form action="update" th:object="${Model}" method="post">
-                <input type="hidden" name="id" th:value="${timeTracking.id}">
-                <button type="submit">Update</button>
-            </form>
-        </td>
-        <td>
-            <form action="delete" th:object="${Model}" method="post">
-                <input type="hidden" name="id" th:value="${timeTracking.id}">
-                <button type="submit">Delete</button>
-            </form>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <form action="add" th:object="${Model}" method="post">
-                <button type="submit">Add TimeTracking</button>
-            </form>
-        </td>
-    </tr>
+    <tbody class="u-align-center u-table-body u-white u-table-body-1">
+        <tr th:each="timeTracking, it : ${modelList}">
+            <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+            <td th:text="${timeTracking.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+            <td th:text="${timeTracking.peer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+            <td th:text="${timeTracking.date}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+            <td th:text="${timeTracking.time}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+            <td th:text="${timeTracking.state}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+
+            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-icon-1"><img href="#sec-0df4" src="/images/update-image.png" alt=""></span></td>
+            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/delete-image.png" alt=""></span></td>
+
+            <!--            <td>-->
+<!--                <form action="update" th:object="${Model}" method="post">-->
+<!--                    <input type="hidden" name="id" th:value="${timeTracking.id}">-->
+<!--                    <button type="submit">Update</button>-->
+<!--                </form>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--                <form action="delete" th:object="${Model}" method="post">-->
+<!--                    <input type="hidden" name="id" th:value="${timeTracking.id}">-->
+<!--                    <button type="submit">Delete</button>-->
+<!--                </form>-->
+<!--            </td>-->
+        </tr>
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <form action="add" th:object="${Model}" method="post">-->
+<!--                    <button type="submit">Add TimeTracking</button>-->
+<!--                </form>-->
+<!--            </td>-->
+<!--        </tr>-->
     </tbody>
 </table>
+</div>
