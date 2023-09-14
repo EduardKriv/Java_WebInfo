@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Table(name = "procedures")
 @EqualsAndHashCode(callSuper = false)
-public class CallBody extends BaseEntity {
+public class CallBody extends BaseEntity<Long> {
     @Id
     @Column(name = "id")
     private Long id;

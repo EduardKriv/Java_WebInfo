@@ -11,7 +11,7 @@ import java.time.LocalTime;
 @Data
 @Table(name = "time_tracking")
 @EqualsAndHashCode(callSuper = false)
-public class TimeTracking extends BaseEntity {
+public class TimeTracking extends BaseEntity<Long> {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

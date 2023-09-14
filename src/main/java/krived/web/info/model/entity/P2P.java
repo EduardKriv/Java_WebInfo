@@ -10,7 +10,7 @@ import java.time.LocalTime;
 @Data
 @Table(name = "p2p")
 @EqualsAndHashCode(callSuper = false)
-public class P2P extends BaseEntity {
+public class P2P extends BaseEntity<Long> {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

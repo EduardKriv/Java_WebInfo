@@ -47,3 +47,14 @@
     </tbody>
 </table>
 </div>
+
+<div th:fragment="p2p-new">
+    <div class="form-floating mb-3">
+        <input type="number" class="form-control" name="nickname" id="peerNickname" placeholder="Nickname" required>
+        <label for="peerNickname">Nickname</label>
+    </div>
+    <div class="form-floating">
+        <input type="date" class="form-control" name="birthday" id="peerBirthday" placeholder="Birthday" required>
+        <label for="peerBirthday">Birthday</label>
+    </div>
+</div>

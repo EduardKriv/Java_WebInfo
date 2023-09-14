@@ -28,3 +28,20 @@ function showModal(editData) {
     name.value = editData.nickname;
   console.log(editData.birthday);
 }
+
+function getResult() {
+    const promise = axios.get(`/peer/all_id`, {
+        // params: {
+        //     expr: value,
+        //     x: x_value
+        // }
+    });
+    alert("ALALAL");
+    return promise.then((resp) => {
+        return resp.data;
+    });
+}
+alert("AGA");
+const selectPeer = document.getElementById('selectPeer');
+
+selectPeer.addEventListener('click', getResult);

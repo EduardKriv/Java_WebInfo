@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @Table(name = "tasks")
 @EqualsAndHashCode(callSuper = true)
-public class Task extends BaseEntity {
+public class Task extends BaseEntity<String> {
     @Id
     @Column(name = "title")
     private String title;
@@ -19,4 +19,9 @@ public class Task extends BaseEntity {
 
     @Column(name = "max_xp")
     private Integer maxXp;
+
+    @Override
+    public String getId() {
+        return title;
+    }
 }

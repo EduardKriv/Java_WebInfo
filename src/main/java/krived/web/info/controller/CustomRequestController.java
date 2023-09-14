@@ -16,7 +16,7 @@ import java.time.LocalDate;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/custom_request")
+@RequestMapping
 public class CustomRequestController {
     private final CustomRequestService customRequestService;
     private ModelCustomTable customTable;
@@ -56,6 +56,6 @@ public class CustomRequestController {
         model.addAttribute("tableName", "requests");
         model.addAttribute("columnNames", customTable.getColumnNames());
         model.addAttribute("resultSet", customTable.getTableBody());
-        return "index";
+        return "result-table";
     }
 }

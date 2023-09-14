@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Data
 @Table(name = "checks")
 @EqualsAndHashCode(callSuper=false)
-public class Check extends BaseEntity {
+public class Check extends BaseEntity<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

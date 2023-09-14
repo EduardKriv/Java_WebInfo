@@ -10,7 +10,7 @@ import java.time.LocalTime;
 @Data
 @Table(name = "verter")
 @EqualsAndHashCode(callSuper = false)
-public class Verter extends BaseEntity {
+public class Verter extends BaseEntity<Long> {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

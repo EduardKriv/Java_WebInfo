@@ -19,7 +19,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public abstract class GenericController<E extends BaseEntity, D extends BaseDto, T> {
+public abstract class GenericController<E extends BaseEntity<T>, D extends BaseDto, T> {
     protected final GenericService<E, T> genericService;
     protected final GenericMapper<E, D> genericMapper;
     private final Class<D> clazz;
@@ -30,9 +30,18 @@ public abstract class GenericController<E extends BaseEntity, D extends BaseDto,
         model.addAttribute("columnNames", DtoMetaData.getColumnNames(clazz));
         model.addAttribute("tableName", DtoMetaData.getClassName(clazz));
         model.addAttribute("modelList", dtos);
-
+//        List<T> id = genericService.getAll().stream().map(Peer::getId).toList();
+//        model.addAttribute("idList", id);
         System.out.println("AAAAaaaAAADRGDGDGGDRGRDGDRGRGRD");
         return "Таблицы";
+    }
+
+    @ResponseBody
+    @GetMapping("all_id")
+    public List<T> allId() {
+        System.out.println("IDIDIDIIDID");
+
+        return genericService.getAll().stream().map(BaseEntity::getId).toList();
     }
 
     @PostMapping("add")

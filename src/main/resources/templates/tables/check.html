@@ -1,18 +1,18 @@
-<div th:fragment="check" style="max-height: 800px; overflow-y: auto;">
+<!--<div th:fragment="check" style="max-height: 800px; overflow-y: auto;">-->
     <table class="u-table-entity u-table-entity-1">
 <!--        <caption th:text="Check"></caption>-->
     <thead class="u-align-center u-black u-table-header u-table-header-1">
         <tr>
-            <th class="u-border-1 u-border-black u-table-cell">№</th>
+            <th class="u-border-1 u-border-black u-table-cell" style="width: 50px;">#</th>
             <th class="u-border-1 u-border-black u-table-cell"
                 th:each="name : ${columnNames}" th:text="${name}"></th>
 
-            <th class="u-border-1 u-border-black u-table-cell">update</th>
-            <th class="u-border-1 u-border-black u-table-cell">delete</th>
+            <th class="u-border-1 u-border-black u-table-cell" style="width: 100px;">update</th>
+            <th class="u-border-1 u-border-black u-table-cell" style="width: 100px;">delete</th>
         </tr>
     </thead>
 
-    <tbody class="u-align-center u-table-body u-white u-table-body-1">
+    <tbody th:fragment="check" class="u-align-center u-table-body u-white u-table-body-1">
         <tr
             th:each="check, it : ${modelList}">
             <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
@@ -47,4 +47,15 @@
 <!--        </tr>-->
     </tbody>
     </table>
+<!--</div>-->
+
+<div th:fragment="check-new">
+    <select name="peer" class="form-select form-select-sm mb-3 peer-select" aria-label=".form-select-sm"></select>
+    <select name="task" class="form-select form-select-sm mb-3 task-select" aria-label=".form-select-sm"></select>
+
+    <div class="form-floating">
+        <input type="date" class="form-control" name="date" id="checkDate" placeholder="Date" required>
+        <label for="checkDate">Date</label>
+    </div>
 </div>
+<!--<script type="text/javascript" src="../static/js/peer_modal.js" defer="" th:src="@{/js/peer_modal.js}"></script>-->

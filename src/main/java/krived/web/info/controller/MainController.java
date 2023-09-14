@@ -19,4 +19,9 @@ public class MainController {
     public String mainPage(Model model) {
         return "Главная";
     }
+
+    @GetMapping("/procedures_block.html")
+    public String operation(Model model) {
+        return "procedures_block";
+    }
 }

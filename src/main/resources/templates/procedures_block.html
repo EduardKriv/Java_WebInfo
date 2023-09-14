@@ -1,118 +1,1438 @@
-<div th:fragment="procedures_block" style="display: flex">
-    <form action="/custom_request/proc/1">
-        <button type="submit">___1___</button>
-    </form>
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="ru"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>procedures_block</title>
 
-    <form action="/custom_request/proc/2">
-        <button type="submit">___2___</button>
-    </form>
+    <link rel="stylesheet" href="/css/nicepage.css" th:href="@{/css/nicepage.css}">
+    <link rel="stylesheet" href="/css/procedures_block.css" th:href="@{/css/procedures_block.css}">
+    <script class="u-script" type="text/javascript" src="/js/jquery.js" defer="" th:src="@{/js/jquery.js}"></script>
+    <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer="" th:src="@{/js/nicepage.js}"></script>
+    <script class="u-script" type="text/javascript" src="/js/procedures_block.js" defer="" th:src="@{/js/procedures_block.js}"></script>
 
-    <form action="/custom_request/proc/3">
-        <label>
-            <input required="required" type="date" th:value="2022-09-21" th:name="date">
-        </label>
-        <button type="submit">___3___</button>
-    </form>
+    <meta name="generator" content="Nicepage 5.17.1, nicepage.com">
+    <meta name="referrer" content="origin">
+    
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
-    <form action="/custom_request/proc/4">
-        <button type="submit">___4___</button>
-    </form>
+<body class="u-body u-xl-mode" data-lang="ru">
+  <div th:replace="~{headerTest :: headerTest}"></div>
 
-    <form action="/custom_request/proc/5">
-        <button type="submit">___5___</button>
-    </form>
+  <section class="u-carousel u-carousel-duration-1000 u-slide u-block-4691-1" id="carousel-42d2" data-interval="60000" data-u-ride="false">
+      <ol class="u-absolute-hcenter u-carousel-indicators u-block-4691-4">
+        <li data-u-target="#carousel-42d2" class="u-active u-grey-30" data-u-slide-to="0"></li>
+        <li data-u-target="#carousel-42d2" class="u-grey-30" data-u-slide-to="1"></li>
+        <li data-u-target="#carousel-42d2" class="u-grey-30" data-u-slide-to="2"></li>
+        <li data-u-target="#carousel-42d2" class="u-grey-30" data-u-slide-to="3"></li>
+        <li data-u-target="#carousel-42d2" class="u-grey-30" data-u-slide-to="4"></li>
+      </ol>
+      <div class="u-carousel-inner" role="listbox">
+        <div class="u-active u-carousel-item u-clearfix u-section-1-1">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-expanded-width u-layout-grid u-list u-list-1">
+              <div class="u-repeater u-repeater-1">
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-container-layout-1">
+                    <h3 class="u-align-left u-text u-text-default u-text-1"> TransferredPoints в более человекочитаемом виде №1<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
+                    <p class="u-align-left u-text u-text-2"> Количество отрицательное, если пир 2 получил от пира 1 больше поинтов.</p>
+                    <a href="/proc/1" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-1" rel="nofollow">Run<br>
+                    </a>
+                  </div>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-container-layout-2">
+                    <h3 class="u-align-left u-text u-text-default u-text-3"> Успешные проверки №2<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-2"></div>
+                    <p class="u-align-left u-text u-text-4"> Только задания, успешно прошедшие проверку.</p>
+                    <a href="/proc/2" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-container-layout-3">
+                    <h3 class="u-align-left u-text u-text-default u-text-5"> Пиры не выходившие из кампуса в течении дня №3<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-3"></div>
+                    <p class="u-align-left u-text u-text-6"> Функция возвращает только список пиров. Параметры функции: день, например 12.05.2022.</p>
+                    <a href="#sec-0d66" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-3"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-container-layout-4">
+                    <h3 class="u-align-left u-text u-text-default u-text-7"> Процент успешных и неуспешных проверок за всё время №4<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-4"></div>
+                    <p class="u-align-left u-text u-text-8"> Процент успешных, процент неуспешных.</p>
+                    <a href="/proc/4" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-4"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-container-layout-5">
+                    <h3 class="u-align-left u-text u-text-default u-text-9"> Пиры и изменение в количестве пир поинтов пиров по таблице TransferredPoints №5<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-5"></div>
+                    <p class="u-align-left u-text u-text-10"> Ник пира, изменение в количество пир поинтов, в отсортированным по изменению числа поинтов.</p>
+                    <a href="/proc/5" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-5"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-container-layout-6">
+                    <h3 class="u-align-left u-text u-text-default u-text-11"> Пиры и изменение в количестве пир поинтов пиров по таблице TransferredPoints в человекочитаемом виде&nbsp;№6<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-6"></div>
+                    <p class="u-align-left u-text u-text-12"> Ник пира, изменение в количество пир поинтов, в отсортированным по изменению числа поинтов.</p>
+                    <a href="/proc/6" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-6"> Run</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="u-carousel-item u-clearfix u-section-1-2">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-expanded-width u-layout-grid u-list u-list-1">
+              <div class="u-repeater u-repeater-1">
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
+                    <h3 class="u-align-left u-text u-text-default u-text-1">
+                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1" data-href="https://nicepage.com"> Cамое часто проверяемое задание&nbsp;№7</a>
+                      <br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
+                    <p class="u-align-left u-text u-text-2"> При одинаковом количестве проверок каких-то заданий в определенный день, выведутся все. Формат вывода: день, название задания.</p>
+                    <a href="/proc/7" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2">Run<br>
+                    </a>
+                  </div>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
+                    <h3 class="u-align-left u-text u-text-default u-text-3"> Длительность последней P2P проверки&nbsp;№8<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-2"></div>
+                    <p class="u-align-left u-text u-text-4"> Под длительностью подразумевается разница между временем, указанным в записи со статусом "начало", и временем, указанным в записи со статусом "успех" или "неуспех". Формат вывода: длительность проверки</p>
+                    <a href="/proc/8" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-3"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
+                    <h3 class="u-align-left u-text u-text-default u-text-5"> Пиры завершившие определенный блок заданий&nbsp;№9<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-3"></div>
+                    <p class="u-align-left u-text u-text-6"> Параметры процедуры: название блока, например "CPP". Результат выдется отсортированным по дате завершения. Формат вывода: ник пира, дата завершения блока.</p>
+                    <a href="#sec-5f04" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-4"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4">
+                    <h3 class="u-align-left u-text u-text-default u-text-7"> Наиболее рекомендуемые друзьями&nbsp;пиры&nbsp;№10<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-4"></div>
+                    <p class="u-align-left u-text u-text-8"> Определяется исходя из рекомендаций друзей пира, т.е. найдется пир, проверяться у которого рекомендует наибольшее число друзей. Формат вывода: ник пира, ник найденного проверяющего.</p>
+                    <a href="/proc/10" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-5"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-5">
+                    <h3 class="u-align-left u-text u-text-default u-text-9"> Процент пиров, приступивших к блокам заданий&nbsp;№11</h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-5"></div>
+                    <p class="u-align-left u-text u-text-10"> Параметры процедуры: название блока 1, например CPP, название блока 2, например A. Формат вывода: процент приступивших к первому блоку, процент приступивших ко второму блоку, процент приступивших к обоим, процент не приступивших ни к одному.</p>
+                    <a href="#sec-a739" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-6"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-6">
+                    <h3 class="u-align-left u-text u-text-default u-text-11"> N пиров с наибольшим числом друзей&nbsp;№12</h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-6"></div>
+                    <p class="u-align-left u-text u-text-12"> Параметры процедуры: количество пиров N. Результат выведется отсортированным по кол-ву друзей. Формат вывода: ник пира, количество друзей.</p>
+                    <a href="#sec-d330" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-7"> Run</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="u-carousel-item u-clearfix u-section-1-3">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-expanded-width u-layout-grid u-list u-list-1">
+              <div class="u-repeater u-repeater-1">
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
+                    <h3 class="u-align-left u-text u-text-default u-text-1">
+                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1" data-href="https://nicepage.com"> Процент пиров, успешно прошедших проверку в день рождения №13</a>
+                      <br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
+                    <p class="u-align-left u-text u-text-2"> Определяет процент пиров, которые хоть раз проваливали проверку в свой день рождения. Формат вывода: процент успехов в день рождения, процент неуспехов в день рождения.</p>
+                    <a href="/proc/13" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2">Run<br>
+                    </a>
+                  </div>
+                </div>
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
+                    <h3 class="u-align-left u-text u-text-default u-text-3"> Кол-во XP, полученное в сумме каждым пиром №14<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-2"></div>
+                    <p class="u-align-left u-text u-text-4"> Если одна задача выполнена несколько раз, полученное за нее кол-во XP равно максимальному за эту задачу. Результат выдется отсортированным по кол-ву XP. Формат вывода: ник пира, количество XP.</p>
+                    <a href="/proc/14" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-3"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
+                    <h3 class="u-align-left u-text u-text-default u-text-5"> Пиры сдавшие задания 1 и 2, но не сдавшие 3 №15<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-3"></div>
+                    <p class="u-align-left u-text u-text-6"> Параметры процедуры: названия заданий 1, 2 и 3. Формат вывода: список пиров.</p>
+                    <a href="#sec-ca41" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-4"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4">
+                    <h3 class="u-align-left u-text u-text-default u-text-7"> Кол-во предшествующих задач для необходимых старта задания №16<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-4"></div>
+                    <p class="u-align-left u-text u-text-8"> Cколько задач нужно выполнить, исходя из условий входа, чтобы получить доступ к текущей. Формат вывода: название задачи, количество предшествующих.</p>
+                    <a href="/proc/16" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-5"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-5">
+                    <h3 class="u-align-left u-text u-text-default u-text-9"> Найти "удачные" дни c N идущих подряд успешных проверок №17<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-5"></div>
+                    <p class="u-align-left u-text u-text-10"> Параметры процедуры: количество идущих подряд успешных проверок N. Временем проверки считается время начала P2P этапа. Под идущими подряд успешными проверками подразумеваются успешные проверки, между которыми нет неуспешных. При этом кол-во опыта за каждую из этих проверок должно быть не меньше 80% от максимального. Формат вывода: список дней.</p>
+                    <a href="#sec-34de" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-6"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-6">
+                    <h3 class="u-align-left u-text u-text-default u-text-11"> Определить пира с наибольшим числом выполненных заданий №18</h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-6"></div>
+                    <p class="u-align-left u-text u-text-12"> Формат вывода: ник пира, число выполненных заданий.</p>
+                    <a href="/proc/18" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-7"> Run</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="u-carousel-item u-clearfix u-section-1-4">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-expanded-width u-layout-grid u-list u-list-1">
+              <div class="u-repeater u-repeater-1">
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
+                    <h3 class="u-align-left u-text u-text-default u-text-1">
+                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1" data-href="https://nicepage.com"> Определить пира с наибольшим количеством XP&nbsp;№19</a>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
+                    <p class="u-align-left u-text u-text-2"> Формат вывода: ник пира, количество XP.</p>
+                    <a href="/proc/19" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2">Run<br>
+                    </a>
+                  </div>
+                </div>
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
+                    <h3 class="u-align-left u-text u-text-default u-text-3"> Определить пира, который провел сегодня в кампусе больше всего времени&nbsp;№20<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-2"></div>
+                    <p class="u-align-left u-text u-text-4"> Формат вывода: ник пира.</p>
+                    <a href="/proc/20" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-3"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
+                    <h3 class="u-align-left u-text u-text-default u-text-5"> Определить пиров, приходивших раньше заданного времени не менее N раз за всё время&nbsp;№21<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-3"></div>
+                    <p class="u-align-left u-text u-text-6"> Параметры процедуры: время, количество раз N. Формат вывода: список пиров.</p>
+                    <a href="#sec-b696" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-4"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4">
+                    <h3 class="u-align-left u-text u-text-default u-text-7"> Определить пиров, выходивших за последние N дней из кампуса больше M раз&nbsp;№22<br>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-4"></div>
+                    <p class="u-align-left u-text u-text-8"> Параметры процедуры: количество дней N, количество раз M. Формат вывода: список пиров.</p>
+                    <a href="#sec-6e26" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-5"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-5">
+                    <h3 class="u-align-left u-text u-text-default u-text-9"> Определить пира, который пришел сегодня последним&nbsp;№23</h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-5"></div>
+                    <p class="u-align-left u-text u-text-10"> Формат вывода: ник пира.</p>
+                    <a href="/proc/23" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-6"> Run</a>
+                  </div>
+                </div>
+                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-6">
+                    <h3 class="u-align-left u-text u-text-default u-text-11"> Определить пиров, которые выходили вчера из кампуса больше чем на N минут №24</h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-6"></div>
+                    <p class="u-align-left u-text u-text-12"> Параметры процедуры: количество минут N. Формат вывода: список пиров.</p>
+                    <a href="#sec-0ac8" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-7"> Run</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="u-carousel-item u-clearfix u-section-1-5">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-layout-grid u-list u-list-1">
+              <div class="u-repeater u-repeater-1">
+                <div class="u-container-style u-custom-item u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                  <div class="u-container-layout u-similar-container u-container-layout-1">
+                    <h3 class="u-align-left u-custom-item u-text u-text-default u-text-1">
+                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1" data-href="https://nicepage.com"> Определить для каждого месяца процент ранних входов №25</a>
+                    </h3>
+                    <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
+                    <p class="u-align-left u-custom-item u-text u-text-2">Сколько раз люди, родившиеся в этот месяц, приходили в кампус за всё время, приходили в кампус раньше 12:00 за всё время, процент ранних входов в кампус относительно общего числа входов. Формат вывода: месяц, процент ранних входов.</p>
+                    <a href="/proc/25" class="u-align-left u-black u-btn u-button-style u-custom-item u-hover-feature u-btn-2">Run<br>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-icon-rectangle u-text-grey-30 u-block-4691-8" href="#carousel-42d2" role="button" data-u-slide="prev">
+        <span aria-hidden="true">
+          <svg class="u-svg-link" viewBox="0 0 477.175 477.175"><path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+                    c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z"></path></svg>
+        </span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-icon-rectangle u-text-grey-30 u-block-4691-9" href="#carousel-42d2" role="button" data-u-slide="next">
+        <span aria-hidden="true">
+          <svg class="u-svg-link" viewBox="0 0 477.175 477.175"><path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5
+                    c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z"></path></svg>
+        </span>
+        <span class="sr-only">Следующий</span>
+      </a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </section>
+    <section class="u-clearfix u-section-2" id="sec-d7d3">
+      <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
+         <div id="query_div">
+            <form action="/query">
+                <textarea id="textArea" name="query" placeholder="Enter here your query"></textarea>
+                <button type="submit" class="black_submit_button">Отправить</button>
+            </form>
+          </div>
 
-    <form action="/custom_request/proc/6">
-        <button type="submit">___6___</button>
-    </form>
+      </div>
+    </section>
 
-    <form action="/custom_request/proc/7">
-        <button type="submit">___7___</button>
-    </form>
+    <span style="height: 64px; width: 64px; margin-left: 0px; margin-right: auto; margin-top: 0px; background-image: none; right: 20px; bottom: 20px; padding: 15px" class="u-back-to-top u-black u-icon u-icon-circle u-opacity u-opacity-85" data-href="#">
+        <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 551.13 551.13"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d98"></use></svg>
+        <svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98"><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
+    </span>
+  <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-dialog-section-6" id="sec-0d66">
+    <div class="u-align-center u-container-style u-dialog u-grey-5 u-dialog-1">
+      <div class="u-container-layout u-container-layout-1">
+        <h6 class="u-align-center u-text u-text-1"> Пиры не выходившие из кампуса в течении дня</h6>
+        <div class="u-align-center u-form u-form-1">
 
-    <form action="/custom_request/proc/8">
-        <button type="submit">___8___</button>
-    </form>
+          <form action="/proc/3">
+            <label>
+              <input required="required" type="date" th:name="date" class="u-input u-input-rectangle u-input-1">
+            </label>
+            <button type="submit" class="black_submit_button">Submit</button>
+          </form>
 
-    <form action="/custom_request/proc/9">
-        <input type="hidden" th:value="CPP" name="args">
-        <button type="submit">___9___</button>
-    </form>
+        </div>
+      </div><button class="u-dialog-close-button u-icon u-text-grey-40 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 348.333 348.334" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-9711"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 348.333 348.334" x="0px" y="0px" id="svg-9711" style="enable-background:new 0 0 348.333 348.334;"><g><path d="M336.559,68.611L231.016,174.165l105.543,105.549c15.699,15.705,15.699,41.145,0,56.85   c-7.844,7.844-18.128,11.769-28.407,11.769c-10.296,0-20.581-3.919-28.419-11.769L174.167,231.003L68.609,336.563   c-7.843,7.844-18.128,11.769-28.416,11.769c-10.285,0-20.563-3.919-28.413-11.769c-15.699-15.698-15.699-41.139,0-56.85   l105.54-105.549L11.774,68.611c-15.699-15.699-15.699-41.145,0-56.844c15.696-15.687,41.127-15.687,56.829,0l105.563,105.554   L279.721,11.767c15.705-15.687,41.139-15.687,56.832,0C352.258,27.466,352.258,52.912,336.559,68.611z"></path>
+</g></svg></button>
+    </div>
+  </section>
 
-    <form action="/custom_request/proc/10">
-        <button type="submit">___10___</button>
-    </form>
+<style>
 
-    <form action="/custom_request/proc/11">
-        <input type="hidden" th:value="D0" name="args">
-        <input type="hidden" th:value="C" name="args">
-        <button type="submit">___11___</button>
-    </form>
+.u-dialog-section-6 .u-dialog-1 {
+  width: 640px;
+  height: auto;
+  min-height: 360px;
+  box-shadow: 2px 2px 8px 0px rgba(128,128,128,1);
+  margin: 60px auto;
+}
 
-    <form action="/custom_request/proc/12">
-        <input type="hidden" th:value="7" name="args">
-        <button type="submit">___12___</button>
-    </form>
+.u-dialog-section-6 .u-container-layout-1 {
+  padding: 0 19px 30px;
+}
 
-    <form action="/custom_request/proc/13">
-        <button type="submit">___13___</button>
-    </form>
+.u-dialog-section-6 .u-text-1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 58px auto 0;
+}
 
-    <form action="/custom_request/proc/14">
-        <button type="submit">___14___</button>
-    </form>
+.u-dialog-section-6 .u-form-1 {
+  height: 166px;
+  width: 496px;
+  margin: 40px 53px 0;
+}
 
-    <form action="/custom_request/proc/15">
-        <input type="hidden" th:value="C4_Math" name="args">
-        <input type="hidden" th:value="C5_Decimal" name="args">
-        <input type="hidden" th:value="DO1_Linux" name="args">
-        <button type="submit">___15___</button>
-    </form>
+.u-dialog-section-6 .u-form-group-1 {
+  margin-left: 0;
+}
 
-    <form action="/custom_request/proc/16">
-        <button type="submit">___16___</button>
-    </form>
+.u-dialog-section-6 .u-input-1 {
+  margin-left: 0;
+}
 
-    <form action="/custom_request/proc/17">
-        <input type="hidden" th:value="8" name="args">
-        <button type="submit">___17___</button>
-    </form>
+.u-dialog-section-6 .u-btn-1 {
+  text-transform: uppercase;
+  border-style: solid;
+}
 
-    <form action="/custom_request/proc/18">
-        <button type="submit">___18___</button>
-    </form>
+.u-dialog-section-6 .u-icon-1 {
+  width: 16px;
+  height: 16px;
+  left: auto;
+  top: 17px;
+  position: absolute;
+  right: 16px;
+}
 
-    <form action="/custom_request/proc/19">
-        <button type="submit">___19___</button>
-    </form>
+@media (max-width: 1199px) {
+  .u-dialog-section-6 .u-form-1 {
+    margin-right: -2px;
+    margin-left: 3px;
+    width: 496px;
+  }
+}
 
-    <form action="/custom_request/proc/20">
-        <button type="submit">___20___</button>
-    </form>
+@media (max-width: 991px) {
+  .u-dialog-section-6 .u-form-1 {
+    width: 643px;
+    margin-right: 7px;
+    margin-left: 53px;
+  }
+}
 
-    <form action="/custom_request/proc/21">
-        <input type="hidden" th:value="'13:00:00'" name="args">
-        <input type="hidden" th:value="2" name="args">
-        <button type="submit">___21___</button>
-    </form>
+@media (max-width: 767px) {
+  .u-dialog-section-6 .u-dialog-1 {
+    width: 540px;
+  }
 
-    <form action="/custom_request/proc/22">
-        <input type="hidden" th:value="1" name="args">
-        <input type="hidden" th:value="2" name="args">
-        <button type="submit">___22___</button>
-    </form>
+  .u-dialog-section-6 .u-container-layout-1 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 
-    <form action="/custom_request/proc/23">
-        <button type="submit">___23___</button>
-    </form>
+  .u-dialog-section-6 .u-text-1 {
+    margin-top: 0;
+  }
 
-    <form action="/custom_request/proc/24">
-        <input type="hidden" th:value="120" name="args">
-        <button type="submit">___24___</button>
-    </form>
+  .u-dialog-section-6 .u-form-1 {
+    width: 480px;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
 
-    <form action="/custom_request/proc/25">
-        <button type="submit">___25___</button>
-    </form>
+@media (max-width: 575px) {
+  .u-dialog-section-6 .u-dialog-1 {
+    width: 340px;
+  }
 
-</div>
+  .u-dialog-section-6 .u-container-layout-1 {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .u-dialog-section-6 .u-text-1 {
+    margin-top: 78px;
+  }
+
+  .u-dialog-section-6 .u-form-1 {
+    width: 300px;
+    margin-top: 138px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}</style>
+
+  <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-dialog-section-7" id="sec-5f04">
+    <div class="u-align-center u-container-style u-dialog u-white u-dialog-1">
+      <div class="u-container-layout u-container-layout-1">
+        <h6 class="u-align-center u-text u-text-default u-text-1"></h6>
+        <h6 class="u-align-center u-text u-text-2" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction=""> Пиры завершившие определенный блок заданий</h6>
+        <div class="u-align-center u-expanded-width-xs u-form u-form-1">
+
+          <form action="/proc/9">
+            <input type="text" name="args" placeholder="Название блока" class="u-input u-input-rectangle" required="required">
+            <button type="submit" class="black_submit_button">Submit</button>
+          </form>
+
+        </div>
+      </div><button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-5801"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg></button>
+    </div>
+  </section>
+
+<style>
+.u-dialog-section-7 .u-dialog-1 {
+  width: 640px;
+  min-height: 360px;
+  height: auto;
+  margin: 60px auto;
+}
+
+.u-dialog-section-7 .u-container-layout-1 {
+  padding: 16px 30px;
+}
+
+.u-dialog-section-7 .u-text-1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 0 auto;
+}
+
+.u-dialog-section-7 .u-text-2 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.u-dialog-section-7 .u-form-1 {
+  height: 180px;
+  width: 400px;
+  margin: 41px auto 0;
+}
+
+.u-dialog-section-7 .u-form-group-1 {
+  width: 100%;
+}
+
+.u-dialog-section-7 .u-label-1 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-7 .u-form-group-2 {
+  width: 100%;
+}
+
+.u-dialog-section-7 .u-btn-1 {
+  padding-left: 60px;
+  padding-right: 60px;
+  background-image: none;
+  border-style: none;
+  text-transform: none;
+  width: 100%;
+}
+
+.u-dialog-section-7 .u-icon-1 {
+  width: 15px;
+  height: 15px;
+  left: auto;
+  top: 17px;
+  position: absolute;
+  right: 16px;
+}
+
+@media (max-width: 991px) {
+  .u-dialog-section-7 .u-container-layout-1 {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-dialog-section-7 .u-dialog-1 {
+    width: 540px;
+  }
+
+  .u-dialog-section-7 .u-container-layout-1 {
+    padding-top: 16px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-dialog-section-7 .u-dialog-1 {
+    width: 340px;
+  }
+
+  .u-dialog-section-7 .u-container-layout-1 {
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .u-dialog-section-7 .u-form-1 {
+    height: 152px;
+    margin-top: 60px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+}</style>
+
+  <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-dialog-section-8" id="sec-a739">
+    <div class="u-align-center u-container-align-center u-container-style u-dialog u-white u-dialog-1">
+      <div class="u-container-layout u-container-layout-1">
+        <h6 class="u-align-center u-text u-text-default u-text-1"> Процент пиров, приступивших к блокам заданий</h6>
+        <div class="u-expanded-width-xs u-form u-form-1">
+
+          <form action="/proc/11">
+            <input type="text" name="args" placeholder="например CPP" class="u-input u-input-rectangle" required="required">
+            <input type="text" name="args" placeholder="например D0" class="u-input u-input-rectangle" required="required">
+            <button type="submit" class="black_submit_button">Submit</button>
+          </form>
+
+        </div>
+      </div><button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-5801"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg></button>
+    </div>
+  </section>
+
+<style>
+.u-dialog-section-8 .u-dialog-1 {
+  width: 640px;
+  min-height: 466px;
+  height: auto;
+  margin: 60px auto;
+}
+
+.u-dialog-section-8 .u-container-layout-1 {
+  padding: 40px 30px 0;
+}
+
+.u-dialog-section-8 .u-text-1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 30px 0 0;
+}
+
+.u-dialog-section-8 .u-form-1 {
+  height: 180px;
+  width: 400px;
+  margin: 69px auto 0;
+}
+
+.u-dialog-section-8 .u-form-group-1 {
+  width: 100%;
+}
+
+.u-dialog-section-8 .u-label-1 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-8 .u-form-group-2 {
+  width: 100%;
+}
+
+.u-dialog-section-8 .u-label-2 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-8 .u-form-group-3 {
+  width: 100%;
+}
+
+.u-dialog-section-8 .u-btn-1 {
+  padding-left: 60px;
+  padding-right: 60px;
+  background-image: none;
+  border-style: none;
+  text-transform: none;
+  width: 100%;
+}
+
+.u-dialog-section-8 .u-icon-1 {
+  width: 15px;
+  height: 15px;
+  left: auto;
+  top: 17px;
+  position: absolute;
+  right: 16px;
+}
+
+@media (max-width: 767px) {
+  .u-dialog-section-8 .u-dialog-1 {
+    width: 540px;
+  }
+
+  .u-dialog-section-8 .u-container-layout-1 {
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-dialog-section-8 .u-dialog-1 {
+    width: 340px;
+  }
+
+  .u-dialog-section-8 .u-container-layout-1 {
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .u-dialog-section-8 .u-form-1 {
+    height: 152px;
+    margin-top: 114px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+}</style>
+
+  <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-dialog-section-9" id="sec-d330">
+    <div class="u-align-center u-container-align-center u-container-style u-dialog u-white u-dialog-1">
+      <div class="u-container-layout u-valign-middle u-container-layout-1">
+        <h6 class="u-align-center u-text u-text-default u-text-1"> N пиров с наибольшим числом друзей</h6>
+        <div class="u-expanded-width-xs u-form u-form-1">
+
+          <form action="/proc/12">
+            <label for="number-8d40" class="u-label u-text-grey-30 u-label-1">Количество пиров N</label>
+            <input value="0" min="0" max="100000" step="1" id="number-8d40" type="number" placeholder="" name="args" class="u-input u-input-rectangle u-number u-text-black">
+            <button type="submit" class="black_submit_button">Submit</button>
+          </form>
+
+        </div>
+      </div><button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-5801"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg></button>
+    </div>
+  </section>
+
+<style>
+
+.u-dialog-section-9 .u-dialog-1 {
+  width: 566px;
+  min-height: 431px;
+  margin: 60px auto;
+}
+
+.u-dialog-section-9 .u-container-layout-1 {
+  padding: 40px 30px;
+}
+
+.u-dialog-section-9 .u-text-1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 30px 0 0;
+}
+
+.u-dialog-section-9 .u-form-1 {
+  height: 180px;
+  width: 400px;
+  margin: 70px auto 0;
+}
+
+.u-dialog-section-9 .u-form-group-1 {
+  width: 100%;
+}
+
+.u-dialog-section-9 .u-label-1 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-9 .u-form-group-2 {
+  width: 100%;
+}
+
+.u-dialog-section-9 .u-btn-1 {
+  padding-left: 60px;
+  padding-right: 60px;
+  background-image: none;
+  border-style: none;
+  text-transform: none;
+  width: 100%;
+}
+
+.u-dialog-section-9 .u-icon-1 {
+  width: 15px;
+  height: 15px;
+  left: auto;
+  top: 17px;
+  position: absolute;
+  right: 16px;
+}
+
+@media (max-width: 991px) {
+  .u-dialog-section-9 .u-container-layout-1 {
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-dialog-section-9 .u-dialog-1 {
+    width: 540px;
+  }
+
+  .u-dialog-section-9 .u-container-layout-1 {
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-dialog-section-9 .u-dialog-1 {
+    width: 340px;
+    min-height: 400px;
+    height: auto;
+  }
+
+  .u-dialog-section-9 .u-container-layout-1 {
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .u-dialog-section-9 .u-form-1 {
+    height: 152px;
+    margin-top: 114px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+}</style>
+
+  <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-dialog-section-10" id="sec-ca41">
+    <div class="u-align-center u-container-align-center u-container-style u-dialog u-white u-dialog-1">
+      <div class="u-container-layout u-valign-middle u-container-layout-1">
+        <h6 class="u-align-center u-text u-text-default u-text-1"> Пиры сдавшие задания 1 и 2, но не сдавшие 3</h6>
+        <div class="u-expanded-width-xs u-form u-form-1">
+
+          <form action="/proc/15">
+            <label for="proc_15_1" class="u-label u-text-grey-30 u-label-1">Задание 1</label>
+            <input type="text" placeholder="например C4_Math" id="proc_15_1" name="args" class="u-input u-input-rectangle" required="required">
+
+            <label for="proc_15_2" class="u-label u-text-grey-30 u-label-2">Задание 2</label>
+            <input type="text" placeholder="например C5_Decimal" id="proc_15_2" name="args" class="u-input u-input-rectangle u-input-2" required="required">
+
+            <label for="proc_15_3" class="u-label u-text-grey-30 u-label-3">Задание 3</label>
+            <input type="text" placeholder="например DO1_Linux" id="proc_15_3" name="args" class="u-input u-input-rectangle" required="required">
+
+            <button type="submit" class="black_submit_button">Submit</button>
+          </form>
+
+        </div>
+      </div><button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-5801"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg></button>
+    </div>
+  </section>
+
+<style>
+
+.u-dialog-section-10 .u-dialog-1 {
+  width: 566px;
+  min-height: 615px;
+  margin: 60px auto;
+}
+
+.u-dialog-section-10 .u-container-layout-1 {
+  padding: 40px 30px;
+}
+
+.u-dialog-section-10 .u-text-1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 26px 0 0;
+}
+
+.u-dialog-section-10 .u-form-1 {
+  height: 390px;
+  width: 400px;
+  margin: 52px auto 0;
+}
+
+.u-dialog-section-10 .u-form-group-1 {
+  width: 100%;
+}
+
+.u-dialog-section-10 .u-label-1 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-10 .u-form-group-2 {
+  width: 100%;
+}
+
+.u-dialog-section-10 .u-label-2 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-10 .u-input-2 {
+  width: 100%;
+}
+
+.u-dialog-section-10 .u-form-group-3 {
+  width: 100%;
+}
+
+.u-dialog-section-10 .u-label-3 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-10 .u-form-group-4 {
+  width: 100%;
+}
+
+.u-dialog-section-10 .u-btn-1 {
+  padding-left: 60px;
+  padding-right: 60px;
+  background-image: none;
+  border-style: none;
+  text-transform: none;
+  width: 100%;
+}
+
+.u-dialog-section-10 .u-icon-1 {
+  width: 15px;
+  height: 15px;
+  left: auto;
+  top: 17px;
+  position: absolute;
+  right: 16px;
+}
+
+@media (max-width: 991px) {
+  .u-dialog-section-10 .u-container-layout-1 {
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-dialog-section-10 .u-dialog-1 {
+    width: 540px;
+  }
+
+  .u-dialog-section-10 .u-container-layout-1 {
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-dialog-section-10 .u-dialog-1 {
+    width: 340px;
+    height: auto;
+  }
+
+  .u-dialog-section-10 .u-container-layout-1 {
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .u-dialog-section-10 .u-form-1 {
+    height: 152px;
+    margin-top: 114px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+}</style>
+
+  <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-dialog-section-11" id="sec-34de">
+    <div class="u-align-center u-container-align-center u-container-style u-dialog u-white u-dialog-1">
+      <div class="u-container-layout u-valign-middle u-container-layout-1">
+        <h6 class="u-align-center u-text u-text-default u-text-1"> Найти "удачные" дни c N идущих подряд успешных проверок</h6>
+        <div class="u-expanded-width-xs u-form u-form-1">
+
+          <form action="/proc/17">
+            <label for="proc_17_1" class="u-label u-text-grey-30 u-label-1">Кол-во идущих подряд успешных проверок N</label>
+            <input value="0" min="0" max="1000" step="1" type="number" placeholder="" id="proc_17_1" name="args" class="u-input u-input-rectangle u-number u-text-black">
+            <button type="submit" class="black_submit_button">Submit</button>
+          </form>
+
+        </div>
+      </div><button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-5801"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg></button>
+    </div>
+  </section>
+
+<style>
+.u-dialog-section-11 .u-dialog-1 {
+  width: 640px;
+  min-height: 370px;
+  height: auto;
+  margin: 60px auto;
+}
+
+.u-dialog-section-11 .u-container-layout-1 {
+  padding: 40px 30px 0;
+}
+
+.u-dialog-section-11 .u-text-1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 0;
+}
+
+.u-dialog-section-11 .u-form-1 {
+  height: 180px;
+  width: 400px;
+  margin: 86px auto 0;
+}
+
+.u-dialog-section-11 .u-form-group-1 {
+  --progress: 0%;
+}
+
+.u-dialog-section-11 .u-label-1 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-11 .u-form-group-2 {
+  width: 100%;
+}
+
+.u-dialog-section-11 .u-btn-1 {
+  padding-left: 60px;
+  padding-right: 60px;
+  background-image: none;
+  border-style: none;
+  text-transform: none;
+  width: 100%;
+}
+
+.u-dialog-section-11 .u-icon-1 {
+  width: 15px;
+  height: 15px;
+  left: auto;
+  top: 17px;
+  position: absolute;
+  right: 16px;
+}
+
+@media (max-width: 1199px) {
+  .u-dialog-section-11 .u-form-group-1 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-dialog-section-11 .u-dialog-1 {
+    width: 540px;
+  }
+
+  .u-dialog-section-11 .u-container-layout-1 {
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-dialog-section-11 .u-dialog-1 {
+    width: 340px;
+    min-height: 400px;
+  }
+
+  .u-dialog-section-11 .u-container-layout-1 {
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .u-dialog-section-11 .u-form-1 {
+    height: 152px;
+    margin-top: 114px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+}</style>
+
+  <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-dialog-section-12" id="sec-b696">
+    <div class="u-align-center u-container-style u-dialog u-white u-dialog-1">
+      <div class="u-container-layout u-valign-middle u-container-layout-1">
+        <h6 class="u-align-center u-text u-text-default u-text-1"> Определить пиров, приходивших раньше заданного времени не менее N раз за всё время</h6>
+        <div class="u-expanded-width-xs u-form u-form-1">
+
+          <form action="/proc/21">
+            <label for="time-f68b" class="u-label u-text-grey-30 u-label-1">Время</label>
+            <input type="time" id="time-f68b" name="args" class="u-input u-input-rectangle">
+
+            <label for="proc_21_2" class="u-label u-text-grey-30 u-label-1">N раз</label>
+            <input value="0" min="0" max="1000" step="1" type="number" placeholder="" id="proc_21_2" name="args" class="u-input u-input-rectangle u-number u-text-black">
+
+            <button type="submit" class="black_submit_button">Submit</button>
+          </form>
+
+
+        </div>
+      </div><button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-5801"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg></button>
+    </div>
+  </section>
+
+<style>
+.u-dialog-section-12 .u-dialog-1 {
+  width: 640px;
+  min-height: 545px;
+  height: auto;
+  margin: 60px auto;
+}
+
+.u-dialog-section-12 .u-container-layout-1 {
+  padding: 40px 30px 27px;
+}
+
+.u-dialog-section-12 .u-text-1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 26px 0 0;
+}
+
+.u-dialog-section-12 .u-form-1 {
+  height: 287px;
+  width: 400px;
+  margin: 64px auto 0;
+}
+
+.u-dialog-section-12 .u-form-group-1 {
+  width: 100%;
+}
+
+.u-dialog-section-12 .u-label-1 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-12 .u-form-group-2 {
+  --progress: 0%;
+}
+
+.u-dialog-section-12 .u-label-2 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-12 .u-form-group-3 {
+  width: 100%;
+}
+
+.u-dialog-section-12 .u-btn-1 {
+  padding-left: 60px;
+  padding-right: 60px;
+  background-image: none;
+  border-style: none;
+  text-transform: none;
+  width: 100%;
+}
+
+.u-dialog-section-12 .u-icon-1 {
+  width: 15px;
+  height: 15px;
+  left: auto;
+  top: 17px;
+  position: absolute;
+  right: 16px;
+}
+
+@media (max-width: 1199px) {
+  .u-dialog-section-12 .u-form-group-2 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-dialog-section-12 .u-dialog-1 {
+    width: 540px;
+  }
+
+  .u-dialog-section-12 .u-container-layout-1 {
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-dialog-section-12 .u-dialog-1 {
+    width: 340px;
+  }
+
+  .u-dialog-section-12 .u-container-layout-1 {
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .u-dialog-section-12 .u-form-1 {
+    height: 152px;
+    margin-top: 114px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+}</style>
+
+  <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-dialog-section-13" id="sec-6e26">
+    <div class="u-align-center u-container-style u-dialog u-white u-dialog-1">
+      <div class="u-container-layout u-valign-middle u-container-layout-1">
+        <h6 class="u-text u-text-default u-text-1"> Определить пиров, выходивших за последние N дней из кампуса больше M раз</h6>
+        <div class="u-expanded-width-xs u-form u-form-1">
+
+          <form action="/proc/22">
+            <label for="proc_22_1" class="u-label u-text-grey-30 u-label-1">N дней</label>
+            <input value="0" min="0" max="1000" step="1" type="number" placeholder="" id="proc_22_1" name="args" class="u-input u-input-rectangle u-number u-text-black">
+
+            <label for="proc_22_2" class="u-label u-text-grey-30 u-label-1">M раз</label>
+            <input value="0" min="0" max="1000" step="1" type="number" placeholder="" id="proc_22_2" name="args" class="u-input u-input-rectangle u-number u-text-black">
+
+            <button type="submit" class="black_submit_button">Submit</button>
+          </form>
+
+        </div>
+      </div><button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-5801"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg></button>
+    </div>
+  </section>
+
+<style>
+.u-dialog-section-13 .u-dialog-1 {
+  width: 566px;
+  margin: 60px auto;
+}
+
+.u-dialog-section-13 .u-container-layout-1 {
+  padding: 40px 30px;
+}
+
+.u-dialog-section-13 .u-text-1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 33px 0 0;
+}
+
+.u-dialog-section-13 .u-form-1 {
+  height: 285px;
+  width: 400px;
+  --thumb-color: #478ac9;
+  --thumb-hover-color: #77aad9;
+  --track-color: #c0c0c0;
+  --track-active-color: #478ac9;
+  margin: 63px auto 0;
+}
+
+.u-dialog-section-13 .u-form-group-1 {
+  --progress: 0%;
+  width: 100%;
+}
+
+.u-dialog-section-13 .u-label-1 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-13 .u-form-group-2 {
+  --progress: 0%;
+  width: 100%;
+}
+
+.u-dialog-section-13 .u-label-2 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-13 .u-form-group-3 {
+  width: 100%;
+}
+
+.u-dialog-section-13 .u-btn-1 {
+  padding-left: 60px;
+  padding-right: 60px;
+  background-image: none;
+  border-style: none;
+  text-transform: none;
+  width: 100%;
+}
+
+.u-dialog-section-13 .u-icon-1 {
+  width: 15px;
+  height: 15px;
+  left: auto;
+  top: 17px;
+  position: absolute;
+  right: 16px;
+}
+
+@media (max-width: 991px) {
+  .u-dialog-section-13 .u-container-layout-1 {
+    padding-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-dialog-section-13 .u-dialog-1 {
+    width: 540px;
+  }
+
+  .u-dialog-section-13 .u-container-layout-1 {
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-dialog-section-13 .u-dialog-1 {
+    width: 340px;
+    height: auto;
+  }
+
+  .u-dialog-section-13 .u-container-layout-1 {
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .u-dialog-section-13 .u-form-1 {
+    height: 152px;
+    margin-top: 114px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+}</style>
+
+  <section class="u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-valign-middle u-dialog-section-14" id="sec-0ac8">
+    <div class="u-align-center u-container-align-center u-container-style u-dialog u-white u-dialog-1">
+      <div class="u-container-layout u-container-layout-1">
+        <h6 class="u-align-center u-text u-text-default u-text-1"> Определить пиров, которые выходили вчера из кампуса больше чем на N минут</h6>
+        <div class="u-align-center u-expanded-width-xs u-form u-form-1">
+
+          <form action="/proc/24">
+            <label for="range-4119" class="u-label u-text-grey-30 u-label-1">N минут</label>
+            <div class="u-input-row" data-value="0">
+              <input value="0" min="0" max="1000" step="1" type="number" placeholder="" id="range-4119" name="args" class="u-input u-number">
+            </div>
+
+            <button type="submit" class="black_submit_button">Submit</button>
+          </form>
+
+        </div>
+      </div><button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-5801"></use></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-5801"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg></button>
+    </div>
+  </section>
+
+<style>
+.u-dialog-section-14 .u-dialog-1 {
+  width: 640px;
+  min-height: 371px;
+  height: auto;
+  margin: 60px auto;
+}
+
+.u-dialog-section-14 .u-container-layout-1 {
+  padding: 0 30px;
+}
+
+.u-dialog-section-14 .u-text-1 {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 38px 0 0;
+}
+
+.u-dialog-section-14 .u-form-1 {
+  height: 180px;
+  width: 400px;
+  --thumb-color: #478ac9;
+  --thumb-hover-color: #77aad9;
+  --track-color: #c0c0c0;
+  --track-active-color: #478ac9;
+  margin: 38px auto 0;
+}
+
+.u-dialog-section-14 .u-form-group-1 {
+  --progress: 0%;
+  width: 100%;
+}
+
+.u-dialog-section-14 .u-label-1 {
+  font-size: 1rem;
+}
+
+.u-dialog-section-14 .u-form-group-2 {
+  width: 100%;
+}
+
+.u-dialog-section-14 .u-btn-1 {
+  padding-left: 60px;
+  padding-right: 60px;
+  background-image: none;
+  border-style: none;
+  text-transform: none;
+  width: 100%;
+}
+
+.u-dialog-section-14 .u-icon-1 {
+  width: 15px;
+  height: 15px;
+  left: auto;
+  top: 17px;
+  position: absolute;
+  right: 16px;
+}
+
+@media (max-width: 991px) {
+  .u-dialog-section-14 .u-container-layout-1 {
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-dialog-section-14 .u-dialog-1 {
+    width: 540px;
+  }
+
+  .u-dialog-section-14 .u-container-layout-1 {
+    padding-top: 0;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-dialog-section-14 .u-dialog-1 {
+    width: 340px;
+  }
+
+  .u-dialog-section-14 .u-container-layout-1 {
+    padding-top: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .u-dialog-section-14 .u-form-1 {
+    height: 152px;
+    margin-top: 114px;
+    margin-right: initial;
+    margin-left: initial;
+    width: auto;
+  }
+}</style>
+
+  <div th:replace="~{footer :: footer}"></div>
+</body></html>

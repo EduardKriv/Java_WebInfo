@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public abstract class GenericService<E extends BaseEntity, V> {
+public abstract class GenericService<E extends BaseEntity<V>, V> {
     protected final GenericRepository<E, V> genericRepository;
 
     public List<E> getAll() {
