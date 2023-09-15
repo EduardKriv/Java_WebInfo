@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="2023-07-28-initial-schema-1" author="cnathali">
+    <changeSet id="2023-07-28-initial-schema-1" author="sfleta">
         <createTable tableName="peers">
             <column name="nickname" type="varchar">
                 <constraints primaryKey="true" nullable="false" unique="true"/>
@@ -16,7 +16,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-schema-2" author="cnathali">
+    <changeSet id="2023-07-28-initial-schema-2" author="sfleta">
         <createTable tableName="tasks">
             <column name="title" type="varchar" defaultValue="NULL">
                 <constraints primaryKey="true" unique="true"/>
@@ -32,7 +32,7 @@
 
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-schema-3" author="cnathali">
+    <changeSet id="2023-07-28-initial-schema-3" author="sfleta">
         <createTable tableName="checks">
             <column name="id" type="serial">
                 <constraints primaryKey="true" nullable="false"/>
@@ -51,7 +51,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-schema-4" author="cnathali">
+    <changeSet id="2023-07-28-initial-schema-4" author="sfleta">
         <createTable tableName="p2p">
             <column name="id" type="serial">
                 <constraints primaryKey="true" nullable="false"/>
@@ -73,7 +73,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-schema-5" author="cnathali">
+    <changeSet id="2023-07-28-initial-schema-5" author="sfleta">
         <createTable tableName="verter">
             <column name="id" type="serial">
                 <constraints primaryKey="true" nullable="false"/>
@@ -91,7 +91,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-schema-6" author="cnathali">
+    <changeSet id="2023-07-28-initial-schema-6" author="sfleta">
         <createTable tableName="transferred_points">
             <column name="id" type="serial">
                 <constraints primaryKey="true" nullable="false"/>
@@ -110,7 +110,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-schema-7" author="cnathali">
+    <changeSet id="2023-07-28-initial-schema-7" author="sfleta">
         <createTable tableName="friends">
             <column name="id" type="serial">
                 <constraints primaryKey="true" nullable="false"/>
@@ -126,7 +126,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-schema-8" author="cnathali">
+    <changeSet id="2023-07-28-initial-schema-8" author="sfleta">
         <createTable tableName="recommendations">
             <column name="id" type="serial">
                 <constraints primaryKey="true" nullable="false"/>
@@ -142,7 +142,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-schema-9" author="cnathali">
+    <changeSet id="2023-07-28-initial-schema-9" author="sfleta">
         <createTable tableName="xp">
             <column name="id" type="serial">
                 <constraints primaryKey="true" nullable="false"/>
@@ -157,7 +157,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-schema-10" author="cnathali">
+    <changeSet id="2023-07-28-initial-schema-10" author="sfleta">
         <createTable tableName="time_tracking">
             <column name="id" type="serial">
                 <constraints primaryKey="true" nullable="false"/>

@@ -26,9 +26,10 @@ public class CustomRequestController {
         try {
             customTable = customRequestService.executeQuery(query);
             return setAttributes(model);
-
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+//            throw new RuntimeException(e);
+            System.err.println(e.getMessage());
+            return "procedures_block";
         }
     }
 
@@ -46,13 +47,13 @@ public class CustomRequestController {
     }
 
     @GetMapping("/unload")
-    public void unload(@NotNull HttpServletResponse servletResponse) throws IOException, SQLException {
+    public void unload(@NotNull HttpServletResponse servletResponse) throws IOException {
         servletResponse.setContentType("text/csv");
         servletResponse.addHeader("Content-Disposition", "attachment; filename=\"custom_table.csv\"");
         CsvConverter.unload(servletResponse.getWriter(), customTable);
     }
 
-    private @NotNull String setAttributes(@NotNull Model model) throws SQLException {
+    private @NotNull String setAttributes(@NotNull Model model) {
         model.addAttribute("tableName", "requests");
         model.addAttribute("columnNames", customTable.getColumnNames());
         model.addAttribute("resultSet", customTable.getTableBody());

@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="2023-07-28-initial-insert-p2p-func" author="cnathali">
+    <changeSet id="2023-07-28-initial-insert-p2p-func" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -59,7 +59,7 @@
     </changeSet>
 
 <!--    2) Написать процедуру добавления проверки Verter'ом-->
-    <changeSet id="2023-07-28-initial-insert-verter-func" author="cnathali">
+    <changeSet id="2023-07-28-initial-insert-verter-func" author="sfleta">
     <sql endDelimiter="\nGO"
          splitStatements="true"
          stripComments="true">
@@ -108,7 +108,7 @@
     </changeSet>
 
 <!--    ADDITIONAL PROCEDURE TO FILL DATA IN XP TABLE-->
-    <changeSet id="2023-07-28-initial-insert-xp-func" author="cnathali">
+    <changeSet id="2023-07-28-initial-insert-xp-func" author="sfleta">
     <sql endDelimiter="\nGO"
          splitStatements="true"
          stripComments="true">
@@ -132,7 +132,7 @@
         </changeSet>
 
 <!--    3) Написать триггер: после добавления записи со статутом "начало" в таблицу P2P, изменить соответствующую запись в таблице TransferredPoints-->
-    <changeSet id="2023-07-28-initial-insert-tranfer_points-func" author="cnathali">
+    <changeSet id="2023-07-28-initial-insert-tranfer_points-func" author="sfleta">
     <sql endDelimiter="\nGO"
          splitStatements="true"
          stripComments="true">
@@ -167,7 +167,7 @@
     </sql>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-insert-tranfer_points-trg" author="cnathali">
+    <changeSet id="2023-07-28-initial-insert-tranfer_points-trg" author="sfleta">
     <sql endDelimiter="\nGO"
          splitStatements="true"
          stripComments="true">
@@ -180,7 +180,7 @@
     </changeSet>
 
 <!--    4) Написать триггер: перед добавлением записи в таблицу XP, проверить корректность добавляемой записи-->
-    <changeSet id="2023-07-28-initial-insert-xp-trg" author="cnathali">
+    <changeSet id="2023-07-28-initial-insert-xp-trg" author="sfleta">
     <sql endDelimiter="\nGO"
          splitStatements="true"
          stripComments="true">
@@ -208,7 +208,7 @@
     </sql>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-xp-trg" author="cnathali">
+    <changeSet id="2023-07-28-initial-xp-trg" author="sfleta">
     <sql endDelimiter="\nGO"
          splitStatements="true"
          stripComments="true">

@@ -2218,6 +2218,11 @@
   transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
 }
 
+.u-container-layout.hover .u-section-2 .u-btn-2 {
+  transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
+}
+
+
 .black_submit_button {
   background-color: #222 ;
   color: #fff ;
@@ -2270,6 +2275,63 @@
   justify-content: space-between;
 }
 
-.u-container-layout.hover .u-section-2 .u-btn-2 {
-  transform: rotate(0deg) scale(1) translateX(0px) translateY(0px) !important;
-}visibility: hidden;
+#proc_body {
+  /*background: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);*/
+  background: linear-gradient(90deg, #3F2B96 0%, #7c9af8 100%);
+}
+
+.u-repeater-item {
+  /*background: transparent;*/
+  margin: 1rem 1rem;
+  /*border-style: dashed;*/
+  border-radius: 10px;
+  text-wrap: balance;
+  background-blend-mode: soft-light;
+}
+
+.u-carousel-item {
+  min-height: 1000px;
+}
+
+html {
+  position:relative;
+  min-height: 100%;
+}
+
+html,body {
+  margin:0;
+  padding:0;
+}
+
+.pageContentWrapper {
+  margin-bottom:100px;/* Height of footer*/
+}
+
+.footerWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height:100px;
+  background:#ccc;
+}
+
+.u-table table {
+  background-color: white;
+}
+
+.run_btn_make_bottom {
+  position: absolute;
+  bottom: 20px;
+}
+
+.carousel_elem_equal_size {
+  min-height: 440px;
+  min-width: 350px;
+}
+
+/*==========================*/
+
+.text_in_carousel_elem {
+  margin-top: 2rem;
+}

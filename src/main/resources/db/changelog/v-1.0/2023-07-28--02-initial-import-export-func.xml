@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="2023-07-28-initial-supp-func" author="cnathali">
+    <changeSet id="2023-07-28-initial-supp-func" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -22,7 +22,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-import-func" author="cnathali">
+    <changeSet id="2023-07-28-initial-import-func" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -44,7 +44,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="2023-07-28-initial-export-func" author="cnathali">
+    <changeSet id="2023-07-28-initial-export-func" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">

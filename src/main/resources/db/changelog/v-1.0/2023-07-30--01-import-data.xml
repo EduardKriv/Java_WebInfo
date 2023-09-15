@@ -5,83 +5,83 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
-    <changeSet id="import_table_tasks" author="cnathali">
+    <changeSet id="import_table_tasks" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-                CALL pr_fill_table_from_csv('tasks', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/tasks.csv',',');
+                CALL pr_fill_table_from_csv('tasks', '/Users/sfleta/Java_WebInfo/src/main/resources/db/data/import/tasks.csv',',');
         </sql>
     </changeSet>
 
-    <changeSet id="import_table_peers" author="cnathali">
+    <changeSet id="import_table_peers" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-                CALL pr_fill_table_from_csv('peers', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/peers.csv',',');
+                CALL pr_fill_table_from_csv('peers', '/Users/sfleta/Java_WebInfo/src/main/resources/db/data/import/peers.csv',',');
         </sql>
     </changeSet>
 
-    <changeSet id="import_table_checks" author="cnathali">
+    <changeSet id="import_table_checks" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-                CALL pr_fill_table_from_csv('checks', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/checks.csv',',');
+                CALL pr_fill_table_from_csv('checks', '/Users/sfleta/Java_WebInfo/src/main/resources/db/data/import/checks.csv',',');
         </sql>
     </changeSet>
 
-    <changeSet id="import_table_p2p" author="cnathali">
+    <changeSet id="import_table_p2p" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-                CALL pr_fill_table_from_csv('p2p', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/p2p.csv',',');
+                CALL pr_fill_table_from_csv('p2p', '/Users/sfleta/Java_WebInfo/src/main/resources/db/data/import/p2p.csv',',');
         </sql>
     </changeSet>
 
-    <changeSet id="import_table_verter" author="cnathali">
+    <changeSet id="import_table_verter" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-                CALL pr_fill_table_from_csv('verter', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/verter.csv',',');
+                CALL pr_fill_table_from_csv('verter', '/Users/sfleta/Java_WebInfo/src/main/resources/db/data/import/verter.csv',',');
         </sql>
     </changeSet>
 
-    <changeSet id="import_table_xp" author="cnathali">
+    <changeSet id="import_table_xp" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-                CALL pr_fill_table_from_csv('xp', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/xp.csv',',');
+                CALL pr_fill_table_from_csv('xp', '/Users/sfleta/Java_WebInfo/src/main/resources/db/data/import/xp.csv',',');
         </sql>
     </changeSet>
 
-    <changeSet id="import_table_friends" author="cnathali">
+    <changeSet id="import_table_friends" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-                CALL pr_fill_table_from_csv('friends', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/friends.csv',',');
+                CALL pr_fill_table_from_csv('friends', '/Users/sfleta/Java_WebInfo/src/main/resources/db/data/import/friends.csv',',');
         </sql>
     </changeSet>
 
-    <changeSet id="import_table_recommendations" author="cnathali">
+    <changeSet id="import_table_recommendations" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-                CALL pr_fill_table_from_csv('recommendations', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/recommendations.csv',',');
+                CALL pr_fill_table_from_csv('recommendations', '/Users/sfleta/Java_WebInfo/src/main/resources/db/data/import/recommendations.csv',',');
         </sql>
     </changeSet>
 
-    <changeSet id="import_table_timetracking" author="cnathali">
+    <changeSet id="import_table_timetracking" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-                CALL pr_fill_table_from_csv('time_tracking', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/timetracking.csv',',');
+                CALL pr_fill_table_from_csv('time_tracking', '/Users/sfleta/Java_WebInfo/src/main/resources/db/data/import/timetracking.csv',',');
         </sql>
     </changeSet>
 
-    <changeSet id="import_table_transferredPoints" author="cnathali">
+    <changeSet id="import_table_transferredPoints" author="sfleta">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
-                CALL pr_fill_table_from_csv('transferred_points', '/Users/cnathali/Java_WebInfo/src/main/resources/db/data/import/transferredpoints.csv',',');
+                CALL pr_fill_table_from_csv('transferred_points', '/Users/sfleta/Java_WebInfo/src/main/resources/db/data/import/transferredpoints.csv',',');
         </sql>
     </changeSet>
 
