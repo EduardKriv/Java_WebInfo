@@ -1,6 +1,3 @@
-
-document.getElementById('selectPeer').addEventListener('click', reloadDependencies);
-
 let selectiveOptions = [
   document.querySelectorAll('.peer-select'),
   document.querySelectorAll('.task-select'),
@@ -30,3 +27,5 @@ function reloadDependencies() {
     })
   });
 }
+
+reloadDependencies();

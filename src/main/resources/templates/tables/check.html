@@ -1,61 +1,37 @@
-<!--<div th:fragment="check" style="max-height: 800px; overflow-y: auto;">-->
-    <table class="u-table-entity u-table-entity-1">
-<!--        <caption th:text="Check"></caption>-->
-    <thead class="u-align-center u-black u-table-header u-table-header-1">
-        <tr>
-            <th class="u-border-1 u-border-black u-table-cell" style="width: 50px;">#</th>
-            <th class="u-border-1 u-border-black u-table-cell"
-                th:each="name : ${columnNames}" th:text="${name}"></th>
+<tbody th:fragment="check" class="u-align-center u-table-body u-white u-table-body-1">
+    <tr th:each="check, it : ${modelList}">
+        <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${check.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${check.peer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${check.task}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${check.date}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
 
-            <th class="u-border-1 u-border-black u-table-cell" style="width: 100px;">update</th>
-            <th class="u-border-1 u-border-black u-table-cell" style="width: 100px;">delete</th>
-        </tr>
-    </thead>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="checkIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
 
-    <tbody th:fragment="check" class="u-align-center u-table-body u-white u-table-body-1">
-        <tr
-            th:each="check, it : ${modelList}">
-            <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${check.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${check.peer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${check.task}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${check.date}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-
-            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-icon-1"><img src="/images/update-image.png" alt=""></span></td>
-            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/delete-image.png" alt=""></span></td>
-
-            <!--            <td>-->
-<!--                <form action="update" th:object="${Model}" method="post">-->
-<!--                    <input type="hidden" name="id" th:value="${check.id}">-->
-<!--                    <button type="submit">Update</button>-->
-<!--                </form>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <form action="delete" th:object="${Model}" method="post">-->
-<!--                    <input type="hidden" name="id" th:value="${check.id}">-->
-<!--                    <button type="submit">Delete</button>-->
-<!--                </form>-->
-<!--            </td>-->
-        </tr>
-
-<!--        <tr>-->
-<!--            <td>-->
-<!--                <form action="add" th:object="${Model}" method="post">-->
-<!--                    <button type="submit">Add Check</button>-->
-<!--                </form>-->
-<!--            </td>-->
-<!--        </tr>-->
-    </tbody>
-    </table>
-<!--</div>-->
+        <td class="u-border-1 u-border-grey-30 u-table-cell">
+            <span class="u-file-icon u-icon u-text-palette-2-base u-icon-2">
+                <img src="/images/delete-image.png" alt="">
+            </span>
+        </td>
+    </tr>
+</tbody>
 
 <div th:fragment="check-new">
-    <select name="peer" class="form-select form-select-sm mb-3 peer-select" aria-label=".form-select-sm"></select>
-    <select name="task" class="form-select form-select-sm mb-3 task-select" aria-label=".form-select-sm"></select>
-
+    <label for="checkTask" class="form-select-sm prop-label">Task
+        <select id="checkTask" name="task" class="form-select task-select" aria-label=".form-select-sm"></select>
+    </label>
+    <label for="checkPeer" class="form-select-sm prop-label">Peer
+        <select id="checkPeer" name="peer" class="form-select mb-3 peer-select" aria-label=".form-select-sm"></select>
+    </label>
     <div class="form-floating">
         <input type="date" class="form-control" name="date" id="checkDate" placeholder="Date" required>
         <label for="checkDate">Date</label>
     </div>
 </div>
-<!--<script type="text/javascript" src="../static/js/peer_modal.js" defer="" th:src="@{/js/peer_modal.js}"></script>-->
+
+<div th:fragment="check-update">
+    <label for="checkIdUpdate" class="form-select-sm prop-label">ID
+        <input type="number" name="id" id="checkIdUpdate" class="form-control" required readonly>
+    </label>
+    <div th:replace="~{'tables/' + check :: check-new } ?: _"></div>
+</div>

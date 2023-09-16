@@ -1,49 +1,43 @@
-<div th:fragment="timetracking" style="max-height: 800px; overflow-y: auto;">
-<table class="u-table-entity u-table-entity-1">
-<!--    <caption th:text="TimeTracking"></caption>-->
-    <thead class="u-align-center u-black u-table-header u-table-header-1">
-        <tr>
-            <th class="u-border-1 u-border-black u-table-cell">№</th>
-            <th class="u-border-1 u-border-black u-table-cell"
-                th:each="name : ${columnNames}" th:text="${name}"></th>
+ <tbody th:fragment="timetracking" class="u-align-center u-table-body u-white u-table-body-1">
+    <tr th:each="timeTracking, it : ${modelList}">
+        <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${timeTracking.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${timeTracking.peer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${timeTracking.date}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${timeTracking.time}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${timeTracking.state}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
 
-            <th class="u-border-1 u-border-black u-table-cell">update</th>
-            <th class="u-border-1 u-border-black u-table-cell">delete</th>
-        </tr>
-    </thead>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="timetrackingIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
 
-    <tbody class="u-align-center u-table-body u-white u-table-body-1">
-        <tr th:each="timeTracking, it : ${modelList}">
-            <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${timeTracking.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${timeTracking.peer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${timeTracking.date}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${timeTracking.time}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${timeTracking.state}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell">
+            <span class="u-file-icon u-icon u-text-palette-2-base u-icon-2">
+                <img src="/images/delete-image.png" alt=""></span></td>
+    </tr>
+</tbody>
 
-            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-icon-1"><img href="#sec-0df4" src="/images/update-image.png" alt=""></span></td>
-            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/delete-image.png" alt=""></span></td>
+ <div th:fragment="timetracking-new">
+     <label for="timetrackingPeer" class="form-select-sm prop-label">Peer
+        <select id="timetrackingPeer" name="peer" class="form-select mb-3 peer-select" aria-label=".form-select-sm"></select>
+     </label>
+     <div class="form-floating">
+         <input type="date" name="date" class="form-control mb-3" id="timetrackingDate" placeholder="Date" required>
+         <label for="timetrackingDate">Date</label>
+     </div>
+     <div class="form-floating">
+         <input type="time" name="time" class="form-control" id="timetrackingTime" placeholder="Time" step="2" required>
+         <label for="timetrackingTime">Time</label>
+     </div>
+     <label for="timetrackingState" class="form-select-sm prop-label">State
+         <select id="timetrackingState" name="state" class="form-select" aria-label=".form-select-sm">
+             <option value="1">1</option>
+             <option value="2">2</option>
+         </select>
+     </label>
+ </div>
 
-            <!--            <td>-->
-<!--                <form action="update" th:object="${Model}" method="post">-->
-<!--                    <input type="hidden" name="id" th:value="${timeTracking.id}">-->
-<!--                    <button type="submit">Update</button>-->
-<!--                </form>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <form action="delete" th:object="${Model}" method="post">-->
-<!--                    <input type="hidden" name="id" th:value="${timeTracking.id}">-->
-<!--                    <button type="submit">Delete</button>-->
-<!--                </form>-->
-<!--            </td>-->
-        </tr>
-<!--        <tr>-->
-<!--            <td>-->
-<!--                <form action="add" th:object="${Model}" method="post">-->
-<!--                    <button type="submit">Add TimeTracking</button>-->
-<!--                </form>-->
-<!--            </td>-->
-<!--        </tr>-->
-    </tbody>
-</table>
-</div>
+ <div th:fragment="timetracking-update">
+     <label for="timetrackingIdUpdate" class="form-select-sm prop-label">ID
+         <input type="number" name="id" id="timetrackingIdUpdate" class="form-control" required readonly>
+     </label>
+     <div th:replace="~{'tables/' + timetracking :: timetracking-new } ?: _"></div>
+ </div>

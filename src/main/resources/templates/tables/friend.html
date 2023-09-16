@@ -1,52 +1,32 @@
-<div th:fragment="friend" style="max-height: 800px; overflow-y: auto;">
-<table class="u-table-entity u-table-entity-1">
-<!--    <caption th:text="Friend"></caption>-->
-    <thead class="u-align-center u-black u-table-header u-table-header-1">
-        <tr>
-            <th class="u-border-1 u-border-black u-table-cell">№</th>
-            <th class="u-border-1 u-border-black u-table-cell"
-                th:each="name : ${columnNames}" th:text="${name}"></th>
-
-            <th class="u-border-1 u-border-black u-table-cell">update</th>
-            <th class="u-border-1 u-border-black u-table-cell">delete</th>
-        </tr>
-    </thead>
-
-    <tbody class="u-align-center u-table-body u-white u-table-body-1">
+ <tbody th:fragment="friend" class="u-align-center u-table-body u-white u-table-body-1">
     <tr th:each="friend, it : ${modelList}">
         <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
         <td th:text="${friend.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
         <td th:text="${friend.peer1}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
         <td th:text="${friend.peer2}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
 
-        <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-icon-1"><img href="#sec-0df4" src="/images/update-image.png" alt=""></span></td>
-        <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/delete-image.png" alt=""></span></td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="friendIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
 
-        <!--        <td>-->
-<!--            <form action="update" method="post">-->
-<!--                <input type="hidden" th:name="id" th:value="${friend.id}">-->
-<!--                <button type="submit">Update</button>-->
-<!--            </form>-->
-<!--        </td>-->
-<!--        <td>-->
-<!--            <form action="delete" th:object="${Model}" method="post">-->
-<!--                <input type="hidden" name="id" th:value="${friend.id}">-->
-<!--                <button type="submit">Delete</button>-->
-<!--            </form>-->
-<!--        </td>-->
+        <td class="u-border-1 u-border-grey-30 u-table-cell">
+            <span class="u-file-icon u-icon u-text-palette-2-base u-icon-2">
+                <img src="/images/delete-image.png" alt="">
+            </span>
+        </td>
     </tr>
-<!--    <tr>-->
-<!--        <td>-->
-<!--            <form action="add" th:object="${Model}" method="post">-->
-<!--                <button type="submit">Add Friend</button>-->
-<!--            </form>-->
-<!--        </td>-->
-<!--    </tr>-->
-    </tbody>
-</table>
-</div>
+</tbody>
 
 <div th:fragment="friend-new">
-    <select name="peer1" class="form-select form-select-sm mb-3 peer-select" aria-label=".form-select-sm example"></select>
-    <select name="peer2" class="form-select form-select-sm mb-3 peer-select" aria-label=".form-select-sm example"></select>
+    <label for="friendPeer1" class="form-select-sm prop-label">Peer1
+        <select id="friendPeer1" name="peer1" class="form-select peer-select" aria-label=".form-select-sm"></select>
+    </label>
+    <label for="friendPeer2" class="form-select-sm prop-label">Peer2
+        <select id="friendPeer2" name="peer2" class="form-select peer-select" aria-label=".form-select-sm"></select>
+    </label>
 </div>
+
+ <div th:fragment="friend-update">
+     <label for="friendIdUpdate" class="form-select-sm prop-label">ID
+         <input type="number" name="id" id="friendIdUpdate" class="form-control" required readonly>
+     </label>
+     <div th:replace="~{'tables/' + friend :: friend-new } ?: _"></div>
+ </div>

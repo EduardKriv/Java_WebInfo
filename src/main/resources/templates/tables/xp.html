@@ -1,47 +1,30 @@
-<div th:fragment="xp" style="max-height: 800px; overflow-y: auto;">
-<table class="u-table-entity u-table-entity-1">
-<!--    <caption th:text="Xp"></caption>-->
-    <thead class="u-align-center u-black u-table-header u-table-header-1">
-        <tr>
-            <th class="u-border-1 u-border-black u-table-cell">№</th>
-            <th class="u-border-1 u-border-black u-table-cell"
-                th:each="name : ${columnNames}" th:text="${name}"></th>
+ <tbody th:fragment="xp" class="u-align-center u-table-body u-white u-table-body-1">
+    <tr th:each="xp, it : ${modelList}">
+        <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${xp.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${xp.check}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${xp.xpAmount}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
 
-            <th class="u-border-1 u-border-black u-table-cell">update</th>
-            <th class="u-border-1 u-border-black u-table-cell">delete</th>
-        </tr>
-    </thead>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="xpIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
 
-    <tbody class="u-align-center u-table-body u-white u-table-body-1">
-        <tr th:each="xp, it : ${modelList}">
-            <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${xp.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${xp.check}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${xp.xpAmount}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell">
+            <span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/delete-image.png" alt=""></span></td>
+    </tr>
+</tbody>
 
-            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-icon-1"><img href="#sec-0df4" src="/images/update-image.png" alt=""></span></td>
-            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/delete-image.png" alt=""></span></td>
+ <div th:fragment="xp-new">
+     <label for="xpCheck" class="form-select-sm prop-label">Check ID
+        <select id="xpCheck" name="check" class="form-select mb-3 check-select" aria-label=".form-select-sm"></select>
+     </label>
+     <div class="form-floating">
+         <input type="number" name="xpAmount" class="form-control" id="XPxpAmount" placeholder="XP Amount" required>
+         <label for="XPxpAmount">XP Amount</label>
+     </div>
+ </div>
 
-            <!--            <td>-->
-<!--                <form action="update" th:object="${Model}" method="post">-->
-<!--                    <input type="hidden" name="id" th:value="${xp.id}">-->
-<!--                    <button type="submit">Update</button>-->
-<!--                </form>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <form action="delete" th:object="${Model}" method="post">-->
-<!--                    <input type="hidden" name="id" th:value="${xp.id}">-->
-<!--                    <button type="submit">Delete</button>-->
-<!--                </form>-->
-<!--            </td>-->
-        </tr>
-<!--        <tr>-->
-<!--            <td>-->
-<!--                <form action="add" th:object="${Model}" method="post">-->
-<!--                    <button type="submit">Add Xp</button>-->
-<!--                </form>-->
-<!--            </td>-->
-<!--        </tr>-->
-    </tbody>
-</table>
-</div>
+ <div th:fragment="xp-update">
+     <label for="xpIdUpdate" class="form-select-sm prop-label">ID
+         <input type="number" name="id" id="xpIdUpdate" class="form-control" required readonly>
+     </label>
+     <div th:replace="~{'tables/' + xp :: xp-new } ?: _"></div>
+ </div>

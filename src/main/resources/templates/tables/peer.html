@@ -1,148 +1,18 @@
-<div th:fragment="peer" style="max-height: 800px; overflow-y: auto;">
-<table id="table-peer">
-    <thead class="u-align-center u-black u-table-header u-table-header-1">
-        <tr>
-            <th class="u-border-1 u-border-black u-table-cell" style="width: 50px;">#</th>
-            <th class="u-border-1 u-border-black u-table-cell"
-                th:each="name : ${columnNames}" th:text="${name}"></th>
-
-            <th class="u-border-1 u-border-black u-table-cell" style="width: 100px;">update</th>
-            <th class="u-border-1 u-border-black u-table-cell" style="width: 100px;">delete</th>
-        </tr>
-    </thead>
-
-    <tbody class="u-align-center u-table-body u-white u-table-body-1">
+<tbody th:fragment="peer" class="u-align-center u-table-body u-white u-table-body-1">
         <tr th:each="peer, it : ${modelList}">
             <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
             <td th:text="${peer.nickname}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
             <td th:text="${peer.birthday}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
 
-            <td class="u-border-1 u-border-grey-30 u-table-cell"><a data-bs-toggle="modal" data-bs-target="#import-modal"><span class="u-file-icon u-icon u-icon-1"><img src="/images/update-image.png" alt=""></span></a></td>
-            <td class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/delete-image.png" alt=""></span></td>
+            <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="peerNicknameUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
+
+            <td class="u-border-1 u-border-grey-30 u-table-cell">
+                <span data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-file-icon u-icon u-text-palette-2-base u-icon-2">
+                    <img data-type="peerNicknameDelete" src="/images/delete-image.png" class="scaled" alt="">
+                </span>
+            </td>
         </tr>
-
-<!--        <form action="add" th:object="${Model}" method="post">-->
-<!--            <button type="submit">Add Peer</button>-->
-<!--        </form>-->
-    </tbody>
-</table>
-
-
-<section class="modal fade u-align-center u-black u-clearfix u-container-style u-dialog-block u-opacity u-opacity-70 u-dialog-section-8" id="sec-0df4">
-    <div class="u-align-left u-border-1 u-border-white u-container-style u-dialog u-radius-5 u-shape-round u-white u-dialog-1">
-        <div class="u-container-layout u-valign-top u-container-layout-1">
-            <h2 class="u-text u-text-default u-text-1">Редактировать</h2>
-            <div class="u-form u-form-1">
-                <form th:action="@{update}" th:object="${Model}" method="post" class="u-clearfix u-form-spacing-19 u-form-vertical u-inner-form" style="padding: 0px;" name="form">
-                    <div class="u-form-group u-form-group-1">
-                        <label for="name-3e72" class="u-form-control-hidden u-label">Name</label>
-                        <input id="name-3e72" readonly="readonly" name="nickname" class="u-border-grey-75 u-input u-input-rectangle" type="text">
-                    </div>
-                    <div class="u-form-date u-form-group u-form-group-2">
-                        <label for="date-c8e1" class="u-label">Дата</label>
-                        <input type="date" placeholder="ММ/ДД/ГГГГ" id="date-c8e1" name="birthday" class="u-border-grey-75 u-input u-input-rectangle" required="">
-                    </div>
-                    <div class="u-align-left u-form-group u-form-submit u-form-group-3">
-<!--                        <a class="u-black u-btn u-btn-round u-btn-submit u-button-style u-radius-5 u-btn-1">Update</a>-->
-<!--                        <input type="submit" class="u-form-control-hidden" data-dismiss="modal">-->
-                        <button type="submit" data-bs-dismiss="modal">Update</button>
-                    </div>
-<!--                    <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>-->
-<!--                    <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>-->
-<!--                    <input type="hidden" value="" name="recaptchaResponse">-->
-<!--                    <input type="hidden" name="formServices" value="49b4887d-9d07-c972-1b28-95915ea4372b">-->
-                </form>
-            </div>
-        </div><button class="u-dialog-close-button u-icon u-text-grey-50 u-icon-1">
-        <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 413.348 413.348" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1ce9"></use></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xml:space="preserve" class="u-svg-content" viewBox="0 0 413.348 413.348" id="svg-1ce9"><path d="m413.348 24.354-24.354-24.354-182.32 182.32-182.32-182.32-24.354 24.354 182.32 182.32-182.32 182.32 24.354 24.354 182.32-182.32 182.32 182.32 24.354-24.354-182.32-182.32z"></path></svg>
-    </button>
-    </div>
-
-</section>
-
-<style>
-.u-dialog-section-8 .u-dialog-1 {
-    width: 683px;
-    min-height: 343px;
-    height: auto;
-    margin: 286px auto 60px;
-}
-
-.u-dialog-section-8 .u-container-layout-1 {
-    padding: 40px;
-}
-
-.u-dialog-section-8 .u-text-1 {
-    font-size: 2.25rem;
-    margin: 10px auto 0 0;
-}
-
-.u-dialog-section-8 .u-form-1 {
-    height: 202px;
-    width: 601px;
-    margin: 10px 0 0;
-}
-
-.u-dialog-section-8 .u-form-group-1 {
-    width: 100%;
-}
-
-.u-dialog-section-8 .u-form-group-2 {
-    width: 100%;
-}
-
-.u-dialog-section-8 .u-form-group-3 {
-    width: 100%;
-}
-
-.u-dialog-section-8 .u-btn-1 {
-    background-image: none;
-    border-style: none;
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-.u-dialog-section-8 .u-icon-1 {
-    width: 15px;
-    height: 15px;
-    left: auto;
-    top: 16px;
-    position: absolute;
-    right: 18px;
-}
-
-@media (max-width: 991px) {
-    .u-dialog-section-8 .u-container-layout-1 {
-        padding: 30px;
-    }
-}
-
-@media (max-width: 767px) {
-    .u-dialog-section-8 .u-dialog-1 {
-        width: 540px;
-    }
-
-    .u-dialog-section-8 .u-form-1 {
-        width: 520px;
-    }
-}
-
-@media (max-width: 575px) {
-    .u-dialog-section-8 .u-dialog-1 {
-        width: 340px;
-    }
-
-    .u-dialog-section-8 .u-container-layout-1 {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .u-dialog-section-8 .u-form-1 {
-        width: 320px;
-    }
-}</style>
-</div>
+</tbody>
 
 <div th:fragment="peer-new">
     <div class="form-floating mb-3">
@@ -154,3 +24,101 @@
       <label for="peerBirthday">Birthday</label>
     </div>
 </div>
+
+<div th:fragment="peer-update">
+    <label for="peerNicknameUpdate" class="form-select-sm prop-label">Nickname
+        <input type="text" name="nickname" id="peerNicknameUpdate" class="form-control mb-3" required readonly>
+    </label>
+    <div class="form-floating">
+        <input type="date" class="form-control" name="birthday" id="peerBirthdayUpdate" placeholder="Birthday" required>
+        <label for="peerBirthdayUpdate">Birthday</label>
+    </div>
+</div>
+
+<div th:fragment="peer-delete">
+    <label for="peerNicknameDelete" class="form-select-sm prop-label">Nickname
+        <input type="text" name="nickname" id="peerNicknameDelete" class="form-control" required readonly>
+    </label>
+</div>
+
+<style>
+    .u-dialog-section-8 .u-dialog-1 {
+    width: 683px;
+    min-height: 343px;
+    height: auto;
+    margin: 286px auto 60px;
+    }
+
+    .u-dialog-section-8 .u-container-layout-1 {
+    padding: 40px;
+    }
+
+    .u-dialog-section-8 .u-text-1 {
+    font-size: 2.25rem;
+    margin: 10px auto 0 0;
+    }
+
+    .u-dialog-section-8 .u-form-1 {
+    height: 202px;
+    width: 601px;
+    margin: 10px 0 0;
+    }
+
+    .u-dialog-section-8 .u-form-group-1 {
+    width: 100%;
+    }
+
+    .u-dialog-section-8 .u-form-group-2 {
+    width: 100%;
+    }
+
+    .u-dialog-section-8 .u-form-group-3 {
+    width: 100%;
+    }
+
+    .u-dialog-section-8 .u-btn-1 {
+    background-image: none;
+    border-style: none;
+    padding-left: 50px;
+    padding-right: 50px;
+    }
+
+    .u-dialog-section-8 .u-icon-1 {
+    width: 15px;
+    height: 15px;
+    left: auto;
+    top: 16px;
+    position: absolute;
+    right: 18px;
+    }
+
+    @media (max-width: 991px) {
+    .u-dialog-section-8 .u-container-layout-1 {
+    padding: 30px;
+    }
+    }
+
+    @media (max-width: 767px) {
+    .u-dialog-section-8 .u-dialog-1 {
+    width: 540px;
+    }
+
+    .u-dialog-section-8 .u-form-1 {
+    width: 520px;
+    }
+    }
+
+    @media (max-width: 575px) {
+    .u-dialog-section-8 .u-dialog-1 {
+    width: 340px;
+    }
+
+    .u-dialog-section-8 .u-container-layout-1 {
+    padding-left: 20px;
+    padding-right: 20px;
+    }
+
+    .u-dialog-section-8 .u-form-1 {
+    width: 320px;
+    }
+    }</style>

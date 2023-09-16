@@ -201,7 +201,7 @@
                 THEN
                     RETURN new;
                     ELSE
-                    raise notice 'XP_insert error, the amount of XP is more than the maximum available or could not find check with success status, with parameters: % % %', new.check_id, new.id, new."xpAmount";
+                    raise notice 'XP_insert error, the amount of XP is more than the maximum available or could not find check with success status, with parameters: % % %', new.check_id, new.id, new.xp_amount;
                     RETURN NULL;
                     END IF;
                     END;$$;
@@ -221,3 +221,12 @@
     </changeSet>
 
 </databaseChangeLog>
+
+<!--        SELECT-->
+<!--        'DROP TABLE "' || ROUTINE_NAME || '";'-->
+<!--        FROM-->
+<!--        information_schema.table-->
+<!--        WHERE-->
+<!--        routine_type = 'TABLE'-->
+<!--        AND-->
+<!--        routine_schema = 'public';-->

@@ -15,32 +15,31 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public abstract class GenericController<E extends BaseEntity<T>, D extends BaseDto, T> {
+public abstract class GenericController<E extends BaseEntity<T>, D extends BaseDto, T extends Comparable<T>>  {
     protected final GenericService<E, T> genericService;
     protected final GenericMapper<E, D> genericMapper;
     private final Class<D> clazz;
 
     @GetMapping("all")
     public String all(@NotNull Model model) {
-        List<D> dtos = genericMapper.toDtos(genericService.getAll());
+        List<D> dtos = genericMapper.toDtos(genericService.getAll().stream()
+                                                .sorted(Comparator.comparing(BaseEntity::getId))
+                                                .toList());
+
         model.addAttribute("columnNames", DtoMetaData.getColumnNames(clazz));
         model.addAttribute("tableName", DtoMetaData.getClassName(clazz));
         model.addAttribute("modelList", dtos);
-//        List<T> id = genericService.getAll().stream().map(Peer::getId).toList();
-//        model.addAttribute("idList", id);
-        System.out.println("AAAAaaaAAADRGDGDGGDRGRDGDRGRGRD");
         return "Таблицы";
     }
 
     @ResponseBody
     @GetMapping("all_id")
     public List<T> allId() {
-        System.out.println("IDIDIDIIDID");
-
         return genericService.getAll().stream().map(BaseEntity::getId).toList();
     }
 
