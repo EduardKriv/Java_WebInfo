@@ -1,14 +1,12 @@
  <tbody th:fragment="xp" class="u-align-center u-table-body u-white u-table-body-1">
     <tr th:each="xp, it : ${modelList}">
-        <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-        <td th:text="${xp.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-        <td th:text="${xp.check}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${it.count}"    class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${xp.id}"       class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${xp.check}"    class="u-border-1 u-border-grey-30 u-table-cell"></td>
         <td th:text="${xp.xpAmount}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
 
         <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="xpIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
-
-        <td class="u-border-1 u-border-grey-30 u-table-cell">
-            <span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img src="/images/delete-image.png" alt=""></span></td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img data-type="xpIdDelete" src="/images/delete-image.png" class="scaled" alt=""></span></td>
     </tr>
 </tbody>
 
@@ -27,4 +25,10 @@
          <input type="number" name="id" id="xpIdUpdate" class="form-control" required readonly>
      </label>
      <div th:replace="~{'tables/' + xp :: xp-new } ?: _"></div>
+ </div>
+
+ <div th:fragment="xp-delete">
+     <label for="xpIdDelete" class="form-select-sm prop-label">ID
+         <input type="number" id="xpIdDelete" name="id" class="form-control" readonly>
+     </label>
  </div>

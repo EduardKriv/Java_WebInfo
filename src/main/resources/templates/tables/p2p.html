@@ -1,17 +1,14 @@
 <tbody th:fragment="p2p" class="u-align-center u-table-body u-white u-table-body-1">
     <tr th:each="p2p, it : ${modelList}">
-        <td th:text="${it.count}"   class="u-border-1 u-border-grey-30 u-table-cell"></td>
-        <td th:text="${p2p.id}"     class="u-border-1 u-border-grey-30 u-table-cell"></td>
-        <td th:text="${p2p.check}"  class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${it.count}"         class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${p2p.id}"           class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${p2p.check}"        class="u-border-1 u-border-grey-30 u-table-cell"></td>
         <td th:text="${p2p.checkingPeer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-        <td th:text="${p2p.state}"  class="u-border-1 u-border-grey-30 u-table-cell"></td>
-        <td th:text="${p2p.time}"   class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${p2p.state}"        class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${p2p.time}"         class="u-border-1 u-border-grey-30 u-table-cell"></td>
 
         <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="p2pIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
-
-        <td class="u-border-1 u-border-grey-30 u-table-cell">
-            <span class="u-file-icon u-icon u-text-palette-2-base u-icon-2">
-                <img src="/images/delete-image.png" alt=""></span></td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img data-type="p2pIdDelete" src="/images/delete-image.png" class="scaled" alt=""></span></td>
     </tr>
 </tbody>
 
@@ -40,4 +37,10 @@
         <input type="number" name="id" id="p2pIdUpdate" class="form-control" required readonly>
     </label>
     <div th:replace="~{'tables/' + p2p :: p2p-new } ?: _"></div>
+</div>
+
+<div th:fragment="p2p-delete">
+    <label for="p2pIdDelete" class="form-select-sm prop-label">ID
+        <input type="number" name="id" id="p2pIdDelete" class="form-control" required readonly>
+    </label>
 </div>

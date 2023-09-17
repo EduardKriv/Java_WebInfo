@@ -1,17 +1,12 @@
  <tbody th:fragment="friend" class="u-align-center u-table-body u-white u-table-body-1">
     <tr th:each="friend, it : ${modelList}">
-        <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-        <td th:text="${friend.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-        <td th:text="${friend.peer1}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-        <td th:text="${friend.peer2}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${it.count}"       class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${friend.id}"      class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${friend.peer1}"   class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${friend.peer2}"   class="u-border-1 u-border-grey-30 u-table-cell"></td>
 
         <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="friendIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
-
-        <td class="u-border-1 u-border-grey-30 u-table-cell">
-            <span class="u-file-icon u-icon u-text-palette-2-base u-icon-2">
-                <img src="/images/delete-image.png" alt="">
-            </span>
-        </td>
+        <td data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-border-1 u-border-grey-30 u-table-cell"><span class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img data-type="friendIdDelete" src="/images/delete-image.png" class="scaled" alt=""></span></td>
     </tr>
 </tbody>
 
@@ -29,4 +24,10 @@
          <input type="number" name="id" id="friendIdUpdate" class="form-control" required readonly>
      </label>
      <div th:replace="~{'tables/' + friend :: friend-new } ?: _"></div>
+ </div>
+
+ <div th:fragment="friend-delete">
+     <label for="friendIdDelete" class="form-select-sm prop-label">ID
+         <input type="number" name="id" id="friendIdDelete" class="form-control" required readonly>
+     </label>
  </div>

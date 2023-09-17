@@ -1,15 +1,12 @@
  <tbody th:fragment="recommendation" class="u-align-center u-table-body u-white u-table-body-1">
         <tr th:each="recommendation, it : ${modelList}">
-            <td th:text="${it.count}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${recommendation.id}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
-            <td th:text="${recommendation.peer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+            <td th:text="${it.count}"                       class="u-border-1 u-border-grey-30 u-table-cell"></td>
+            <td th:text="${recommendation.id}"              class="u-border-1 u-border-grey-30 u-table-cell"></td>
+            <td th:text="${recommendation.peer}"            class="u-border-1 u-border-grey-30 u-table-cell"></td>
             <td th:text="${recommendation.recommendedPeer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
 
             <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal"  class="u-file-icon u-icon u-icon-1"><img data-type="recommendationIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
-
-            <td class="u-border-1 u-border-grey-30 u-table-cell">
-                <span class="u-file-icon u-icon u-text-palette-2-base u-icon-2">
-                    <img src="/images/delete-image.png" alt=""></span></td>
+            <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img data-type="recIdDelete" src="/images/delete-image.png" class="scaled" alt=""></span></td>
         </tr>
 </tbody>
 
@@ -27,4 +24,10 @@
          <input type="number" name="id" id="recommendationIdUpdate" class="form-control" required readonly>
      </label>
      <div th:replace="~{'tables/' + recommendation :: recommendation-new } ?: _"></div>
+ </div>
+
+ <div th:fragment="recommendation-delete">
+     <label for="recIdDelete" class="form-select-sm prop-label">ID
+         <input type="number" id="recIdDelete" name="id" class="form-control" readonly>
+     </label>
  </div>
