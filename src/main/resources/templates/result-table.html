@@ -9,58 +9,59 @@
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 </head>
 
-  <body class="u-body u-xl-mode" data-lang="ru">
-  <div th:replace="~{header :: header}"></div>
+  <body id="proc_body" class="u-body u-xl-mode" data-lang="ru">
+      <div class="pageContentWrapper">
+        <div th:replace="~{header :: header}"></div>
 
-    <section class="u-clearfix u-section-1" id="sec-bb2b">
-      <div class="u-clearfix u-sheet u-sheet-1">
+        <section class="u-clearfix u-section-1" id="sec-bb2b">
+          <div class="u-clearfix u-sheet u-sheet-1">
 
-          <div id="buttons_in_result_table">
-              <a href="/procedures_block.html" class="u-black u-border-2 u-border-grey-75 u-btn u-button-style u-hover-feature u-btn-1">
-                  <span class="u-file-icon u-icon u-text-white u-icon-1">
-                    <img th:src="@{/images/back_invert_color.png}" alt="">
-                  </span>   Вернуться
-              </a>
-              <a href="/unload" class="u-black u-border-2 u-border-grey-75 u-btn u-button-style u-hover-feature u-btn-2">
-                  <span class="u-file-icon u-icon u-text-white u-icon-2">
-                      <img th:src="@{/images/export_invert_color.png}" alt="">
-                  </span>Экcпортировать<br>
-              </a>
-          </div>
+              <div id="buttons_in_result_table">
+                  <a href="/procedures_block.html" class="u-black u-border-2 u-border-grey-75 u-btn u-button-style u-hover-feature u-btn-1">
+                      <span class="u-file-icon u-icon u-text-white u-icon-1">
+                        <img th:src="@{/images/back_invert_color.png}" alt="">
+                      </span>   Вернуться
+                  </a>
+                  <a href="/unload" class="u-black u-border-2 u-border-grey-75 u-btn u-button-style u-hover-feature u-btn-2">
+                      <span class="u-file-icon u-icon u-text-white u-icon-2">
+                          <img th:src="@{/images/export_invert_color.png}" alt="">
+                      </span>Экcпортировать<br>
+                  </a>
+              </div>
 
-        <div class="u-expanded-width u-table u-table-responsive u-table-1">
-            <h3 class="u-custom-font u-text u-text-default u-text-font u-text-1">Результат процедуры:</h3>
-            <div id="procedures_block_table">
-                <table th:fragment="requests" class="u-table-entity">
-                    <thead class="u-black u-table-header u-table-header-1">
-                    <tr style="height: 21px;">
-                        <th th:each="name : ${columnNames}" th:text="${name}" class="u-border-1 u-border-black u-table-cell"></th>
-                    </tr>
-                    </thead>
+            <div class="u-expanded-width u-table u-table-responsive u-table-1">
+                <h3 class="u-custom-font u-text u-text-default u-text-font u-text-1">Результат процедуры:</h3>
+                <div id="procedures_block_table" style="box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);">
+                    <table th:fragment="requests" class="u-table-entity">
+                        <thead class="u-black u-table-header u-table-header-1">
+                        <tr style="height: 21px;">
+                            <th th:each="name : ${columnNames}" th:text="${name}" class="u-border-1 u-border-black u-table-cell"></th>
+                        </tr>
+                        </thead>
 
-                    <tbody class="u-table-body">
-                    <tr style="height: 75px;" th:each="object : ${resultSet}">
-                        <td class="u-border-1 u-border-grey-30 u-table-cell" th:each="value : ${object}" th:text="${value}"></td>
-                    </tr>
-                    </tbody>
-                </table>
+                        <tbody class="u-table-body">
+                        <tr style="height: 75px;" th:each="object : ${resultSet}">
+                            <td class="u-border-1 u-border-grey-30 u-table-cell" th:each="value : ${object}" th:text="${value}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
-
       </div>
     </section>
-    <section class="u-clearfix u-section-2" id="sec-1458">
-      <div class="u-clearfix u-sheet u-sheet-1"></div>
-    </section>
-    
-    <span style="height: 64px; width: 64px; margin-left: 0px; margin-right: auto; margin-top: 0px; background-image: none; right: 20px; bottom: 20px; padding: 15px" class="u-back-to-top u-black u-icon u-icon-circle u-opacity u-opacity-85" data-href="#">
-        <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 551.13 551.13"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d98"></use></svg>
-        <svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98"><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
-    </span>
+        <section class="u-clearfix u-section-2" id="sec-1458">
+            <div class="u-clearfix u-sheet u-sheet-1"></div>
+        </section>
 
-  <div th:replace="~{footer :: footer}"></div>
+        <span style="height: 64px; width: 64px; margin-left: 0px; margin-right: auto; margin-top: 0px; background-image: none; right: 20px; bottom: 20px; padding: 15px" class="u-back-to-top u-black u-icon u-icon-circle u-opacity u-opacity-85" data-href="#">
+            <svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 0 551.13 551.13"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-1d98"></use></svg>
+            <svg class="u-svg-content" enable-background="new 0 0 551.13 551.13" viewBox="0 0 551.13 551.13" xmlns="http://www.w3.org/2000/svg" id="svg-1d98"><path d="m275.565 189.451 223.897 223.897h51.668l-275.565-275.565-275.565 275.565h51.668z"></path></svg>
+        </span>
+    </div>
 
-      <script class="u-script" type="text/javascript" src="/js/jquery.js" defer="" th:src="@{/js/jquery.js}"></script>
-      <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer="" th:src="@{/js/nicepage.js}"></script>
-      <script class="u-script" type="text/javascript" src="/js/procedures_block.js" defer="" th:src="@{/js/procedures_block.js}"></script>
-  </body></html>
+    <div class="footerWrapper">
+      <div th:replace="~{footer :: footer}"></div>
+    </div>
+  <script class="u-script" type="text/javascript" src="/js/jquery.js" defer="" th:src="@{/js/jquery.js}"></script>
+  <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer="" th:src="@{/js/nicepage.js}"></script>
+</body></html>

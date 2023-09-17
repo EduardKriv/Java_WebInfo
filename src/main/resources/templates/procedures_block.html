@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html style="font-size: 16px;" lang="ru"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
     <title>procedures_block</title>
 
     <link rel="stylesheet" href="/css/nicepage.css" th:href="@{/css/nicepage.css}">
     <link rel="stylesheet" href="/css/procedures_block.css" th:href="@{/css/procedures_block.css}">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
 
-<body class="u-body u-xl-mode" data-lang="ru">
+<body id="proc_body" class="u-body u-xl-mode" data-lang="ru">
+<div class="pageContentWrapper">
   <div th:replace="~{header :: header}"></div>
 
   <section class="u-carousel u-carousel-duration-1000 u-slide u-block-4691-1" id="carousel-42d2" data-interval="60000" data-u-ride="false">
@@ -24,59 +24,59 @@
           <div class="u-clearfix u-sheet u-sheet-1">
             <div class="u-expanded-width u-layout-grid u-list u-list-1">
               <div class="u-repeater u-repeater-1">
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-container-layout-1">
-                    <h3 class="u-align-left u-text u-text-default u-text-1"> TransferredPoints в более человекочитаемом виде №1<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-1">№1: TransferredPoints в более человекочитаемом виде<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
                     <p class="u-align-left u-text u-text-2"> Количество отрицательное, если пир 2 получил от пира 1 больше поинтов.</p>
-                    <a href="/proc/1" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-1" rel="nofollow">Run<br>
+                    <a href="/proc/1" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-1" rel="nofollow">Run<br>
                     </a>
                   </div>
                 </div>
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-container-layout-2">
-                    <h3 class="u-align-left u-text u-text-default u-text-3"> Успешные проверки №2<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-3"> №2: Успешные проверки<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-2"></div>
                     <p class="u-align-left u-text u-text-4"> Только задания, успешно прошедшие проверку.</p>
-                    <a href="/proc/2" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2"> Run</a>
+                      <a href="/proc/2" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-container-layout-3">
-                    <h3 class="u-align-left u-text u-text-default u-text-5"> Пиры не выходившие из кампуса в течении дня №3<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-5"> №3: Пиры не выходившие из кампуса в течении дня<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-3"></div>
-                    <p class="u-align-left u-text u-text-6"> Функция возвращает только список пиров. Параметры функции: день, например 12.05.2022.</p>
-                    <a href="#sec-0d66" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-3"> Run</a>
+                    <p class="u-align-left u-text u-text-6"> Возвращает список пиров. Параметры: день, например 12.05.2022.</p>
+                    <a href="#sec-0d66" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-3"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-container-layout-4">
-                    <h3 class="u-align-left u-text u-text-default u-text-7"> Процент успешных и неуспешных проверок за всё время №4<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-7"> №4: Процент успешных и неуспешных проверок за всё время<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-4"></div>
                     <p class="u-align-left u-text u-text-8"> Процент успешных, процент неуспешных.</p>
-                    <a href="/proc/4" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-4"> Run</a>
+                    <a href="/proc/4" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-4"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-container-layout-5">
-                    <h3 class="u-align-left u-text u-text-default u-text-9"> Пиры и изменение в количестве пир поинтов пиров по таблице TransferredPoints №5<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-9"> №5: Пиры и изменение в количестве пир поинтов пиров по таблице TransferredPoints<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-5"></div>
                     <p class="u-align-left u-text u-text-10"> Ник пира, изменение в количество пир поинтов, в отсортированным по изменению числа поинтов.</p>
-                    <a href="/proc/5" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-5"> Run</a>
+                    <a href="/proc/5" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-5"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-container-layout-6">
-                    <h3 class="u-align-left u-text u-text-default u-text-11"> Пиры и изменение в количестве пир поинтов пиров по таблице TransferredPoints в человекочитаемом виде&nbsp;№6<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-11">№6: Пиры и изменение в количестве пир поинтов пиров по таблице TransferredPoints в человекочитаемом виде<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-6"></div>
                     <p class="u-align-left u-text u-text-12"> Ник пира, изменение в количество пир поинтов, в отсортированным по изменению числа поинтов.</p>
-                    <a href="/proc/6" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-6"> Run</a>
+                    <a href="/proc/6" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-6"> Run</a>
                   </div>
                 </div>
               </div>
@@ -87,59 +87,59 @@
           <div class="u-clearfix u-sheet u-sheet-1">
             <div class="u-expanded-width u-layout-grid u-list u-list-1">
               <div class="u-repeater u-repeater-1">
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
                     <h3 class="u-align-left u-text u-text-default u-text-1">
-                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1" data-href="https://nicepage.com"> Cамое часто проверяемое задание&nbsp;№7</a>
+                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1">№7: Cамое часто проверяемое задание</a>
                       <br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
                     <p class="u-align-left u-text u-text-2"> При одинаковом количестве проверок каких-то заданий в определенный день, выведутся все. Формат вывода: день, название задания.</p>
-                    <a href="/proc/7" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2">Run<br>
+                    <a href="/proc/7" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2">Run<br>
                     </a>
                   </div>
                 </div>
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
-                    <h3 class="u-align-left u-text u-text-default u-text-3"> Длительность последней P2P проверки&nbsp;№8<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-3">№8: Длительность последней P2P проверки<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-2"></div>
-                    <p class="u-align-left u-text u-text-4"> Под длительностью подразумевается разница между временем, указанным в записи со статусом "начало", и временем, указанным в записи со статусом "успех" или "неуспех". Формат вывода: длительность проверки</p>
-                    <a href="/proc/8" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-3"> Run</a>
+                    <p class="u-align-left u-text u-text-4"> Длительность между стартом первой проверки и временем в записи со статусом "успех" или "неуспех". Формат вывода: длительность проверки</p>
+                    <a href="/proc/8" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-3"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
-                    <h3 class="u-align-left u-text u-text-default u-text-5"> Пиры завершившие определенный блок заданий&nbsp;№9<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-5">№9: Пиры завершившие определенный блок заданий<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-3"></div>
-                    <p class="u-align-left u-text u-text-6"> Параметры процедуры: название блока, например "CPP". Результат выдется отсортированным по дате завершения. Формат вывода: ник пира, дата завершения блока.</p>
-                    <a href="#sec-5f04" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-4"> Run</a>
+                    <p class="u-align-left u-text u-text-6"> Параметры: название блока, например "CPP". Результат выдется отсортированным по дате завершения. Формат вывода: ник пира, дата завершения блока.</p>
+                    <a href="#sec-5f04" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-4"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4">
-                    <h3 class="u-align-left u-text u-text-default u-text-7"> Наиболее рекомендуемые друзьями&nbsp;пиры&nbsp;№10<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-7">№10: Наиболее рекомендуемые друзьями пиры<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-4"></div>
                     <p class="u-align-left u-text u-text-8"> Определяется исходя из рекомендаций друзей пира, т.е. найдется пир, проверяться у которого рекомендует наибольшее число друзей. Формат вывода: ник пира, ник найденного проверяющего.</p>
-                    <a href="/proc/10" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-5"> Run</a>
+                    <a href="/proc/10" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-5"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-5">
-                    <h3 class="u-align-left u-text u-text-default u-text-9"> Процент пиров, приступивших к блокам заданий&nbsp;№11</h3>
+                    <h3 class="u-align-left u-text u-text-default u-text-9">№11: Процент пиров, приступивших к блокам заданий</h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-5"></div>
-                    <p class="u-align-left u-text u-text-10"> Параметры процедуры: название блока 1, например CPP, название блока 2, например A. Формат вывода: процент приступивших к первому блоку, процент приступивших ко второму блоку, процент приступивших к обоим, процент не приступивших ни к одному.</p>
-                    <a href="#sec-a739" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-6"> Run</a>
+                    <p class="u-align-left u-text u-text-10"> Параметры: название блока 1, название блока 2. Формат вывода: процент приступивших к первому блоку, процент приступивших ко второму блоку, процент приступивших к обоим, процент не приступивших ни к одному.</p>
+                    <a href="#sec-a739" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-6"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-6">
-                    <h3 class="u-align-left u-text u-text-default u-text-11"> N пиров с наибольшим числом друзей&nbsp;№12</h3>
+                    <h3 class="u-align-left u-text u-text-default u-text-11">№12: N пиров с наибольшим числом друзей</h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-6"></div>
-                    <p class="u-align-left u-text u-text-12"> Параметры процедуры: количество пиров N. Результат выведется отсортированным по кол-ву друзей. Формат вывода: ник пира, количество друзей.</p>
-                    <a href="#sec-d330" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-7"> Run</a>
+                    <p class="u-align-left u-text u-text-12"> Параметры: количество пиров N. Результат выведется отсортированным по кол-ву друзей. Формат вывода: ник пира, количество друзей.</p>
+                    <a href="#sec-d330" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-7"> Run</a>
                   </div>
                 </div>
               </div>
@@ -150,60 +150,60 @@
           <div class="u-clearfix u-sheet u-sheet-1">
             <div class="u-expanded-width u-layout-grid u-list u-list-1">
               <div class="u-repeater u-repeater-1">
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
                     <h3 class="u-align-left u-text u-text-default u-text-1">
-                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1" data-href="https://nicepage.com"> Процент пиров, успешно прошедших проверку в день рождения №13</a>
+                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1">№13: Процент пиров, успешно прошедших проверку в день рождения </a>
                       <br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
                     <p class="u-align-left u-text u-text-2"> Определяет процент пиров, которые хоть раз проваливали проверку в свой день рождения. Формат вывода: процент успехов в день рождения, процент неуспехов в день рождения.</p>
-                    <a href="/proc/13" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2">Run<br>
+                    <a href="/proc/13" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2">Run<br>
                     </a>
                   </div>
                 </div>
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
-                    <h3 class="u-align-left u-text u-text-default u-text-3"> Кол-во XP, полученное в сумме каждым пиром №14<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-3">№14: Кол-во XP, полученное в сумме каждым пиром <br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-2"></div>
                     <p class="u-align-left u-text u-text-4"> Если одна задача выполнена несколько раз, полученное за нее кол-во XP равно максимальному за эту задачу. Результат выдется отсортированным по кол-ву XP. Формат вывода: ник пира, количество XP.</p>
-                    <a href="/proc/14" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-3"> Run</a>
+                    <a href="/proc/14" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-3"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
-                    <h3 class="u-align-left u-text u-text-default u-text-5"> Пиры сдавшие задания 1 и 2, но не сдавшие 3 №15<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-5">№15: Пиры сдавшие задания 1 и 2, но не сдавшие 3 <br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-3"></div>
-                    <p class="u-align-left u-text u-text-6"> Параметры процедуры: названия заданий 1, 2 и 3. Формат вывода: список пиров.</p>
-                    <a href="#sec-ca41" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-4"> Run</a>
+                    <p class="u-align-left u-text u-text-6"> Параметры: названия заданий 1, 2 и 3. Формат вывода: список пиров.</p>
+                    <a href="#sec-ca41" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-4"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4">
-                    <h3 class="u-align-left u-text u-text-default u-text-7"> Кол-во предшествующих задач для необходимых старта задания №16<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-7">№16: Кол-во предшествующих задач для необходимых старта задания<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-4"></div>
                     <p class="u-align-left u-text u-text-8"> Cколько задач нужно выполнить, исходя из условий входа, чтобы получить доступ к текущей. Формат вывода: название задачи, количество предшествующих.</p>
-                    <a href="/proc/16" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-5"> Run</a>
+                    <a href="/proc/16" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-5"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-5">
-                    <h3 class="u-align-left u-text u-text-default u-text-9"> Найти "удачные" дни c N идущих подряд успешных проверок №17<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-9">№17: Найти "удачные" дни c N идущих подряд успешных проверок <br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-5"></div>
-                    <p class="u-align-left u-text u-text-10"> Параметры процедуры: количество идущих подряд успешных проверок N. Временем проверки считается время начала P2P этапа. Под идущими подряд успешными проверками подразумеваются успешные проверки, между которыми нет неуспешных. При этом кол-во опыта за каждую из этих проверок должно быть не меньше 80% от максимального. Формат вывода: список дней.</p>
-                    <a href="#sec-34de" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-6"> Run</a>
+                    <p class="u-align-left u-text u-text-10">От старта P2P этапа, где кол-во опыта за каждую из этих проверок не меньше 80% от максимального. Формат вывода: список дней.</p>
+                    <a href="#sec-34de" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-6"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-6">
-                    <h3 class="u-align-left u-text u-text-default u-text-11"> Определить пира с наибольшим числом выполненных заданий №18</h3>
+                    <h3 class="u-align-left u-text u-text-default u-text-11">№18: Определить пира с наибольшим числом выполненных заданий </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-6"></div>
                     <p class="u-align-left u-text u-text-12"> Формат вывода: ник пира, число выполненных заданий.</p>
-                    <a href="/proc/18" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-7"> Run</a>
+                    <a href="/proc/18" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-7"> Run</a>
                   </div>
                 </div>
               </div>
@@ -214,58 +214,56 @@
           <div class="u-clearfix u-sheet u-sheet-1">
             <div class="u-expanded-width u-layout-grid u-list u-list-1">
               <div class="u-repeater u-repeater-1">
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
-                    <h3 class="u-align-left u-text u-text-default u-text-1">
-                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1" data-href="https://nicepage.com"> Определить пира с наибольшим количеством XP&nbsp;№19</a>
-                    </h3>
+                    <h3 class="u-align-left u-text u-text-default u-text-3">№19: Определить пира с наибольшим количеством XP<br></h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
                     <p class="u-align-left u-text u-text-2"> Формат вывода: ник пира, количество XP.</p>
-                    <a href="/proc/19" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2">Run<br>
+                    <a href="/proc/19" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-2">Run<br>
                     </a>
                   </div>
                 </div>
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
-                    <h3 class="u-align-left u-text u-text-default u-text-3"> Определить пира, который провел сегодня в кампусе больше всего времени&nbsp;№20<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-3">№20: Определить пира, который провел сегодня в кампусе больше всего времени<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-2"></div>
                     <p class="u-align-left u-text u-text-4"> Формат вывода: ник пира.</p>
-                    <a href="/proc/20" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-3"> Run</a>
+                    <a href="/proc/20" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-3"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
-                    <h3 class="u-align-left u-text u-text-default u-text-5"> Определить пиров, приходивших раньше заданного времени не менее N раз за всё время&nbsp;№21<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-5">№21: Определить пиров, приходивших раньше заданного времени не менее N раз за всё время<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-3"></div>
-                    <p class="u-align-left u-text u-text-6"> Параметры процедуры: время, количество раз N. Формат вывода: список пиров.</p>
-                    <a href="#sec-b696" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-4"> Run</a>
+                    <p class="u-align-left u-text u-text-6"> Параметры: время, количество раз N. Формат вывода: список пиров.</p>
+                    <a href="#sec-b696" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-4"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4">
-                    <h3 class="u-align-left u-text u-text-default u-text-7"> Определить пиров, выходивших за последние N дней из кампуса больше M раз&nbsp;№22<br>
+                    <h3 class="u-align-left u-text u-text-default u-text-7">№22: Определить пиров, выходивших за последние N дней из кампуса больше M раз<br>
                     </h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-4"></div>
-                    <p class="u-align-left u-text u-text-8"> Параметры процедуры: количество дней N, количество раз M. Формат вывода: список пиров.</p>
-                    <a href="#sec-6e26" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-5"> Run</a>
+                    <p class="u-align-left u-text u-text-8"> Параметры: количество дней N, количество раз M. Формат вывода: список пиров.</p>
+                    <a href="#sec-6e26" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-5"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-5">
-                    <h3 class="u-align-left u-text u-text-default u-text-9"> Определить пира, который пришел сегодня последним&nbsp;№23</h3>
+                    <h3 class="u-align-left u-text u-text-default u-text-9">№23: Определить пира, который пришел сегодня последним</h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-5"></div>
                     <p class="u-align-left u-text u-text-10"> Формат вывода: ник пира.</p>
-                    <a href="/proc/23" class="u-align-left u-black u-btn u-button-style u-hover-feature u-btn-6"> Run</a>
+                    <a href="/proc/23" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-hover-feature u-btn-6"> Run</a>
                   </div>
                 </div>
-                <div class="u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
                   <div class="u-container-layout u-similar-container u-valign-top u-container-layout-6">
-                    <h3 class="u-align-left u-text u-text-default u-text-11"> Определить пиров, которые выходили вчера из кампуса больше чем на N минут №24</h3>
+                    <h3 class="u-align-left u-text u-text-default u-text-11">№24: Определить пиров, которые выходили вчера из кампуса больше чем на N минут</h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-6"></div>
-                    <p class="u-align-left u-text u-text-12"> Параметры процедуры: количество минут N. Формат вывода: список пиров.</p>
-                    <a href="#sec-0ac8" class="u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-7"> Run</a>
+                    <p class="u-align-left u-text u-text-12"> Параметры: количество минут N. Формат вывода: список пиров.</p>
+                    <a href="#sec-0ac8" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-dialog-link u-hover-feature u-btn-7"> Run</a>
                   </div>
                 </div>
               </div>
@@ -276,16 +274,16 @@
           <div class="u-clearfix u-sheet u-sheet-1">
             <div class="u-layout-grid u-list u-list-1">
               <div class="u-repeater u-repeater-1">
-                <div class="u-container-style u-custom-item u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white">
-                  <div class="u-container-layout u-similar-container u-container-layout-1">
-                    <h3 class="u-align-left u-custom-item u-text u-text-default u-text-1">
-                      <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-body-color u-btn-1" data-href="https://nicepage.com"> Определить для каждого месяца процент ранних входов №25</a>
-                    </h3>
+
+                <div class="shadow u-container-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle u-video-cover u-white carousel_elem_equal_size">
+                  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
+                    <h3 class="u-align-left u-text u-text-default u-text-9" style="font-size: 1.5rem; font-weight: 700;">№25: Определить для каждого месяца процент ранних входов<br></h3>
                     <div class="u-align-left u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
-                    <p class="u-align-left u-custom-item u-text u-text-2">Сколько раз люди, родившиеся в этот месяц, приходили в кампус за всё время, приходили в кампус раньше 12:00 за всё время, процент ранних входов в кампус относительно общего числа входов. Формат вывода: месяц, процент ранних входов.</p>
-                    <a href="/proc/25" class="u-align-left u-black u-btn u-button-style u-custom-item u-hover-feature u-btn-2">Run<br>
+                    <p class="u-align-left u-custom-item u-text u-text-2">Сколько раз люди, родившиеся в этот месяц, приходили в кампус за всё время, приходили в кампус раньше 12:00 за всё время, процент ранних входов в кампус относительно общего числа входов.</p>
+                    <a href="/proc/25" class="run_btn_make_bottom u-align-left u-black u-btn u-button-style u-custom-item u-hover-feature u-btn-2">Run<br>
                     </a>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -308,13 +306,14 @@
       </a>
       
 
+      
     </section>
     <section class="u-clearfix u-section-2" id="sec-d7d3">
       <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
          <div id="query_div">
             <form action="/query">
-                <textarea id="textArea" name="query" placeholder="Enter here your query"></textarea>
-                <button type="submit" class="black_submit_button">Отправить</button>
+                <textarea id="textArea" name="query" placeholder="Enter here your query" class="shadow"></textarea>
+                <button type="submit" class="black_submit_button shadow">Отправить</button>
             </form>
           </div>
 
@@ -345,6 +344,9 @@
   </section>
 
 <style>
+  .shadow {
+    box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+  }
 
 .u-dialog-section-6 .u-dialog-1 {
   width: 640px;
@@ -1402,9 +1404,11 @@
   }
 }</style>
 
-  <div th:replace="~{footer :: footer}"></div>
+</div>
 
+<div class="footerWrapper">
+  <div th:replace="~{footer :: footer}"></div>
+</div>
   <script class="u-script" type="text/javascript" src="/js/jquery.js" defer="" th:src="@{/js/jquery.js}"></script>
   <script class="u-script" type="text/javascript" src="/js/nicepage.js" defer="" th:src="@{/js/nicepage.js}"></script>
-  <script class="u-script" type="text/javascript" src="/js/procedures_block.js" defer="" th:src="@{/js/procedures_block.js}"></script>
 </body></html>
