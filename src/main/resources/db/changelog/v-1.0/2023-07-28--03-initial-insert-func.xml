@@ -220,4 +220,16 @@
         </sql>
     </changeSet>
 
+    <changeSet id="2023-07-28-initial-xp-update-trg" author="cnathali">
+        <sql endDelimiter="\nGO"
+             splitStatements="true"
+             stripComments="true">
+            CREATE OR REPLACE TRIGGER trg_XP_update_audit
+                BEFORE UPDATE
+                ON XP
+                FOR EACH ROW
+            EXECUTE PROCEDURE fnc_trg_XP_insert_audit();
+        </sql>
+    </changeSet>
+
 </databaseChangeLog>

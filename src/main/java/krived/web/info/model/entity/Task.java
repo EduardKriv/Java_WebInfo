@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @Table(name = "tasks")
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Task extends BaseEntity<String> {
     @Id
     @Column(name = "title")

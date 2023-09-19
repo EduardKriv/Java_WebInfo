@@ -1,4 +1,14 @@
- .u-section-1 {
+.alert-label {
+  position: absolute;
+  display: block;
+  width: 100%;
+  box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.7s;
+}
+
+
+.u-section-1 {
   background-image: linear-gradient(to right, #0bd295, #2cccc4);
 }
 

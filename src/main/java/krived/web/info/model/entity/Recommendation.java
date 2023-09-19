@@ -1,6 +1,5 @@
 package krived.web.info.model.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

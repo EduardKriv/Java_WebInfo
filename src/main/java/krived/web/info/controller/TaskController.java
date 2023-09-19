@@ -8,12 +8,14 @@ import krived.web.info.utility.CsvConverter;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -26,15 +28,20 @@ public class TaskController extends GenericController<Task, TaskDto, String>{
 
     @Override
     @PostMapping("upload")
-    public String upload(@RequestParam("file") MultipartFile file) {
-        List<TaskDto> tasksDto = CsvConverter.upload(file, TaskDto.class);
-        tasksDto.forEach(task -> genericService.create(genericMapper.toEntity(task)));
-        return "redirect:all";
+    public String upload(Model model, @RequestParam("file") @NotNull MultipartFile file) {
+        try {
+            List<TaskDto> tasksDto = CsvConverter.upload(file, TaskDto.class);
+            tasksDto.forEach(task -> genericService.create(genericMapper.toEntity(task)));
+            return super.setResponseStatusAndMessage(model, "Success", "Файл успешно загружен");
+        } catch (Exception e) {
+            return super.setResponseStatusAndMessage(model, "Failure", "Ошибка загрузки файла");
+
+        }
     }
 
     @Override
     @PostMapping("update")
-    public String update(@ModelAttribute("Model") @NotNull TaskDto dto, @RequestParam String title) {
-        return super.update(dto, title);
+    public String update(Model model, @ModelAttribute("Model") @NotNull TaskDto dto, @RequestParam String title) {
+        return super.update(model, dto, title);
     }
 }

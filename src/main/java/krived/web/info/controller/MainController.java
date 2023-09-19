@@ -2,7 +2,6 @@ package krived.web.info.controller;
 
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,18 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class MainController {
 
-    @GetMapping("/Данные.html")
-    public String data(Model model) {
-        return "Данные";
+    @GetMapping("/data")
+    public String data() {
+        return "data_block";
     }
 
-    @GetMapping("/")
-    public String mainPage(Model model) {
-        return "Главная";
-    }
-
-    @GetMapping("/procedures_block.html")
-    public String operation(Model model) {
+    @GetMapping("/procedures")
+    public String operation() {
         return "procedures_block";
     }
 }

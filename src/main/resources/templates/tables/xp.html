@@ -22,7 +22,7 @@
 
  <div th:fragment="xp-update">
      <label for="xpIdUpdate" class="form-select-sm prop-label">ID
-         <input type="number" name="id" id="xpIdUpdate" class="form-control" required readonly>
+         <input type="number" name="id" id="xpIdUpdate" class="form-control" readonly>
      </label>
      <div th:replace="~{'tables/' + xp :: xp-new } ?: _"></div>
  </div>

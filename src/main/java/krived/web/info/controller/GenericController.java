@@ -34,7 +34,8 @@ public abstract class GenericController<E extends BaseEntity<T>, D extends BaseD
         model.addAttribute("columnNames", DtoMetaData.getColumnNames(clazz));
         model.addAttribute("tableName", DtoMetaData.getClassName(clazz));
         model.addAttribute("modelList", dtos);
-        return "Таблицы";
+
+        return "data_table";
     }
 
     @ResponseBody
@@ -44,30 +45,34 @@ public abstract class GenericController<E extends BaseEntity<T>, D extends BaseD
     }
 
     @PostMapping("add")
-    public String create(@ModelAttribute("Model") @NotNull D dto) {
+    public String create(Model model, @ModelAttribute("Model") @NotNull D dto) {
         genericService.create(genericMapper.toEntity(dto));
-        return "redirect:all";
+        return setResponseStatusAndMessage(model, "Success", "Запись добавлена");
     }
 
     @PostMapping("update")
-    public String update(@ModelAttribute("Model") @NotNull D dto, @RequestParam T id) {
+    public String update(Model model, @ModelAttribute("Model") @NotNull D dto, @RequestParam T id) {
         E entity = genericService.getById(id);
         genericMapper.updateEntityFromDto(dto, entity);
         genericService.update(entity);
-        return "redirect:all";
+        return setResponseStatusAndMessage(model, "Success", "Запись обновлена");
     }
 
     @PostMapping("delete")
-    public String remove(@ModelAttribute("Model") @NotNull D dto) {
+    public String remove(Model model, @ModelAttribute("Model") @NotNull D dto) {
         genericService.delete(genericMapper.toEntity(dto));
-        return "redirect:all";
+        return setResponseStatusAndMessage(model, "Success", "Запись удалена");
     }
 
     @PostMapping("upload")
-    public String upload(@RequestParam("file") MultipartFile file) {
-        List<D> dtos = CsvConverter.upload(file, clazz);
-        genericService.saveAll(genericMapper.toEntities(dtos));
-        return "redirect:all";
+    public String upload(Model model, @RequestParam("file") MultipartFile file) {
+        try {
+            List<D> dtos = CsvConverter.upload(file, clazz);
+            genericService.saveAll(genericMapper.toEntities(dtos));
+            return setResponseStatusAndMessage(model, "Success", "Файл успешно загружен");
+        } catch (Exception e) {
+            return setResponseStatusAndMessage(model, "Failure", "Ошибка загрузки файла");
+        }
     }
 
     @GetMapping("unload")
@@ -77,5 +82,11 @@ public abstract class GenericController<E extends BaseEntity<T>, D extends BaseD
         servletResponse.addHeader("Content-Disposition", "attachment; filename=\"" + fileName + ".csv\"");
         List<D> beans = genericMapper.toDtos(genericService.getAll());
         CsvConverter.unload(servletResponse.getWriter(), beans, clazz);
+    }
+
+    protected String setResponseStatusAndMessage(Model model, String status, String message) {
+        model.addAttribute("status", status);
+        model.addAttribute("message", message);
+        return all(model);
     }
 }

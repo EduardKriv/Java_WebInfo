@@ -17,11 +17,11 @@
 </tbody>
 
 <div th:fragment="check-new">
-    <label for="checkTask" class="form-select-sm prop-label">Task
-        <select id="checkTask" name="task" class="form-select task-select" aria-label=".form-select-sm"></select>
-    </label>
     <label for="checkPeer" class="form-select-sm prop-label">Peer
-        <select id="checkPeer" name="peer" class="form-select mb-3 peer-select" aria-label=".form-select-sm"></select>
+        <select id="checkPeer" name="peer" class="form-select peer-select" aria-label=".form-select-sm"></select>
+    </label>
+    <label for="checkTask" class="form-select-sm prop-label">Task
+        <select id="checkTask" name="task" class="form-select mb-3 task-select" aria-label=".form-select-sm"></select>
     </label>
     <div class="form-floating">
         <input type="date" class="form-control" name="date" id="checkDate" placeholder="Date" required>
@@ -31,7 +31,7 @@
 
 <div th:fragment="check-update">
     <label for="checkIdUpdate" class="form-select-sm prop-label">ID
-        <input type="number" name="id" id="checkIdUpdate" class="form-control" required readonly>
+        <input type="number" name="id" id="checkIdUpdate" class="form-control" readonly>
     </label>
     <div th:replace="~{'tables/' + check :: check-new } ?: _"></div>
 </div>

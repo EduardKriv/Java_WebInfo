@@ -28,7 +28,9 @@ public class CustomRequestController {
             return setAttributes(model);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            model.addAttribute("status", "Failure");
+            model.addAttribute("message", "Ошибка в запросе");
+            return "procedures_block";
         }
     }
 
@@ -41,7 +43,9 @@ public class CustomRequestController {
             return setAttributes(model);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            model.addAttribute("status", "Failure");
+            model.addAttribute("message", "Ошибка выполнения процедуры");
+            return "procedures_block";
         }
     }
 
@@ -56,6 +60,6 @@ public class CustomRequestController {
         model.addAttribute("tableName", "requests");
         model.addAttribute("columnNames", customTable.getColumnNames());
         model.addAttribute("resultSet", customTable.getTableBody());
-        return "result-table";
+        return "procedures_table";
     }
 }

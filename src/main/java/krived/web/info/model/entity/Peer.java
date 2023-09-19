@@ -3,14 +3,13 @@ package krived.web.info.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 
 import java.time.LocalDate;
 
 @Entity
 @Data
 @Table(name = "peers")
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class Peer extends BaseEntity<String> {
     @Id
     @Column(name = "nickname")

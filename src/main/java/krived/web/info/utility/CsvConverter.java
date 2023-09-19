@@ -11,12 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.util.Collections;
 import java.util.List;
 
 @Service
 public class CsvConverter {
-    public static <T extends BaseDto> List<T> upload(MultipartFile file, Class<T> clazz) {
+    public static <T extends BaseDto> List<T> upload(MultipartFile file, Class<T> clazz) throws IOException {
         try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
             CustomMappingStrategy<T> strategy = new CustomMappingStrategy<>();
             strategy.setType(clazz);
@@ -27,11 +26,10 @@ public class CsvConverter {
                     .withType(clazz)
                     .build()
                     .parse();
-
-        }  catch (Exception e) {
-            System.err.println(e.getMessage());
         }
-        return Collections.emptyList();
+        catch (Exception e) {
+            throw new IOException();
+        }
     }
 
     public static <T extends BaseDto> void unload(Writer writer, List<T> dto, Class<T> clazz) {

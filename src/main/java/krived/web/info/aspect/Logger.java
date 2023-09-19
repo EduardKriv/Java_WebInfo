@@ -14,11 +14,11 @@ public class Logger {
     @Around("execution(* krived.web.info.service.*.*(..))")
     public Object writeLog(ProceedingJoinPoint pjp) throws Throwable {
         Object retVal = pjp.proceed();
-        log.info("User command start:");
+        log.info("Actions start:");
         log.info("Command: {}", pjp.getSignature());
         log.info("Args: {}", pjp.getArgs());
         log.info("Output: {}", retVal);
-        log.info("User command stop.");
+        log.info("Actions stop.");
         return retVal;
     }
 }
