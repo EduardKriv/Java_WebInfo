@@ -2,13 +2,15 @@ package krived.web.info.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalTime;
 
 @Entity
 @Data
 @Table(name = "p2p")
-public class P2P {
+@EqualsAndHashCode(callSuper = false)
+public class P2P extends BaseEntity<Long> {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

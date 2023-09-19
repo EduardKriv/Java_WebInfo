@@ -1,0 +1,46 @@
+ <tbody th:fragment="timetracking" class="u-align-center u-table-body u-white u-table-body-1">
+    <tr th:each="timeTracking, it : ${modelList}">
+        <td th:text="${it.count}"           class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${timeTracking.id}"    class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${timeTracking.peer}"  class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${timeTracking.date}"  class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${timeTracking.time}"  class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${timeTracking.state}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="timetrackingIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img data-type="timetrackingIdDelete" src="/images/delete-image.png" class="scaled" alt=""></span></td>
+    </tr>
+</tbody>
+
+ <div th:fragment="timetracking-new">
+     <label for="timetrackingPeer" class="form-select-sm prop-label">Peer
+        <select id="timetrackingPeer" name="peer" class="form-select mb-3 peer-select" aria-label=".form-select-sm"></select>
+     </label>
+     <div class="form-floating">
+         <input type="date" name="date" class="form-control mb-3" id="timetrackingDate" placeholder="Date" required>
+         <label for="timetrackingDate">Date</label>
+     </div>
+     <div class="form-floating">
+         <input type="time" name="time" class="form-control" id="timetrackingTime" placeholder="Time" step="2" required>
+         <label for="timetrackingTime">Time</label>
+     </div>
+     <label for="timetrackingState" class="form-select-sm prop-label">State
+         <select id="timetrackingState" name="state" class="form-select" aria-label=".form-select-sm">
+             <option value="1">1</option>
+             <option value="2">2</option>
+         </select>
+     </label>
+ </div>
+
+ <div th:fragment="timetracking-update">
+     <label for="timetrackingIdUpdate" class="form-select-sm prop-label">ID
+         <input type="number" name="id" id="timetrackingIdUpdate" class="form-control" required readonly>
+     </label>
+     <div th:replace="~{'tables/' + timetracking :: timetracking-new } ?: _"></div>
+ </div>
+
+ <div th:fragment="timetracking-delete">
+     <label for="timetrackingIdDelete" class="form-select-sm prop-label">ID
+         <input type="number" id="timetrackingIdDelete" name="id" class="form-control" readonly>
+     </label>
+ </div>

@@ -2,11 +2,13 @@ package krived.web.info.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 @Table(name = "procedures")
-public class CallBody {
+@EqualsAndHashCode(callSuper = false)
+public class CallBody extends BaseEntity<Long> {
     @Id
     @Column(name = "id")
     private Long id;

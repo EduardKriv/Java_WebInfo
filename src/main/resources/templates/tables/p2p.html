@@ -1,39 +1,46 @@
-<table th:fragment="p2p">
-    <caption th:text="P2P"></caption>
-    <thead>
-        <tr>
-            <th>№</th>
-            <th th:each="name : ${columnNames}" th:text="${name}"></th>
-        </tr>
-    </thead>
+<tbody th:fragment="p2p" class="u-align-center u-table-body u-white u-table-body-1">
+    <tr th:each="p2p, it : ${modelList}">
+        <td th:text="${it.count}"         class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${p2p.id}"           class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${p2p.check}"        class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${p2p.checkingPeer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${p2p.state}"        class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${p2p.time}"         class="u-border-1 u-border-grey-30 u-table-cell"></td>
 
-    <tbody>
-    <tr th:each="p2p, it : ${allP2P}">
-        <td th:text="${it.count}"></td>
-        <td th:text="${p2p.id}"></td>
-        <td th:text="${p2p.check}"></td>
-        <td th:text="${p2p.checkingPeer}"></td>
-        <td th:text="${p2p.state}"></td>
-        <td th:text="${p2p.time}"></td>
-        <td>
-            <form action="update" th:object="${updatedP2P}" method="post">
-                <input type="hidden" name="id" th:value="${p2p.id}">
-                <button type="submit">Update</button>
-            </form>
-        </td>
-        <td>
-            <form action="delete" th:object="${deletedP2P}" method="post">
-                <input type="hidden" name="id" th:value="${p2p.id}">
-                <button type="submit">Delete</button>
-            </form>
-        </td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="p2pIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img data-type="p2pIdDelete" src="/images/delete-image.png" class="scaled" alt=""></span></td>
     </tr>
-    <tr>
-        <td>
-            <form action="add" th:object="${addedP2P}" method="post">
-                <button type="submit">Add P2P</button>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+</tbody>
+
+<div th:fragment="p2p-new">
+    <label for="p2pCheck" class="form-select-sm prop-label">Check ID
+        <select id="p2pCheck" name="check" class="form-select check-select" aria-label=".form-select-sm"></select>
+    </label>
+    <label for="p2pCheckingPeer" class="form-select-sm prop-label">Checking peer
+        <select id="p2pCheckingPeer" name="checkingPeer" class="form-select peer-select" aria-label=".form-select-sm"></select>
+    </label>
+    <label for="p2pState" class="form-select-sm prop-label">State
+        <select id="p2pState" name="state" class="form-select mb-3" aria-label=".form-select-sm">
+            <option value="Start">Start</option>
+            <option value="Success">Success</option>
+            <option value="Failure">Failure</option>
+        </select>
+    </label>
+    <div class="form-floating">
+        <input type="time" name="time" class="form-control" id="p2pTime" placeholder="Time" step="2" required>
+        <label for="p2pTime">Time</label>
+    </div>
+</div>
+
+<div th:fragment="p2p-update">
+    <label for="p2pIdUpdate" class="form-select-sm prop-label">ID
+        <input type="number" name="id" id="p2pIdUpdate" class="form-control" required readonly>
+    </label>
+    <div th:replace="~{'tables/' + p2p :: p2p-new } ?: _"></div>
+</div>
+
+<div th:fragment="p2p-delete">
+    <label for="p2pIdDelete" class="form-select-sm prop-label">ID
+        <input type="number" name="id" id="p2pIdDelete" class="form-control" required readonly>
+    </label>
+</div>

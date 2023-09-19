@@ -1,7 +1,8 @@
 package krived.web.info.repository;
 
 import krived.web.info.model.entity.TransferredPoint;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface TransferredPointRepository extends JpaRepository<TransferredPoint, Long> {
+@Repository
+public interface TransferredPointRepository extends GenericRepository<TransferredPoint, Long> {
 }

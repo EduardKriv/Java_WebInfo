@@ -2,11 +2,13 @@ package krived.web.info.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
 @Table(name = "tasks")
-public class Task {
+@EqualsAndHashCode(callSuper = false)
+public class Task extends BaseEntity<String> {
     @Id
     @Column(name = "title")
     private String title;
@@ -17,4 +19,9 @@ public class Task {
 
     @Column(name = "max_xp")
     private Integer maxXp;
+
+    @Override
+    public String getId() {
+        return title;
+    }
 }

@@ -4,20 +4,18 @@ import com.opencsv.CSVWriter;
 import com.opencsv.CSVWriterBuilder;
 import com.opencsv.ICSVWriter;
 import com.opencsv.bean.*;
-import krived.web.info.model.dto.CsvBean;
+import krived.web.info.model.dto.BaseDto;
 import krived.web.info.model.ModelCustomTable;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.sql.SQLException;
-import java.util.Collections;
 import java.util.List;
 
 @Service
 public class CsvConverter {
-    public static <T extends CsvBean> List<T> upload(MultipartFile file, Class<T> clazz) {
+    public static <T extends BaseDto> List<T> upload(MultipartFile file, Class<T> clazz) throws IOException {
         try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
             CustomMappingStrategy<T> strategy = new CustomMappingStrategy<>();
             strategy.setType(clazz);
@@ -28,14 +26,13 @@ public class CsvConverter {
                     .withType(clazz)
                     .build()
                     .parse();
-
-        }  catch (Exception e) {
-            System.err.println(e.getMessage());
         }
-        return Collections.emptyList();
+        catch (Exception e) {
+            throw new IOException();
+        }
     }
 
-    public static <T extends CsvBean> void unload(Writer writer, List<T> dto, Class<T> clazz) {
+    public static <T extends BaseDto> void unload(Writer writer, List<T> dto, Class<T> clazz) {
         try {
             CustomMappingStrategy<T> strategy = new CustomMappingStrategy<>();
             strategy.setType(clazz);
@@ -54,7 +51,7 @@ public class CsvConverter {
         }
     }
 
-    public static void unload(Writer writ, @NotNull ModelCustomTable table) throws SQLException, IOException {
+    public static void unload(Writer writ, @NotNull ModelCustomTable table) throws IOException {
         ICSVWriter writer = new CSVWriterBuilder(writ)
                 .withQuoteChar(CSVWriter.NO_QUOTE_CHARACTER)
                 .withSeparator(CSVWriter.DEFAULT_SEPARATOR)

@@ -2,6 +2,7 @@ package krived.web.info.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -9,7 +10,8 @@ import java.time.LocalTime;
 @Entity
 @Data
 @Table(name = "time_tracking")
-public class TimeTracking {
+@EqualsAndHashCode(callSuper = false)
+public class TimeTracking extends BaseEntity<Long> {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,0 +1,43 @@
+<tbody th:fragment="check" class="u-align-center u-table-body u-white u-table-body-1">
+    <tr th:each="check, it : ${modelList}">
+        <td th:text="${it.count}"   class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${check.id}"   class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${check.peer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${check.task}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${check.date}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="checkIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
+
+        <td class="u-border-1 u-border-grey-30 u-table-cell">
+            <span data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-file-icon u-icon u-text-palette-2-base u-icon-2">
+                <img data-type="checkIdDelete" src="/images/delete-image.png" class="scaled" alt="">
+            </span>
+        </td>
+    </tr>
+</tbody>
+
+<div th:fragment="check-new">
+    <label for="checkPeer" class="form-select-sm prop-label">Peer
+        <select id="checkPeer" name="peer" class="form-select peer-select" aria-label=".form-select-sm"></select>
+    </label>
+    <label for="checkTask" class="form-select-sm prop-label">Task
+        <select id="checkTask" name="task" class="form-select mb-3 task-select" aria-label=".form-select-sm"></select>
+    </label>
+    <div class="form-floating">
+        <input type="date" class="form-control" name="date" id="checkDate" placeholder="Date" required>
+        <label for="checkDate">Date</label>
+    </div>
+</div>
+
+<div th:fragment="check-update">
+    <label for="checkIdUpdate" class="form-select-sm prop-label">ID
+        <input type="number" name="id" id="checkIdUpdate" class="form-control" readonly>
+    </label>
+    <div th:replace="~{'tables/' + check :: check-new } ?: _"></div>
+</div>
+
+<div th:fragment="check-delete">
+    <label for="checkIdDelete" class="form-select-sm prop-label">ID
+        <input type="number" id="checkIdDelete" name="id" class="form-control" readonly>
+    </label>
+</div>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <title>Данные</title>
+    <link rel="stylesheet" href="/css/nicepage.css" media="screen" th:href="@{/css/nicepage.css}">
+    <link rel="stylesheet" href="/css/data_block.css" media="screen" th:href="@{/css/data_block.css}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script class="u-script" type="text/javascript" src="../static/js/nicepage.js" defer="" th:src="@{/js/nicepage.js}"></script>
+
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+</head>
+
+  <body class="u-body u-overlap u-overlap-transparent u-stick-footer u-xl-mode" data-lang="ru">
+  <div th:replace="~{header :: header}"></div>
+
+    <section class="u-clearfix u-gradient u-section-1" id="sec-3b81">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-layout-grid u-list u-list-1">
+          <div class="u-repeater u-repeater-1">
+            <a th:href="@{/peer/all}" class="u-container-style u-hover-feature u-list-item u-radius-10 u-repeater-item u-shape-round u-video-cover u-white u-list-item-1">
+              <div class="u-container-layout u-similar-container u-container-layout-1">
+                <h3 class="u-align-center u-custom-item u-text u-text-default u-text-1">Peers</h3>
+                <div class="u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-1"></div>
+                <ul class="u-align-left u-text u-text-2">
+                  <li>Ник пира</li>
+                  <li> День рождения</li>
+                </ul>
+              </div>
+            </a>
+            <a th:href="@{/check/all}" class="u-container-style u-hover-feature u-list-item u-radius-10 u-repeater-item u-shape-round u-video-cover u-white u-list-item-2" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-2">
+                <h3 class="u-align-center u-custom-item u-text u-text-default u-text-3">Checks</h3>
+                <div class="u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-2"></div>
+                <ul class="u-align-left u-text u-text-4">
+                  <li> ID</li>
+                  <li>Ник пира</li>
+                  <li>Название задания</li>
+                  <li>Дата проверки</li>
+                </ul>
+              </div>
+            </a>
+            <a th:href="@{/friend/all}" class="u-container-style u-hover-feature u-list-item u-radius-10 u-repeater-item u-shape-round u-video-cover u-white u-list-item-3" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-3">
+                <h3 class="u-align-center u-custom-item u-text u-text-default u-text-5">Friends</h3>
+                <div class="u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-3"></div>
+                <ul class="u-align-left u-text u-text-6">
+                  <li> ID</li>
+                  <li>Ник первого пира</li>
+                  <li>Ник второго пира</li>
+                </ul>
+              </div>
+            </a>
+            <a th:href="@{/p2p/all}" class="u-container-style u-hover-feature u-list-item u-radius-10 u-repeater-item u-shape-round u-video-cover u-white u-list-item-4" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-4">
+                <h3 class="u-align-center u-custom-item u-text u-text-default u-text-7">P2P</h3>
+                <div class="u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-4"></div>
+                <ul class="u-align-left u-text u-text-8">
+                  <li>ID</li>
+                  <li>ID проверки</li>
+                  <li>Ник проверяющего пира</li>
+                  <li>Статус P2P проверки<br>
+                  </li>
+                  <li> Время<br>
+                  </li>
+                </ul>
+              </div>
+            </a>
+            <a th:href="@{/recommendation/all}" class="u-container-style u-hover-feature u-list-item u-radius-10 u-repeater-item u-shape-round u-video-cover u-white u-list-item-5" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-5">
+                <h3 class="u-align-center u-custom-item u-text u-text-default u-text-9">Recommendations</h3>
+                <div class="u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-5"></div>
+                <ul class="u-align-left u-text u-text-10">
+                  <li>ID</li>
+                  <li>Ник пира</li>
+                  <li>Ник пира, к которому рекомендуют идти на проверку<br>
+                  </li>
+                </ul>
+              </div>
+            </a>
+            <a th:href="@{/task/all}" class="u-container-style u-hover-feature u-list-item u-radius-10 u-repeater-item u-shape-round u-video-cover u-white u-list-item-6" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-6">
+                <h3 class="u-align-center u-custom-item u-text u-text-default u-text-11">Tasks</h3>
+                <div class="u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-6"></div>
+                <ul class="u-align-left u-text u-text-12">
+                  <li>Название задания</li>
+                  <li>Название задания, являющегося условием входа</li>
+                  <li>Максимальное количество XP</li>
+                </ul>
+              </div>
+            </a>
+            <a th:href="@{/time_tracking/all}" class="u-container-style u-hover-feature u-list-item u-radius-10 u-repeater-item u-shape-round u-video-cover u-white u-list-item-7" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-7">
+                <h3 class="u-align-center u-custom-item u-text u-text-default u-text-13">Time Tracking</h3>
+                <div class="u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-7"></div>
+                <ul class="u-align-left u-text u-text-14">
+                  <li>ID</li>
+                  <li>Ник пира</li>
+                  <li>Дата</li>
+                  <li>Время</li>
+                  <li>Состояние (1 - пришел, 2 - вышел)<br>
+                  </li>
+                </ul>
+              </div>
+            </a>
+            <a th:href="@{/transferred_point/all}" class="u-container-style u-hover-feature u-list-item u-radius-10 u-repeater-item u-shape-round u-video-cover u-white u-list-item-8" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-8">
+                <h3 class="u-align-center u-custom-item u-text u-text-default u-text-15">Transferred Points</h3>
+                <div class="u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-8"></div>
+                <ul class="u-align-left u-text u-text-16">
+                  <li>ID</li>
+                  <li>Ник проверяющего пира</li>
+                  <li>Ник проверяемого пира</li>
+                  <li>Количество переданных пир поинтов за всё время&nbsp;<br>
+                  </li>
+                </ul>
+              </div>
+            </a>
+            <a th:href="@{/xp/all}" class="u-container-style u-hover-feature u-list-item u-radius-10 u-repeater-item u-shape-round u-video-cover u-white u-list-item-9" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-9">
+                <h3 class="u-align-center u-custom-item u-text u-text-default u-text-17">XP</h3>
+                <div class="u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-9"></div>
+                <ul class="u-align-left u-text u-text-18">
+                  <li>ID</li>
+                  <li>ID проверки</li>
+                  <li>Количество</li>
+                  <li>полученного XP</li>
+                </ul>
+              </div>
+            </a>
+            <a th:href="@{/verter/all}" class="u-container-style u-hover-feature u-list-item u-radius-10 u-repeater-item u-shape-round u-video-cover u-white u-list-item-10" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="">
+              <div class="u-container-layout u-similar-container u-container-layout-10">
+                <h3 class="u-align-center u-custom-item u-text u-text-default u-text-19">Verter</h3>
+                <div class="u-border-4 u-border-black u-expanded-width u-line u-line-horizontal u-line-10"></div>
+                <ul class="u-align-left u-text u-text-20">
+                  <li>ID</li>
+                  <li>ID проверки</li>
+                  <li>Статус проверки Verter'ом</li>
+                  <li>Время<br>
+                  </li>
+                </ul>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <div th:replace="~{footer :: footer}"></div>
+</body></html>

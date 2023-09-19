@@ -1,7 +1,8 @@
 package krived.web.info.repository;
 
 import krived.web.info.model.entity.Friend;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface FriendRepository extends JpaRepository<Friend, Long> {
+@Repository
+public interface FriendRepository extends GenericRepository<Friend, Long> {
 }

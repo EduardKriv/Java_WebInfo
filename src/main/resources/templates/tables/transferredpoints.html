@@ -1,0 +1,38 @@
+ <tbody th:fragment="transferredpoints" class="u-align-center u-table-body u-white u-table-body-1">
+    <tr th:each="transferred_point, it : ${modelList}">
+        <td th:text="${it.count}"                       class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${transferred_point.id}"           class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${transferred_point.checkingPeer}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${transferred_point.checkedPeer}"  class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${transferred_point.pointsAmount}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="transferredpointsIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img data-type="transferredpointsIdDelete" src="/images/delete-image.png" class="scaled" alt=""></span></td>
+    </tr>
+</tbody>
+
+ <div th:fragment="transferredpoints-new">
+     <label for="tpCheckingPeer" class="form-select-sm prop-label">Checking peer
+        <select id="tpCheckingPeer" name="checkingPeer" class="form-select peer-select" aria-label=".form-select-sm"></select>
+     </label>
+     <label for="tpCheckedPeer" class="form-select-sm prop-label">Checked peer
+        <select id="tpCheckedPeer" name="checkedPeer" class="form-select mb-3 peer-select" aria-label=".form-select-sm"></select>
+     </label>
+     <div class="form-floating">
+         <input type="number" name="pointsAmount" class="form-control" id="tpPointsAmount" placeholder="Points amount" required>
+         <label for="tpPointsAmount">Points Amount</label>
+     </div>
+ </div>
+
+ <div th:fragment="transferredpoints-update">
+     <label for="transferredpointsIdUpdate" class="form-select-sm prop-label">ID
+         <input type="number" name="id" id="transferredpointsIdUpdate" class="form-control" required readonly>
+     </label>
+     <div th:replace="~{'tables/' + transferredpoints :: transferredpoints-new } ?: _"></div>
+ </div>
+
+ <div th:fragment="transferredpoints-delete">
+     <label for="transferredpointsIdDelete" class="form-select-sm prop-label">ID
+         <input type="number" id="transferredpointsIdDelete" name="id" class="form-control" readonly>
+     </label>
+ </div>

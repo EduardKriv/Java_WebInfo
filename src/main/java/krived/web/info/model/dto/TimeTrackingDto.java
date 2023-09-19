@@ -11,7 +11,7 @@ import java.time.LocalTime;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class TimeTrackingDto extends CsvBean {
+public class TimeTrackingDto extends BaseDto {
     @CsvBindByName(column = "id", required = true)
     private Long id;
 

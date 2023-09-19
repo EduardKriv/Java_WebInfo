@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class P2PDto extends CsvBean {
+public class P2PDto extends BaseDto {
     @CsvBindByName(column = "id", required = true)
     private Long id;
 

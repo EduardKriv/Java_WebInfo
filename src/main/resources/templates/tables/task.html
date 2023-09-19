@@ -1,0 +1,45 @@
+ <tbody th:fragment="task" class="u-align-center u-table-body u-white u-table-body-1">
+    <tr th:each="task, it : ${modelList}">
+        <td th:text="${it.count}"        class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${task.title}"      class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${task.parentTask}" class="u-border-1 u-border-grey-30 u-table-cell"></td>
+        <td th:text="${task.maxXp}"      class="u-border-1 u-border-grey-30 u-table-cell"></td>
+
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="taskIdUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
+        <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img data-type="taskTitleDelete" src="/images/delete-image.png" class="scaled" alt=""></span></td>
+    </tr>
+</tbody>
+
+ <div th:fragment="task-new">
+     <div class="form-floating">
+         <input type="text" name="title" class="form-control" id="taskTitle" placeholder="Title" required>
+         <label for="taskTitle">Title</label>
+     </div>
+     <label for="taskParentTask" class="form-select-sm prop-label">Parent task
+        <select id="taskParentTask" name="parentTask" class="form-select mb-3 task-select" aria-label=".form-select-sm"></select>
+     </label>
+     <div class="form-floating">
+         <input type="number" name="maxXp" class="form-control" id="taskMaxXp" placeholder="Max XP" required>
+         <label for="taskMaxXp">Max XP</label>
+     </div>
+ </div>
+
+ <div th:fragment="task-update">
+     <div class="form-floating">
+         <input type="text" name="title" class="form-control" id="taskIdUpdate" placeholder="Title" required readonly>
+         <label for="taskIdUpdate">Title</label>
+     </div>
+     <label for="taskParentTaskUpdate" class="form-select-sm prop-label">Parent task
+         <select id="taskParentTaskUpdate" name="parentTask" class="form-select mb-3 task-select" aria-label=".form-select-sm"></select>
+     </label>
+     <div class="form-floating">
+         <input type="number" name="maxXp" class="form-control" id="taskMaxXpUpdate" placeholder="Max XP">
+         <label for="taskMaxXpUpdate">Max XP</label>
+     </div>
+ </div>
+
+ <div th:fragment="task-delete">
+     <label for="taskTitleDelete" class="form-select-sm prop-label">Title
+         <input type="text" name="title" id="taskTitleDelete" class="form-control" required readonly>
+     </label>
+ </div>

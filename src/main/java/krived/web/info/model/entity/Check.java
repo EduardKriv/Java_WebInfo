@@ -2,14 +2,15 @@ package krived.web.info.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
 @Data
 @Table(name = "checks")
-public class Check implements Serializable {
+@EqualsAndHashCode(callSuper=false)
+public class Check extends BaseEntity<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

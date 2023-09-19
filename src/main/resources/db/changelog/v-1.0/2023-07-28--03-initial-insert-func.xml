@@ -201,7 +201,7 @@
                 THEN
                     RETURN new;
                     ELSE
-                    raise notice 'XP_insert error, the amount of XP is more than the maximum available or could not find check with success status, with parameters: % % %', new.check_id, new.id, new."xpAmount";
+                    raise notice 'XP_insert error, the amount of XP is more than the maximum available or could not find check with success status, with parameters: % % %', new.check_id, new.id, new.xp_amount;
                     RETURN NULL;
                     END IF;
                     END;$$;
@@ -214,6 +214,18 @@
          stripComments="true">
             CREATE OR REPLACE TRIGGER trg_XP_insert_audit
                 BEFORE INSERT
+                ON XP
+                FOR EACH ROW
+            EXECUTE PROCEDURE fnc_trg_XP_insert_audit();
+        </sql>
+    </changeSet>
+
+    <changeSet id="2023-07-28-initial-xp-update-trg" author="cnathali">
+        <sql endDelimiter="\nGO"
+             splitStatements="true"
+             stripComments="true">
+            CREATE OR REPLACE TRIGGER trg_XP_update_audit
+                BEFORE UPDATE
                 ON XP
                 FOR EACH ROW
             EXECUTE PROCEDURE fnc_trg_XP_insert_audit();

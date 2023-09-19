@@ -16,7 +16,7 @@ import java.time.LocalDate;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/custom_request")
+@RequestMapping
 public class CustomRequestController {
     private final CustomRequestService customRequestService;
     private ModelCustomTable customTable;
@@ -28,7 +28,9 @@ public class CustomRequestController {
             return setAttributes(model);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            model.addAttribute("status", "Failure");
+            model.addAttribute("message", "Ошибка в запросе");
+            return "procedures_block";
         }
     }
 
@@ -41,21 +43,23 @@ public class CustomRequestController {
             return setAttributes(model);
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            model.addAttribute("status", "Failure");
+            model.addAttribute("message", "Ошибка выполнения процедуры");
+            return "procedures_block";
         }
     }
 
     @GetMapping("/unload")
-    public void unload(@NotNull HttpServletResponse servletResponse) throws IOException, SQLException {
+    public void unload(@NotNull HttpServletResponse servletResponse) throws IOException {
         servletResponse.setContentType("text/csv");
         servletResponse.addHeader("Content-Disposition", "attachment; filename=\"custom_table.csv\"");
         CsvConverter.unload(servletResponse.getWriter(), customTable);
     }
 
-    private String setAttributes(Model model) throws SQLException {
+    private @NotNull String setAttributes(@NotNull Model model) {
         model.addAttribute("tableName", "requests");
         model.addAttribute("columnNames", customTable.getColumnNames());
         model.addAttribute("resultSet", customTable.getTableBody());
-        return "index";
+        return "procedures_table";
     }
 }

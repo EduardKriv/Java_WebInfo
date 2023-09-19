@@ -10,7 +10,7 @@ import java.time.LocalTime;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class VerterDto extends CsvBean {
+public class VerterDto extends BaseDto {
     @CsvBindByName(column = "id", required = true)
     private Long id;
 

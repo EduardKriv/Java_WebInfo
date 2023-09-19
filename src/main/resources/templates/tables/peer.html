@@ -1,0 +1,37 @@
+<tbody th:fragment="peer" class="u-align-center u-table-body u-white u-table-body-1">
+        <tr th:each="peer, it : ${modelList}">
+            <td th:text="${it.count}"       class="u-border-1 u-border-grey-30 u-table-cell"></td>
+            <td th:text="${peer.nickname}"  class="u-border-1 u-border-grey-30 u-table-cell"></td>
+            <td th:text="${peer.birthday}"  class="u-border-1 u-border-grey-30 u-table-cell"></td>
+
+            <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#update-entry-modal" class="u-file-icon u-icon u-icon-1"><img data-type="peerNicknameUpdate" src="/images/update-image.png" class="scaled" alt=""></span></td>
+            <td class="u-border-1 u-border-grey-30 u-table-cell"><span data-bs-toggle="modal" data-bs-target="#delete-entry-modal" class="u-file-icon u-icon u-text-palette-2-base u-icon-2"><img data-type="peerNicknameDelete" src="/images/delete-image.png" class="scaled" alt=""></span></td>
+        </tr>
+</tbody>
+
+<div th:fragment="peer-new">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" name="nickname" id="peerNickname" placeholder="Nickname" required>
+      <label for="peerNickname">Nickname</label>
+    </div>
+    <div class="form-floating">
+      <input type="date" class="form-control" name="birthday" id="peerBirthday" placeholder="Birthday" required>
+      <label for="peerBirthday">Birthday</label>
+    </div>
+</div>
+
+<div th:fragment="peer-update">
+    <label for="peerNicknameUpdate" class="form-select-sm prop-label">Nickname
+        <input type="text" name="nickname" id="peerNicknameUpdate" class="form-control mb-3" required readonly>
+    </label>
+    <div class="form-floating">
+        <input type="date" class="form-control" name="birthday" id="peerBirthdayUpdate" placeholder="Birthday" required>
+        <label for="peerBirthdayUpdate">Birthday</label>
+    </div>
+</div>
+
+<div th:fragment="peer-delete">
+    <label for="peerNicknameDelete" class="form-select-sm prop-label">Nickname
+        <input type="text" name="nickname" id="peerNicknameDelete" class="form-control" required readonly>
+    </label>
+</div>

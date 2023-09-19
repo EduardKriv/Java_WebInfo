@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class TaskDto extends CsvBean {
+public class TaskDto extends BaseDto {
     @CsvBindByName(column = "title", required = true)
     @CsvBindByPosition(position = 0)
     private String title;
