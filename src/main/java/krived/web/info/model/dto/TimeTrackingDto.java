@@ -26,7 +26,7 @@ public class TimeTrackingDto extends BaseDto {
 
     @CsvBindByName(column = "time", required = true)
     @CsvBindByPosition(position = 2)
-    @CsvDate(value = "HH:mm")
+    @CsvDate(value = "HH:mm:ss")
     private LocalTime time;
 
     @CsvBindByName(column = "state", required = true)
