@@ -6,7 +6,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
 <!--    1) Написать функцию, возвращающую таблицу TransferredPoints в более человекочитаемом виде-->
-    <changeSet id="2023-08-09-initial-task1-fnc" author="cnathali">
+    <changeSet id="2023-08-09-initial-task1-fnc" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -31,7 +31,7 @@
     </changeSet>
 
 <!--    2) Написать функцию, которая возвращает таблицу вида: ник пользователя, название проверенного задания, кол-во полученного XP-->
-    <changeSet id="2023-08-09-initial-task2-fnc" author="cnathali">
+    <changeSet id="2023-08-09-initial-task2-fnc" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -47,7 +47,7 @@
     </changeSet>
 
 <!--    3) Написать функцию, определяющую пиров, которые не выходили из кампуса в течение всего дня-->
-    <changeSet id="2023-08-09-initial-task3-fnc" author="cnathali">
+    <changeSet id="2023-08-09-initial-task3-fnc" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -62,7 +62,7 @@
     </changeSet>
 
 <!--    4) Найти процент успешных и неуспешных проверок за всё время-->
-    <changeSet id="2023-08-09-initial-task4-pr" author="cnathali">
+    <changeSet id="2023-08-09-initial-task4-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -91,7 +91,7 @@
     </changeSet>
 
 <!--    5) Посчитать изменение в количестве пир поинтов каждого пира по таблице TransferredPoints-->
-    <changeSet id="2023-08-09-initial-fnc_get_peer_points_change" author="cnathali">
+    <changeSet id="2023-08-09-initial-fnc_get_peer_points_change" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -115,7 +115,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="2023-08-09-initial-task5_pr" author="cnathali">
+    <changeSet id="2023-08-09-initial-task5_pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -135,7 +135,7 @@
     </changeSet>
 
 <!--    6) Посчитать изменение в количестве пир поинтов каждого пира по таблице, возвращаемой первой функцией из Part 3-->
-    <changeSet id="2023-08-09-initial-task6-pr" author="cnathali">
+    <changeSet id="2023-08-09-initial-task6-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -156,7 +156,7 @@
     </changeSet>
 
 <!--    7) Определить самое часто проверяемое задание за каждый день-->
-    <changeSet id="2023-08-09-initial-fnc_get_max_count_task" author="cnathali">
+    <changeSet id="2023-08-09-initial-fnc_get_max_count_task" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -176,7 +176,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="2023-08-09-initial-task7-pr" author="cnathali">
+    <changeSet id="2023-08-09-initial-task7-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -196,7 +196,7 @@
     </changeSet>
 
 <!--    8) Определить длительность последней P2P проверки-->
-    <changeSet id="2023-08-09-initial-task8-pr" author="cnathali">
+    <changeSet id="2023-08-09-initial-task8-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -228,7 +228,7 @@
     </changeSet>
 
 <!--    9) Найти всех пиров, выполнивших весь заданный блок задач и дату завершения последнего задания-->
-    <changeSet id="2023-08-09-initial-task9-pr" author="cnathali">
+    <changeSet id="2023-08-09-initial-task9-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -261,7 +261,7 @@
     </changeSet>
 
 <!--    10) Определить, к какому пиру стоит идти на проверку каждому обучающемуся-->
-    <changeSet id="2023-08-09-initial-task10-pr" author="cnathali">
+    <changeSet id="2023-08-09-initial-task10-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -291,7 +291,7 @@
     </changeSet>
 
 <!--    11) Определить процент пиров, которые:Приступили к блоку 1,Приступили к блоку 2, Приступили к обоим, Не приступили ни к одному-->
-    <changeSet id="2023-08-09-initial-task11-pr" author="cnathali">
+    <changeSet id="2023-08-09-initial-task11-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -332,7 +332,7 @@
     </changeSet>
 
 <!--    12) Определить N пиров с наибольшим числом друзей-->
-    <changeSet id="2023-08-09-initial-task12-pr" author="cnathali">
+    <changeSet id="2023-08-09-initial-task12-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -351,7 +351,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="2023-08-09-update-birthday" author="cnathali">
+    <changeSet id="2023-08-09-update-birthday" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -362,7 +362,7 @@
     </changeSet>
 
 <!--    13) Определить процент пиров, которые когда-либо успешно проходили проверку в свой день рождения-->
-    <changeSet id="2023-08-09-initial-task13-pr" author="cnathali">
+    <changeSet id="2023-08-09-initial-task13-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -394,7 +394,7 @@
     </changeSet>
 
 <!--    14) Определить кол-во XP, полученное в сумме каждым пиром-->
-    <changeSet id="2023-08-09-task14-pr" author="cnathali">
+    <changeSet id="2023-08-09-task14-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -416,7 +416,7 @@
     </changeSet>
 
 <!--    15) Определить всех пиров, которые сдали заданные задания 1 и 2, но не сдали задание-->
-    <changeSet id="2023-08-09-task15-pr" author="cnathali">
+    <changeSet id="2023-08-09-task15-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -442,7 +442,7 @@
     </changeSet>
 
 <!--    16) Используя рекурсивное обобщенное табличное выражение, для каждой задачи вывести кол-во предшествующих ей задач-->
-    <changeSet id="2023-08-09-task16-pr" author="cnathali">
+    <changeSet id="2023-08-09-task16-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -471,7 +471,7 @@
     </changeSet>
 
 <!--    17) Найти "удачные" для проверок дни. День считается "удачным", если в нем есть хотя бы N идущих подряд успешных проверки-->
-    <changeSet id="2023-08-09-task17-pr" author="cnathali">
+    <changeSet id="2023-08-09-task17-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -504,7 +504,7 @@
     </changeSet>
 
 <!--    18) Определить пира с наибольшим числом выполненных заданий-->
-    <changeSet id="2023-08-09-task18-pr" author="cnathali">
+    <changeSet id="2023-08-09-task18-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -524,7 +524,7 @@
     </changeSet>
 
 <!--    19) Определить пира с наибольшим количеством XP-->
-    <changeSet id="2023-08-09-task19-pr" author="cnathali">
+    <changeSet id="2023-08-09-task19-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -548,7 +548,7 @@
     </changeSet>
 
 <!--    20) Определить пира, который провел сегодня в кампусе больше всего времени-->
-    <changeSet id="2023-08-09-task20-pr" author="cnathali">
+    <changeSet id="2023-08-09-task20-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -593,7 +593,7 @@
     </changeSet>
 
 <!--    21) Определить пиров, приходивших раньше заданного времени не менее N раз за всё время-->
-    <changeSet id="2023-08-09-task21-pr" author="cnathali">
+    <changeSet id="2023-08-09-task21-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -614,7 +614,7 @@
     </changeSet>
 
 <!--    22) Определить пиров, выходивших за последние N дней из кампуса больше M раз-->
-    <changeSet id="2023-08-09-task22-pr" author="cnathali">
+    <changeSet id="2023-08-09-task22-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -635,7 +635,7 @@
     </changeSet>
 
 <!--    23) Определить пира, который пришел сегодня последним-->
-    <changeSet id="2023-08-09-task23-pr" author="cnathali">
+    <changeSet id="2023-08-09-task23-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -655,7 +655,7 @@
     </changeSet>
 
 <!--    24) Определить пиров, которые выходили вчера из кампуса больше чем на N минут-->
-    <changeSet id="2023-08-09-task24-pr" author="cnathali">
+    <changeSet id="2023-08-09-task24-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
@@ -698,7 +698,7 @@
     </changeSet>
 
 <!--    25) Определить для каждого месяца процент ранних входов-->
-    <changeSet id="2023-08-09-task25-pr" author="cnathali">
+    <changeSet id="2023-08-09-task25-pr" author="krived">
         <sql endDelimiter="\nGO"
              splitStatements="true"
              stripComments="true">
