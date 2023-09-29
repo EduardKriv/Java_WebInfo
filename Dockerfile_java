@@ -1,0 +1,8 @@
+FROM maven
+LABEL authors="krived"
+RUN mkdir /project
+COPY . /project
+WORKDIR /project
+EXPOSE 8080
+RUN mvn clean compile package
+ENTRYPOINT ["java", "-jar", "target/info-1.0.jar"]
