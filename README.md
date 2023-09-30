@@ -1,5 +1,5 @@
 # Java_WebInfo
-Web-приложение на языке Java с использованием Spring (Boot, Data JPA, MVC, Web), Thymeleaf, Bootstrap, PostgreSQL, Docker, Nicepage. Поддерживаeт осуществление CRUD-операций, импорт/экспорт таблиц, выполнение операций/функций через графический интерфейс, SQL-запросов, а также логирование действий пользователя.
+Web-приложение на языке Java с использованием Spring (Boot, Data JPA, MVC, Web), Liquibase, Thymeleaf, Bootstrap, PostgreSQL, Docker, Nicepage. Поддерживаeт осуществление CRUD-операций, импорт/экспорт таблиц, выполнение операций/функций через графический интерфейс, SQL-запросов, а также логирование действий пользователя.
 
 ![image](materials/info-menu.gif)
 
